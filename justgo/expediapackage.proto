@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package expediapackage;
+
+option java_package = "com.expedia.www.packagefinder.database.exppackage";
+option java_out_classname = "ExpPackageProtos";
+
+message Package {
+	// where
+	string cityName = 1;
+	string countryName = 2;
+	// when
+	string fromDate = 3;	// in the format of YYYY-MM-DD
+	string toDate = 4;		// same format
+	// how much
+	double pricePerPerson = 5;
+	// hotel details
+	string hotelId = 6;
+	string hotelName = 7;
+	string hotelAddress = 8;
+	double latitude = 9;
+	double longitude = 10;
+	string rating = 11;
+	uint32 reviewCount = 12;
+	// flight details
+	flight flightdetails = 13; 
+	// images
+	string packageImageURL = 14;
+	string cityImageURL = 15;
+	string hotelImageURL = 16;
+}
+
+message flight {
+	string originAirport = 1;
+	string originAirportCode = 2;
+	string destAirport = 3;
+	string destAirportCode = 4;
+	string departureDate = 5;
+	string returnDate = 6;
+	repeated flightLeg flightLegs = 7;
+}
+
+message flightLeg {
+	string departureAirport = 1;
+	string departureAirportCode = 2;
+	string arrivalAirport = 3;
+	string arrivalAirportCode = 4;
+	string departureTime = 5;		// ISO standard: YYYY-MM-DDTHH:mm:SS.sss$(Time Zone) e.g. 2016-12-15T09:30:00.000-06:00
+	string arrivalTime = 6;			// Same format
+	string flightCarrier = 7;		// e.g. American Airline
+	string flightCarrierCode = 8;	// e.g. AA
+	string flightLegDuration = 9;	// HH-mm
+	repeated flightSeg flightSegments = 10;
+}
+
+message flightSeg {
+	string departureAirport = 1;
+	string departureAirportCode = 2;
+	string arrivalAirport = 3;
+	string arrivalAirportCode = 4;
+	string departureTime = 5;
+	string arrivalTime = 6;
+	string flightCarrier = 7;
+	string flightCarrierCode = 8;
+	string flightNumber = 9;
+	string flightSegDuration = 10;
+}
