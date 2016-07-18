@@ -16,23 +16,23 @@ message UserInfo {
 }
 
 message UserPref {
-	bool adventure = 1;
-	bool artsy = 2;
-	bool backpackers = 3;
-	bool budget = 4;
-	bool business = 5;
-	bool families = 6;
-	bool foodies = 7;
+	bool artsy = 1;
+	bool adrenaline = 2;
+	bool backpacker = 3;
+	bool beach = 4;
+	bool budget = 5;
+	bool family = 6;
+	bool foodie = 7;
 	bool green = 8;
 	bool history = 9;
-	bool lgbt = 10;
-	bool local = 11;
-	bool luxury = 12;
+	bool local = 10;
+	bool luxury = 11;
+	bool nature = 12;
 	bool nightlife = 13;
-	bool outdoorsy = 14;
-	bool spiritual = 15;
-	bool students = 16;
-	bool trendster = 17;
-	bool vegen = 18;
-	bool wellness = 19;
+	bool serene = 14;
+	bool shopping = 15;
+	bool student = 16;
+	bool trendsetter = 17;
+	bool urban = 18;
+	bool vegetarian = 19;
 }
