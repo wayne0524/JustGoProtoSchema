@@ -8,7 +8,7 @@ option java_package = "com.expedia.www.packagefinder.database.hotel";
 option java_outer_classname = "HotelProtos";
 
 message Hotels {
-	repeated Hotel = 1;
+	repeated Hotel hotel = 1;
 }
 
 message Hotel {
