@@ -2,7 +2,7 @@ command line to generate java protobuf source file:
 
 export SRC_DIR=./justgo
 export DST_DIR=./java/
-export FILE_NAME=hotels.proto
+export FILE_NAME=${proto_file_name}
 
 protoc -I=$SRC_DIR --java_out=$DST_DIR $SRC_DIR/$FILE_NAME
 
@@ -10,9 +10,9 @@ protoc -I=$SRC_DIR --java_out=$DST_DIR $SRC_DIR/$FILE_NAME
 
 command line to generate python protobuf source file:
 
-export SRC_DIR=~/Documents/personalizedrecommender-python/proto/
-export DST_DIR=~/Documents/personalizedrecommender-python/personalizedrecommender/
-export FILE_NAME=hotel.proto
+export SRC_DIR=./justgo
+export DST_DIR=./python/
+export FILE_NAME=${proto_file_name}
 
 protoc -I=$SRC_DIR --python_out=$DST_DIR $SRC_DIR/$FILE_NAME
 
