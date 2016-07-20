@@ -3,7 +3,7 @@ syntax = "proto3";
 package expediapackage;
 
 option java_package = "com.expedia.www.packagefinder.database.exppackage";
-option java_out_classname = "ExpPackageProtos";
+option java_outer_classname = "ExpPackageProtos";
 
 message Package {
 	// where
@@ -23,45 +23,41 @@ message Package {
 	string rating = 11;
 	uint32 reviewCount = 12;
 	// flight details
-	flight flightdetails = 13; 
+	flight flightdetails = 13;
 	// images
+	// packageImageURL: "http://media.expedia.com/mobiata/mobile/apps/ExpediaBooking/FlightDestinations/images/[AirportCode].jpg?output-quality=60&output-format=jpeg&downsize=2208px%3A%2A"
 	string packageImageURL = 14;
-	string cityImageURL = 15;
-	string hotelImageURL = 16;
+	repeated string cityImageURLs = 15; // not set now, might be hand picked in the future
+	repeated string hotelImageURLs = 16;
+	string bookingURL = 17;
 }
 
 message flight {
-	string originAirport = 1;
-	string originAirportCode = 2;
-	string destAirport = 3;
-	string destAirportCode = 4;
-	string departureDate = 5;
-	string returnDate = 6;
-	repeated flightLeg flightLegs = 7;
+	flightLeg originFlightLeg = 1;
+	flightLeg returnFlightLeg = 2;
 }
 
 message flightLeg {
 	string departureAirport = 1;
 	string departureAirportCode = 2;
-	string arrivalAirport = 3;
-	string arrivalAirportCode = 4;
-	string departureTime = 5;		// ISO standard: YYYY-MM-DDTHH:mm:SS.sss$(Time Zone) e.g. 2016-12-15T09:30:00.000-06:00
-	string arrivalTime = 6;			// Same format
-	string flightCarrier = 7;		// e.g. American Airline
-	string flightCarrierCode = 8;	// e.g. AA
-	string flightLegDuration = 9;	// HH-mm
-	repeated flightSeg flightSegments = 10;
+	string departureAirportCity = 3;
+	string arrivalAirport = 4;
+	string arrivalAirportCode = 5;
+	string arrivalAirportCity = 6;
+	string departureTime = 7;		// ISO standard: YYYY-MM-DDTHH:mm:SS.sss$(Time Zone) e.g. 2016-12-15T09:30:00.000-06:00
+	string arrivalTime = 8;			// Same format
+	string flightCarrier = 9;		// e.g. American Airline
+	string flightCarrierCode = 10;	// e.g. AA
+	string flightLegDuration = 11;	// HH-mm e.g. self.arrivalTime - self.departureTime
+	repeated transitFlight transitFlights = 12;
 }
 
-message flightSeg {
-	string departureAirport = 1;
-	string departureAirportCode = 2;
-	string arrivalAirport = 3;
-	string arrivalAirportCode = 4;
-	string departureTime = 5;
-	string arrivalTime = 6;
-	string flightCarrier = 7;
-	string flightCarrierCode = 8;
-	string flightNumber = 9;
-	string flightSegDuration = 10;
+message transitFlight {
+	string transitAirport = 1;
+	string transitAirportCode = 2;
+	string transitAirportCity = 3;
+	string departureTime = 4;
+	string arrivalTime = 5;
+	string transitFlightDuration = 6; // HH-mm e.g. self.arrivalTime - self.departureTime
+	string transitAirportDuration = 7; // HH-mm e.g. originFlightLeg.transitFlights[0].departureTime - previousFlightLeg.arrivalTime
 }
