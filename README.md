@@ -14,7 +14,7 @@ Complete setup
 ==============
 
 ###Generating Java protobuf source file:
-## Compile command
+**Compile command**
 ```
 export SRC_DIR=./justgo
 export DST_DIR=./java/
@@ -23,7 +23,7 @@ export FILE_NAME=${proto_file_name}
 protoc -I=$SRC_DIR --java_out=$DST_DIR $SRC_DIR/$FILE_NAME
 ```
 ###Generating Python protobuf source file:
-## Compile command
+**Compile command**
 ```
 export SRC_DIR=./justgo
 export DST_DIR=./python/
@@ -32,10 +32,10 @@ export FILE_NAME=${proto_file_name}
 protoc -I=$SRC_DIR --python_out=$DST_DIR $SRC_DIR/$FILE_NAME
 ```
 ###Generating Swift protobuf source file:
-## Install the Swift compiler
+**Install the Swift compiler**
 To compile the code into Swift, follow the instructions to setup swift compiler:
   https://github.com/alexeyxo/protobuf-swift
-## Compile command
+**Compile command**
 ```
 export SRC_DIR=./justgo
 export DST_DIR=./swift/
