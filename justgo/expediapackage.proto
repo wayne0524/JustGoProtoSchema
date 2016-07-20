@@ -20,7 +20,7 @@ message Package {
 	string hotelAddress = 8;
 	double latitude = 9;
 	double longitude = 10;
-	string rating = 11;
+	double rating = 11;
 	uint32 reviewCount = 12;
 	// flight details
 	flight flightdetails = 13;
