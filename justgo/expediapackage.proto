@@ -21,7 +21,7 @@ message Package {
 	double latitude = 9;
 	double longitude = 10;
 	double rating = 11;
-	uint32 reviewCount = 12;
+	uint32 popularity = 12;
 	// flight details
 	flight flightdetails = 13;
 	// images
