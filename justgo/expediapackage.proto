@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package expediapackage;
 
-option java_package = "com.expedia.www.packagefinder.database.exppackage";
+option java_package = "com.expedia.www.packagefinder.exppackage";
 option java_outer_classname = "ExpPackageProtos";
 
 message PackageList {
