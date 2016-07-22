@@ -34,6 +34,8 @@ message Package {
 	repeated string cityImageURLs = 15; // not set now, might be hand picked in the future
 	repeated string hotelImageURLs = 16;
 	string bookingURL = 17;
+	// time that this package is got from expedia server
+	string queryTime = 18; // in yyyy-MM-dd HH:mm:ss.SSS format
 }
 
 message flight {
