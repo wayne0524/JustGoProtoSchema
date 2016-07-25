@@ -44,19 +44,20 @@ message hotel {
 	double aveReviewRating = 8;
 	//front page amenities info
 	bool hasFreeWifi = 9;
-	bool hasHairDryer = 10;
-	bool hasFreeBreakfast = 11;
-	bool hasAirConditioning = 12;
-	bool hasRoomService = 13;
-	bool hasPool = 14;
+	bool hasSurchargedWifi = 10;
+	bool hasHairDryer = 11;
+	bool hasFreeBreakfast = 12;
+	bool hasAirConditioning = 13;
+	bool hasRoomService = 14;
+	bool hasPool = 15;
 	//catergorized amenity
-	repeated string featured = 15;
-	repeated string policies = 16;
-	repeated string room = 17;
-	repeated string property = 18;
-	repeated string theme = 19;
+	repeated string featured = 16;
+	repeated string policies = 17;
+	repeated string room = 18;
+	repeated string property = 19;
+	repeated string theme = 20;
 	//images
-	repeated string hotelImageURLs = 20;
+	repeated string hotelImageURLs = 21;
 }
 
 message flight {
