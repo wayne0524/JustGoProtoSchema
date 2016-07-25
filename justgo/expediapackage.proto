@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+// for java build only, please comment out the following lines (5 ~ 8) if building in other language
+
 package expediapackage;
 
 option java_package = "com.expedia.www.packagefinder.exppackage";
@@ -19,23 +21,41 @@ message Package {
 	// how much
 	double pricePerPerson = 5;
 	// hotel details
-	string hotelId = 6;
-	string hotelName = 7;
-	string hotelAddress = 8;
-	double latitude = 9;
-	double longitude = 10;
-	double rating = 11;
-	uint32 popularity = 12;
+	hotel hotelDetails = 6;
 	// flight details
-	flight flightdetails = 13;
+	flight flightDetails = 7;
 	// images
 	// packageImageURL: "http://media.expedia.com/mobiata/mobile/apps/ExpediaBooking/FlightDestinations/images/[AirportCode].jpg?output-quality=60&output-format=jpeg&downsize=2208px%3A%2A"
-	string packageImageURL = 14;
-	repeated string cityImageURLs = 15; // not set now, might be hand picked in the future
-	repeated string hotelImageURLs = 16;
-	string bookingURL = 17;
+	string packageImageURL = 8;
+	repeated string cityImageURLs = 9; // not set now, might be hand picked in the future
+	string bookingURL = 10;
 	// time that this package is got from expedia server
-	string queryTime = 18; // in yyyy-MM-dd HH:mm:ss.SSS format
+	string queryTime = 11; // in yyyy-MM-dd HH:mm:ss.SSS format
+}
+
+message hotel {
+	string hotelId = 1;
+	string hotelName = 2;
+	string hotelAddress = 3;
+	double latitude = 4;
+	double longitude = 5;
+	double rating = 6;
+	uint32 popularity = 7;
+	//front page amenities info
+	bool hasFreeWifi = 8;
+	bool hasHairDryer = 9;
+	bool hasFreeBreakfast = 10;
+	bool hasAirConditioning = 11;
+	bool hasRoomService = 12;
+	bool hasPool = 13;
+	//catergorized amenity
+	repeated string featured = 14;
+	repeated string policies = 15;
+	repeated string room = 16;
+	repeated string property = 17;
+	repeated string theme = 18;
+	//images
+	repeated string hotelImageURLs = 19;
 }
 
 message flight {
