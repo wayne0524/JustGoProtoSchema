@@ -17,7 +17,7 @@ message Package {
 	string countryName = 2;
 	// when
 	string fromDate = 3;	// in the format of YYYY-MM-DD
-	string toDate = 4;		// same format
+	string toDate = 4;	// same format
 	// how much
 	double pricePerPerson = 5;
 	// hotel details
@@ -56,8 +56,9 @@ message hotel {
 	repeated string room = 18;
 	repeated string property = 19;
 	repeated string theme = 20;
+	repeated string accessiblility = 21;
 	//images
-	repeated string hotelImageURLs = 21;
+	repeated string hotelImageURLs = 22;
 }
 
 message flight {
