@@ -39,23 +39,25 @@ message hotel {
 	string hotelAddress = 3;
 	double latitude = 4;
 	double longitude = 5;
-	double rating = 6;
-	uint32 popularity = 7;
+	uint32 starRating = 6;
+	uint32 reviewCount = 7;
+	double aveReviewRating = 8;
+	uint32 popularity = 9;
 	//front page amenities info
-	bool hasFreeWifi = 8;
-	bool hasHairDryer = 9;
-	bool hasFreeBreakfast = 10;
-	bool hasAirConditioning = 11;
-	bool hasRoomService = 12;
-	bool hasPool = 13;
+	bool hasFreeWifi = 10;
+	bool hasHairDryer = 11;
+	bool hasFreeBreakfast = 12;
+	bool hasAirConditioning = 13;
+	bool hasRoomService = 14;
+	bool hasPool = 15;
 	//catergorized amenity
-	repeated string featured = 14;
-	repeated string policies = 15;
-	repeated string room = 16;
-	repeated string property = 17;
-	repeated string theme = 18;
+	repeated string featured = 16;
+	repeated string policies = 17;
+	repeated string room = 18;
+	repeated string property = 19;
+	repeated string theme = 20;
 	//images
-	repeated string hotelImageURLs = 19;
+	repeated string hotelImageURLs = 21;
 }
 
 message flight {
