@@ -19,7 +19,7 @@ message Package {
 	string fromDate = 3;	// in the format of YYYY-MM-DD
 	string toDate = 4;	// same format
 	// how much
-	double pricePerPerson = 5;
+	float pricePerPerson = 5;
 	// hotel details
 	hotel hotelDetails = 6;
 	// flight details
@@ -42,11 +42,11 @@ message hotel {
 	string hotelCountry = 6;
 	string hotelZip = 7;
 	string hotelRegionId = 8;
-	double latitude = 9;
-	double longitude = 10;
-	uint32 starRating = 11;
+	float latitude = 9;
+	float longitude = 10;
+	float starRating = 11;
 	uint32 reviewCount = 12;
-	double aveReviewRating = 13;
+	float aveReviewRating = 13;
 	//front page amenities info
 	bool hasFreeWifi = 14;
 	bool hasSurchargedWifi = 15;
