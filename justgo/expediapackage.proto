@@ -17,7 +17,7 @@ message Package {
 	string countryName = 2;
 	// when
 	string fromDate = 3;	// in the format of YYYY-MM-DD
-	string toDate = 4;		// same format
+	string toDate = 4;	// same format
 	// how much
 	double pricePerPerson = 5;
 	// hotel details
@@ -37,37 +37,43 @@ message hotel {
 	string hotelId = 1;
 	string hotelName = 2;
 	string hotelAddress = 3;
-	double latitude = 4;
-	double longitude = 5;
-	uint32 starRating = 6;
-	uint32 reviewCount = 7;
-	double aveReviewRating = 8;
-	uint32 popularity = 9;
+	string hotelCity = 4;
+	string hotelState = 5;
+	string hotelCountry = 6;
+	string hotelZip = 7;
+	string hotelRegionId = 8;
+	double latitude = 9;
+	double longitude = 10;
+	uint32 starRating = 11;
+	uint32 reviewCount = 12;
+	double aveReviewRating = 13;
 	//front page amenities info
-	bool hasFreeWifi = 10;
-	bool hasHairDryer = 11;
-	bool hasFreeBreakfast = 12;
-	bool hasAirConditioning = 13;
-	bool hasRoomService = 14;
-	bool hasPool = 15;
+	bool hasFreeWifi = 14;
+	bool hasSurchargedWifi = 15;
+	bool hasHairDryer = 16;
+	bool hasFreeBreakfast = 17;
+	bool hasAirConditioning = 18;
+	bool hasRoomService = 19;
+	bool hasPool = 20;
 	//catergorized amenity
-	repeated string featured = 16;
-	repeated string policies = 17;
-	repeated string room = 18;
-	repeated string property = 19;
-	repeated string theme = 20;
+	repeated string featured = 21;
+	repeated string policies = 22;
+	repeated string room = 23;
+	repeated string property = 24;
+	repeated string theme = 25;
+	repeated string accessiblility = 26;
 	//images
-	repeated string hotelImageURLs = 21;
+	repeated string hotelImageURLs = 27;
 
-	String neighborhood = 22; // e.g. Swaggerui: packageAPI/packageResult/hotels/[0]/neighborhood
-	String featuredReview = 23; // e.g. HotelAPI: reviewSummary/featuredReview
-	String hotelDescription = 24; // e.g. HotelAPI: overview/shortDescription
-
+	string neighborhood = 28; // e.g. Swaggerui: packageAPI/packageResult/hotels/[0]/neighborhood
+	string featuredReview = 29; // e.g. HotelAPI: reviewSummary/featuredReview
+	string hotelDescription = 30; // e.g. HotelAPI: overview/shortDescription
 }
 
 message flight {
 	flightLeg originFlightLeg = 1;
 	flightLeg returnFlightLeg = 2;
+	uint64 searchTime = 3;		// The time of the search that caches this flight, in system millis
 }
 
 message flightLeg {
