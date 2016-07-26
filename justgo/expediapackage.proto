@@ -69,6 +69,7 @@ message hotel {
 message flight {
 	flightLeg originFlightLeg = 1;
 	flightLeg returnFlightLeg = 2;
+	uint64 searchTime = 3;		// The time of the search that caches this flight, in system millis
 }
 
 message flightLeg {
