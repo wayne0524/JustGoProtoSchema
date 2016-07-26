@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='hotels.proto',
   package='hotel',
   syntax='proto3',
-  serialized_pb=_b('\n\x0chotels.proto\x12\x05hotel\"%\n\x06Hotels\x12\x1b\n\x05hotel\x18\x01 \x03(\x0b\x32\x0c.hotel.Hotel\"?\n\x05Hotel\x12\x0f\n\x07hotelId\x18\x01 \x01(\t\x12\x12\n\nhotelScore\x18\x02 \x01(\x02\x12\x11\n\thotelRank\x18\x03 \x01(\x05\x42;\n,com.expedia.www.packagefinder.database.hotelB\x0bHotelProtosb\x06proto3')
+  serialized_pb=_b('\n\x0chotels.proto\x12\x05hotel\"%\n\x06Hotels\x12\x1b\n\x05hotel\x18\x01 \x03(\x0b\x32\x0c.hotel.Hotel\"?\n\x05Hotel\x12\x0f\n\x07hotelId\x18\x01 \x01(\t\x12\x12\n\nhotelScore\x18\x02 \x01(\x02\x12\x11\n\thotelRank\x18\x03 \x01(\x05\x42\x32\n#com.expedia.www.packagefinder.hotelB\x0bHotelProtosb\x06proto3')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -121,5 +121,5 @@ _sym_db.RegisterMessage(Hotel)
 
 
 DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\n,com.expedia.www.packagefinder.database.hotelB\013HotelProtos'))
+DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\n#com.expedia.www.packagefinder.hotelB\013HotelProtos'))
 # @@protoc_insertion_point(module_scope)

@@ -19,11 +19,42 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='expediapackage.proto',
   package='expediapackage',
   syntax='proto3',
-  serialized_pb=_b('\n\x14\x65xpediapackage.proto\x12\x0e\x65xpediapackage\"\xf9\x02\n\x07Package\x12\x10\n\x08\x63ityName\x18\x01 \x01(\t\x12\x13\n\x0b\x63ountryName\x18\x02 \x01(\t\x12\x10\n\x08\x66romDate\x18\x03 \x01(\t\x12\x0e\n\x06toDate\x18\x04 \x01(\t\x12\x16\n\x0epricePerPerson\x18\x05 \x01(\x01\x12\x0f\n\x07hotelId\x18\x06 \x01(\t\x12\x11\n\thotelName\x18\x07 \x01(\t\x12\x14\n\x0chotelAddress\x18\x08 \x01(\t\x12\x10\n\x08latitude\x18\t \x01(\x01\x12\x11\n\tlongitude\x18\n \x01(\x01\x12\x0e\n\x06rating\x18\x0b \x01(\t\x12\x13\n\x0breviewCount\x18\x0c \x01(\r\x12-\n\rflightdetails\x18\r \x01(\x0b\x32\x16.expediapackage.flight\x12\x17\n\x0fpackageImageURL\x18\x0e \x01(\t\x12\x15\n\rcityImageURLs\x18\x0f \x03(\t\x12\x16\n\x0ehotelImageURLs\x18\x10 \x03(\t\x12\x12\n\nbookingURL\x18\x11 \x01(\t\"p\n\x06\x66light\x12\x32\n\x0foriginFlightLeg\x18\x01 \x01(\x0b\x32\x19.expediapackage.flightLeg\x12\x32\n\x0freturnFlightLeg\x18\x02 \x01(\x0b\x32\x19.expediapackage.flightLeg\"\xe1\x02\n\tflightLeg\x12\x18\n\x10\x64\x65partureAirport\x18\x01 \x01(\t\x12\x1c\n\x14\x64\x65partureAirportCode\x18\x02 \x01(\t\x12\x1c\n\x14\x64\x65partureAirportCity\x18\x03 \x01(\t\x12\x16\n\x0e\x61rrivalAirport\x18\x04 \x01(\t\x12\x1a\n\x12\x61rrivalAirportCode\x18\x05 \x01(\t\x12\x1a\n\x12\x61rrivalAirportCity\x18\x06 \x01(\t\x12\x15\n\rdepartureTime\x18\x07 \x01(\t\x12\x13\n\x0b\x61rrivalTime\x18\x08 \x01(\t\x12\x15\n\rflightCarrier\x18\t \x01(\t\x12\x19\n\x11\x66lightCarrierCode\x18\n \x01(\t\x12\x19\n\x11\x66lightLegDuration\x18\x0b \x01(\t\x12\x35\n\x0etransitFlights\x18\x0c \x03(\x0b\x32\x1d.expediapackage.transitFlight\"\xca\x01\n\rtransitFlight\x12\x16\n\x0etransitAirport\x18\x01 \x01(\t\x12\x1a\n\x12transitAirportCode\x18\x02 \x01(\t\x12\x1a\n\x12transitAirportCity\x18\x03 \x01(\t\x12\x15\n\rdepartureTime\x18\x04 \x01(\t\x12\x13\n\x0b\x61rrivalTime\x18\x05 \x01(\t\x12\x1d\n\x15transitFlightDuration\x18\x06 \x01(\t\x12\x1e\n\x16transitAirportDuration\x18\x07 \x01(\tBE\n1com.expedia.www.packagefinder.database.exppackageB\x10\x45xpPackageProtosb\x06proto3')
+  serialized_pb=_b('\n\x14\x65xpediapackage.proto\x12\x0e\x65xpediapackage\":\n\x0bPackageList\x12+\n\nFHPackages\x18\x01 \x03(\x0b\x32\x17.expediapackage.Package\"\x8b\x03\n\x07Package\x12\x10\n\x08\x63ityName\x18\x01 \x01(\t\x12\x13\n\x0b\x63ountryName\x18\x02 \x01(\t\x12\x10\n\x08\x66romDate\x18\x03 \x01(\t\x12\x0e\n\x06toDate\x18\x04 \x01(\t\x12\x16\n\x0epricePerPerson\x18\x05 \x01(\x01\x12\x0f\n\x07hotelId\x18\x06 \x01(\t\x12\x11\n\thotelName\x18\x07 \x01(\t\x12\x14\n\x0chotelAddress\x18\x08 \x01(\t\x12\x10\n\x08latitude\x18\t \x01(\x01\x12\x11\n\tlongitude\x18\n \x01(\x01\x12\x0e\n\x06rating\x18\x0b \x01(\x01\x12\x12\n\npopularity\x18\x0c \x01(\r\x12-\n\rflightdetails\x18\r \x01(\x0b\x32\x16.expediapackage.flight\x12\x17\n\x0fpackageImageURL\x18\x0e \x01(\t\x12\x15\n\rcityImageURLs\x18\x0f \x03(\t\x12\x16\n\x0ehotelImageURLs\x18\x10 \x03(\t\x12\x12\n\nbookingURL\x18\x11 \x01(\t\x12\x11\n\tqueryTime\x18\x12 \x01(\t\"p\n\x06\x66light\x12\x32\n\x0foriginFlightLeg\x18\x01 \x01(\x0b\x32\x19.expediapackage.flightLeg\x12\x32\n\x0freturnFlightLeg\x18\x02 \x01(\x0b\x32\x19.expediapackage.flightLeg\"\xe1\x02\n\tflightLeg\x12\x18\n\x10\x64\x65partureAirport\x18\x01 \x01(\t\x12\x1c\n\x14\x64\x65partureAirportCode\x18\x02 \x01(\t\x12\x1c\n\x14\x64\x65partureAirportCity\x18\x03 \x01(\t\x12\x16\n\x0e\x61rrivalAirport\x18\x04 \x01(\t\x12\x1a\n\x12\x61rrivalAirportCode\x18\x05 \x01(\t\x12\x1a\n\x12\x61rrivalAirportCity\x18\x06 \x01(\t\x12\x15\n\rdepartureTime\x18\x07 \x01(\t\x12\x13\n\x0b\x61rrivalTime\x18\x08 \x01(\t\x12\x15\n\rflightCarrier\x18\t \x01(\t\x12\x19\n\x11\x66lightCarrierCode\x18\n \x01(\t\x12\x19\n\x11\x66lightLegDuration\x18\x0b \x01(\t\x12\x35\n\x0etransitFlights\x18\x0c \x03(\x0b\x32\x1d.expediapackage.transitFlight\"\xca\x01\n\rtransitFlight\x12\x16\n\x0etransitAirport\x18\x01 \x01(\t\x12\x1a\n\x12transitAirportCode\x18\x02 \x01(\t\x12\x1a\n\x12transitAirportCity\x18\x03 \x01(\t\x12\x15\n\rdepartureTime\x18\x04 \x01(\t\x12\x13\n\x0b\x61rrivalTime\x18\x05 \x01(\t\x12\x1d\n\x15transitFlightDuration\x18\x06 \x01(\t\x12\x1e\n\x16transitAirportDuration\x18\x07 \x01(\tB<\n(com.expedia.www.packagefinder.exppackageB\x10\x45xpPackageProtosb\x06proto3')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
+
+
+_PACKAGELIST = _descriptor.Descriptor(
+  name='PackageList',
+  full_name='expediapackage.PackageList',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='FHPackages', full_name='expediapackage.PackageList.FHPackages', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=40,
+  serialized_end=98,
+)
 
 
 _PACKAGE = _descriptor.Descriptor(
@@ -105,13 +136,13 @@ _PACKAGE = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='rating', full_name='expediapackage.Package.rating', index=10,
-      number=11, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
+      number=11, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='reviewCount', full_name='expediapackage.Package.reviewCount', index=11,
+      name='popularity', full_name='expediapackage.Package.popularity', index=11,
       number=12, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -152,6 +183,13 @@ _PACKAGE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='queryTime', full_name='expediapackage.Package.queryTime', index=17,
+      number=18, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -164,8 +202,8 @@ _PACKAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=41,
-  serialized_end=418,
+  serialized_start=101,
+  serialized_end=496,
 )
 
 
@@ -202,8 +240,8 @@ _FLIGHT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=420,
-  serialized_end=532,
+  serialized_start=498,
+  serialized_end=610,
 )
 
 
@@ -310,8 +348,8 @@ _FLIGHTLEG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=535,
-  serialized_end=888,
+  serialized_start=613,
+  serialized_end=966,
 )
 
 
@@ -383,18 +421,27 @@ _TRANSITFLIGHT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=891,
-  serialized_end=1093,
+  serialized_start=969,
+  serialized_end=1171,
 )
 
+_PACKAGELIST.fields_by_name['FHPackages'].message_type = _PACKAGE
 _PACKAGE.fields_by_name['flightdetails'].message_type = _FLIGHT
 _FLIGHT.fields_by_name['originFlightLeg'].message_type = _FLIGHTLEG
 _FLIGHT.fields_by_name['returnFlightLeg'].message_type = _FLIGHTLEG
 _FLIGHTLEG.fields_by_name['transitFlights'].message_type = _TRANSITFLIGHT
+DESCRIPTOR.message_types_by_name['PackageList'] = _PACKAGELIST
 DESCRIPTOR.message_types_by_name['Package'] = _PACKAGE
 DESCRIPTOR.message_types_by_name['flight'] = _FLIGHT
 DESCRIPTOR.message_types_by_name['flightLeg'] = _FLIGHTLEG
 DESCRIPTOR.message_types_by_name['transitFlight'] = _TRANSITFLIGHT
+
+PackageList = _reflection.GeneratedProtocolMessageType('PackageList', (_message.Message,), dict(
+  DESCRIPTOR = _PACKAGELIST,
+  __module__ = 'expediapackage_pb2'
+  # @@protoc_insertion_point(class_scope:expediapackage.PackageList)
+  ))
+_sym_db.RegisterMessage(PackageList)
 
 Package = _reflection.GeneratedProtocolMessageType('Package', (_message.Message,), dict(
   DESCRIPTOR = _PACKAGE,
@@ -426,5 +473,5 @@ _sym_db.RegisterMessage(transitFlight)
 
 
 DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\n1com.expedia.www.packagefinder.database.exppackageB\020ExpPackageProtos'))
+DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\n(com.expedia.www.packagefinder.exppackageB\020ExpPackageProtos'))
 # @@protoc_insertion_point(module_scope)

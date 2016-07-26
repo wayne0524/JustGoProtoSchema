@@ -5,9 +5,9 @@ import Foundation
 import ProtocolBuffers
 
 
-internal struct Hotel { }
+public struct Hotel { }
 
-internal func == (lhs: Hotel.Hotels, rhs: Hotel.Hotels) -> Bool {
+public func == (lhs: Hotel.Hotels, rhs: Hotel.Hotels) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -17,7 +17,7 @@ internal func == (lhs: Hotel.Hotels, rhs: Hotel.Hotels) -> Bool {
   return fieldCheck
 }
 
-internal func == (lhs: Hotel.Hotel, rhs: Hotel.Hotel) -> Bool {
+public func == (lhs: Hotel.Hotel, rhs: Hotel.Hotel) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -29,39 +29,39 @@ internal func == (lhs: Hotel.Hotel, rhs: Hotel.Hotel) -> Bool {
   return fieldCheck
 }
 
-internal extension Hotel {
-  internal struct HotelsRoot {
-    internal static var sharedInstance : HotelsRoot {
+public extension Hotel {
+  public struct HotelsRoot {
+    public static var sharedInstance : HotelsRoot {
      struct Static {
          static let instance : HotelsRoot = HotelsRoot()
      }
      return Static.instance
     }
-    internal var extensionRegistry:ExtensionRegistry
+    public var extensionRegistry:ExtensionRegistry
 
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
     }
-    internal func registerAllExtensions(registry:ExtensionRegistry) {
+    public func registerAllExtensions(registry:ExtensionRegistry) {
     }
   }
 
-  final internal class Hotels : GeneratedMessage, GeneratedMessageProtocol {
-    private(set) var hotel:Array<Hotel.Hotel>  = Array<Hotel.Hotel>()
-    required internal init() {
+  final public class Hotels : GeneratedMessage, GeneratedMessageProtocol {
+    public private(set) var hotel:Array<Hotel.Hotel>  = Array<Hotel.Hotel>()
+    required public init() {
          super.init()
     }
-    override internal func isInitialized() -> Bool {
+    override public func isInitialized() -> Bool {
      return true
     }
-    override internal func writeToCodedOutputStream(output:CodedOutputStream) throws {
+    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
       for oneElementhotel in hotel {
           try output.writeMessage(1, value:oneElementhotel)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
-    override internal func serializedSize() -> Int32 {
+    override public func serializedSize() -> Int32 {
       var serialize_size:Int32 = memoizedSerializedSize
       if serialize_size != -1 {
        return serialize_size
@@ -75,65 +75,65 @@ internal extension Hotel {
       memoizedSerializedSize = serialize_size
       return serialize_size
     }
-    internal class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Hotel.Hotels> {
+    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Hotel.Hotels> {
       var mergedArray = Array<Hotel.Hotels>()
       while let value = try parseFromDelimitedFromInputStream(input) {
         mergedArray += [value]
       }
       return mergedArray
     }
-    internal class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Hotel.Hotels? {
+    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Hotel.Hotels? {
       return try Hotel.Hotels.Builder().mergeDelimitedFromInputStream(input)?.build()
     }
-    internal class func parseFromData(data:NSData) throws -> Hotel.Hotels {
+    public class func parseFromData(data:NSData) throws -> Hotel.Hotels {
       return try Hotel.Hotels.Builder().mergeFromData(data, extensionRegistry:Hotel.HotelsRoot.sharedInstance.extensionRegistry).build()
     }
-    internal class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Hotel.Hotels {
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Hotel.Hotels {
       return try Hotel.Hotels.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
     }
-    internal class func parseFromInputStream(input:NSInputStream) throws -> Hotel.Hotels {
+    public class func parseFromInputStream(input:NSInputStream) throws -> Hotel.Hotels {
       return try Hotel.Hotels.Builder().mergeFromInputStream(input).build()
     }
-    internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Hotel.Hotels {
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Hotel.Hotels {
       return try Hotel.Hotels.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    internal class func parseFromCodedInputStream(input:CodedInputStream) throws -> Hotel.Hotels {
+    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Hotel.Hotels {
       return try Hotel.Hotels.Builder().mergeFromCodedInputStream(input).build()
     }
-    internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Hotel.Hotels {
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Hotel.Hotels {
       return try Hotel.Hotels.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    internal class func getBuilder() -> Hotel.Hotels.Builder {
+    public class func getBuilder() -> Hotel.Hotels.Builder {
       return Hotel.Hotels.classBuilder() as! Hotel.Hotels.Builder
     }
-    internal func getBuilder() -> Hotel.Hotels.Builder {
+    public func getBuilder() -> Hotel.Hotels.Builder {
       return classBuilder() as! Hotel.Hotels.Builder
     }
-    internal override class func classBuilder() -> MessageBuilder {
+    public override class func classBuilder() -> MessageBuilder {
       return Hotel.Hotels.Builder()
     }
-    internal override func classBuilder() -> MessageBuilder {
+    public override func classBuilder() -> MessageBuilder {
       return Hotel.Hotels.Builder()
     }
-    internal func toBuilder() throws -> Hotel.Hotels.Builder {
+    public func toBuilder() throws -> Hotel.Hotels.Builder {
       return try Hotel.Hotels.builderWithPrototype(self)
     }
-    internal class func builderWithPrototype(prototype:Hotel.Hotels) throws -> Hotel.Hotels.Builder {
+    public class func builderWithPrototype(prototype:Hotel.Hotels) throws -> Hotel.Hotels.Builder {
       return try Hotel.Hotels.Builder().mergeFrom(prototype)
     }
-    override internal func getDescription(indent:String) throws -> String {
+    override public func getDescription(indent:String) throws -> String {
       var output:String = ""
       var hotelElementIndex:Int = 0
       for oneElementhotel in hotel {
           output += "\(indent) hotel[\(hotelElementIndex)] {\n"
           output += try oneElementhotel.getDescription("\(indent)  ")
           output += "\(indent)}\n"
-          hotelElementIndex++
+          hotelElementIndex += 1
       }
       output += unknownFields.getDescription(indent)
       return output
     }
-    override internal var hashValue:Int {
+    override public var hashValue:Int {
         get {
             var hashCode:Int = 7
             for oneElementhotel in hotel {
@@ -147,27 +147,27 @@ internal extension Hotel {
 
     //Meta information declaration start
 
-    override internal class func className() -> String {
+    override public class func className() -> String {
         return "Hotel.Hotels"
     }
-    override internal func className() -> String {
+    override public func className() -> String {
         return "Hotel.Hotels"
     }
-    override internal func classMetaType() -> GeneratedMessage.Type {
+    override public func classMetaType() -> GeneratedMessage.Type {
         return Hotel.Hotels.self
     }
     //Meta information declaration end
 
-    final internal class Builder : GeneratedMessageBuilder {
+    final public class Builder : GeneratedMessageBuilder {
       private var builderResult:Hotel.Hotels = Hotel.Hotels()
-      internal func getMessage() -> Hotel.Hotels {
+      public func getMessage() -> Hotel.Hotels {
           return builderResult
       }
 
-      required override internal init () {
+      required override public init () {
          super.init()
       }
-      var hotel:Array<Hotel.Hotel> {
+      public var hotel:Array<Hotel.Hotel> {
            get {
                return builderResult.hotel
            }
@@ -175,35 +175,35 @@ internal extension Hotel {
                builderResult.hotel = value
            }
       }
-      func setHotel(value:Array<Hotel.Hotel>) -> Hotel.Hotels.Builder {
+      public func setHotel(value:Array<Hotel.Hotel>) -> Hotel.Hotels.Builder {
         self.hotel = value
         return self
       }
-      internal func clearHotel() -> Hotel.Hotels.Builder {
+      public func clearHotel() -> Hotel.Hotels.Builder {
         builderResult.hotel.removeAll(keepCapacity: false)
         return self
       }
-      override internal var internalGetResult:GeneratedMessage {
+      override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
            }
       }
-      internal override func clear() -> Hotel.Hotels.Builder {
+      public override func clear() -> Hotel.Hotels.Builder {
         builderResult = Hotel.Hotels()
         return self
       }
-      internal override func clone() throws -> Hotel.Hotels.Builder {
+      public override func clone() throws -> Hotel.Hotels.Builder {
         return try Hotel.Hotels.builderWithPrototype(builderResult)
       }
-      internal override func build() throws -> Hotel.Hotels {
+      public override func build() throws -> Hotel.Hotels {
            try checkInitialized()
            return buildPartial()
       }
-      internal func buildPartial() -> Hotel.Hotels {
+      public func buildPartial() -> Hotel.Hotels {
         let returnMe:Hotel.Hotels = builderResult
         return returnMe
       }
-      internal func mergeFrom(other:Hotel.Hotels) throws -> Hotel.Hotels.Builder {
+      public func mergeFrom(other:Hotel.Hotels) throws -> Hotel.Hotels.Builder {
         if other == Hotel.Hotels() {
          return self
         }
@@ -213,10 +213,10 @@ internal extension Hotel {
         try mergeUnknownFields(other.unknownFields)
         return self
       }
-      internal override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Hotel.Hotels.Builder {
+      public override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Hotel.Hotels.Builder {
            return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
       }
-      internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Hotel.Hotels.Builder {
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Hotel.Hotels.Builder {
         let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
         while (true) {
           let protobufTag = try input.readTag()
@@ -242,23 +242,23 @@ internal extension Hotel {
 
   }
 
-  final internal class Hotel : GeneratedMessage, GeneratedMessageProtocol {
-    private(set) var hasHotelId:Bool = false
-    private(set) var hotelId:String = ""
+  final public class Hotel : GeneratedMessage, GeneratedMessageProtocol {
+    public private(set) var hotelId:String = ""
 
-    private(set) var hasHotelScore:Bool = false
-    private(set) var hotelScore:Float = Float(0)
+    public private(set) var hasHotelId:Bool = false
+    public private(set) var hotelScore:Float = Float(0)
 
-    private(set) var hasHotelRank:Bool = false
-    private(set) var hotelRank:Int32 = Int32(0)
+    public private(set) var hasHotelScore:Bool = false
+    public private(set) var hotelRank:Int32 = Int32(0)
 
-    required internal init() {
+    public private(set) var hasHotelRank:Bool = false
+    required public init() {
          super.init()
     }
-    override internal func isInitialized() -> Bool {
+    override public func isInitialized() -> Bool {
      return true
     }
-    override internal func writeToCodedOutputStream(output:CodedOutputStream) throws {
+    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
       if hasHotelId {
         try output.writeString(1, value:hotelId)
       }
@@ -270,7 +270,7 @@ internal extension Hotel {
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
-    override internal func serializedSize() -> Int32 {
+    override public func serializedSize() -> Int32 {
       var serialize_size:Int32 = memoizedSerializedSize
       if serialize_size != -1 {
        return serialize_size
@@ -290,53 +290,53 @@ internal extension Hotel {
       memoizedSerializedSize = serialize_size
       return serialize_size
     }
-    internal class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Hotel.Hotel> {
+    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Hotel.Hotel> {
       var mergedArray = Array<Hotel.Hotel>()
       while let value = try parseFromDelimitedFromInputStream(input) {
         mergedArray += [value]
       }
       return mergedArray
     }
-    internal class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Hotel.Hotel? {
+    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Hotel.Hotel? {
       return try Hotel.Hotel.Builder().mergeDelimitedFromInputStream(input)?.build()
     }
-    internal class func parseFromData(data:NSData) throws -> Hotel.Hotel {
+    public class func parseFromData(data:NSData) throws -> Hotel.Hotel {
       return try Hotel.Hotel.Builder().mergeFromData(data, extensionRegistry:Hotel.HotelsRoot.sharedInstance.extensionRegistry).build()
     }
-    internal class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Hotel.Hotel {
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Hotel.Hotel {
       return try Hotel.Hotel.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
     }
-    internal class func parseFromInputStream(input:NSInputStream) throws -> Hotel.Hotel {
+    public class func parseFromInputStream(input:NSInputStream) throws -> Hotel.Hotel {
       return try Hotel.Hotel.Builder().mergeFromInputStream(input).build()
     }
-    internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Hotel.Hotel {
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Hotel.Hotel {
       return try Hotel.Hotel.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    internal class func parseFromCodedInputStream(input:CodedInputStream) throws -> Hotel.Hotel {
+    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Hotel.Hotel {
       return try Hotel.Hotel.Builder().mergeFromCodedInputStream(input).build()
     }
-    internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Hotel.Hotel {
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Hotel.Hotel {
       return try Hotel.Hotel.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    internal class func getBuilder() -> Hotel.Hotel.Builder {
+    public class func getBuilder() -> Hotel.Hotel.Builder {
       return Hotel.Hotel.classBuilder() as! Hotel.Hotel.Builder
     }
-    internal func getBuilder() -> Hotel.Hotel.Builder {
+    public func getBuilder() -> Hotel.Hotel.Builder {
       return classBuilder() as! Hotel.Hotel.Builder
     }
-    internal override class func classBuilder() -> MessageBuilder {
+    public override class func classBuilder() -> MessageBuilder {
       return Hotel.Hotel.Builder()
     }
-    internal override func classBuilder() -> MessageBuilder {
+    public override func classBuilder() -> MessageBuilder {
       return Hotel.Hotel.Builder()
     }
-    internal func toBuilder() throws -> Hotel.Hotel.Builder {
+    public func toBuilder() throws -> Hotel.Hotel.Builder {
       return try Hotel.Hotel.builderWithPrototype(self)
     }
-    internal class func builderWithPrototype(prototype:Hotel.Hotel) throws -> Hotel.Hotel.Builder {
+    public class func builderWithPrototype(prototype:Hotel.Hotel) throws -> Hotel.Hotel.Builder {
       return try Hotel.Hotel.Builder().mergeFrom(prototype)
     }
-    override internal func getDescription(indent:String) throws -> String {
+    override public func getDescription(indent:String) throws -> String {
       var output:String = ""
       if hasHotelId {
         output += "\(indent) hotelId: \(hotelId) \n"
@@ -350,7 +350,7 @@ internal extension Hotel {
       output += unknownFields.getDescription(indent)
       return output
     }
-    override internal var hashValue:Int {
+    override public var hashValue:Int {
         get {
             var hashCode:Int = 7
             if hasHotelId {
@@ -370,32 +370,32 @@ internal extension Hotel {
 
     //Meta information declaration start
 
-    override internal class func className() -> String {
+    override public class func className() -> String {
         return "Hotel.Hotel"
     }
-    override internal func className() -> String {
+    override public func className() -> String {
         return "Hotel.Hotel"
     }
-    override internal func classMetaType() -> GeneratedMessage.Type {
+    override public func classMetaType() -> GeneratedMessage.Type {
         return Hotel.Hotel.self
     }
     //Meta information declaration end
 
-    final internal class Builder : GeneratedMessageBuilder {
+    final public class Builder : GeneratedMessageBuilder {
       private var builderResult:Hotel.Hotel = Hotel.Hotel()
-      internal func getMessage() -> Hotel.Hotel {
+      public func getMessage() -> Hotel.Hotel {
           return builderResult
       }
 
-      required override internal init () {
+      required override public init () {
          super.init()
       }
-      var hasHotelId:Bool {
+      public var hasHotelId:Bool {
            get {
                 return builderResult.hasHotelId
            }
       }
-      var hotelId:String {
+      public var hotelId:String {
            get {
                 return builderResult.hotelId
            }
@@ -404,21 +404,21 @@ internal extension Hotel {
                builderResult.hotelId = value
            }
       }
-      func setHotelId(value:String) -> Hotel.Hotel.Builder {
+      public func setHotelId(value:String) -> Hotel.Hotel.Builder {
         self.hotelId = value
         return self
       }
-      internal func clearHotelId() -> Hotel.Hotel.Builder{
+      public func clearHotelId() -> Hotel.Hotel.Builder{
            builderResult.hasHotelId = false
            builderResult.hotelId = ""
            return self
       }
-      var hasHotelScore:Bool {
+      public var hasHotelScore:Bool {
            get {
                 return builderResult.hasHotelScore
            }
       }
-      var hotelScore:Float {
+      public var hotelScore:Float {
            get {
                 return builderResult.hotelScore
            }
@@ -427,21 +427,21 @@ internal extension Hotel {
                builderResult.hotelScore = value
            }
       }
-      func setHotelScore(value:Float) -> Hotel.Hotel.Builder {
+      public func setHotelScore(value:Float) -> Hotel.Hotel.Builder {
         self.hotelScore = value
         return self
       }
-      internal func clearHotelScore() -> Hotel.Hotel.Builder{
+      public func clearHotelScore() -> Hotel.Hotel.Builder{
            builderResult.hasHotelScore = false
            builderResult.hotelScore = Float(0)
            return self
       }
-      var hasHotelRank:Bool {
+      public var hasHotelRank:Bool {
            get {
                 return builderResult.hasHotelRank
            }
       }
-      var hotelRank:Int32 {
+      public var hotelRank:Int32 {
            get {
                 return builderResult.hotelRank
            }
@@ -450,36 +450,36 @@ internal extension Hotel {
                builderResult.hotelRank = value
            }
       }
-      func setHotelRank(value:Int32) -> Hotel.Hotel.Builder {
+      public func setHotelRank(value:Int32) -> Hotel.Hotel.Builder {
         self.hotelRank = value
         return self
       }
-      internal func clearHotelRank() -> Hotel.Hotel.Builder{
+      public func clearHotelRank() -> Hotel.Hotel.Builder{
            builderResult.hasHotelRank = false
            builderResult.hotelRank = Int32(0)
            return self
       }
-      override internal var internalGetResult:GeneratedMessage {
+      override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
            }
       }
-      internal override func clear() -> Hotel.Hotel.Builder {
+      public override func clear() -> Hotel.Hotel.Builder {
         builderResult = Hotel.Hotel()
         return self
       }
-      internal override func clone() throws -> Hotel.Hotel.Builder {
+      public override func clone() throws -> Hotel.Hotel.Builder {
         return try Hotel.Hotel.builderWithPrototype(builderResult)
       }
-      internal override func build() throws -> Hotel.Hotel {
+      public override func build() throws -> Hotel.Hotel {
            try checkInitialized()
            return buildPartial()
       }
-      internal func buildPartial() -> Hotel.Hotel {
+      public func buildPartial() -> Hotel.Hotel {
         let returnMe:Hotel.Hotel = builderResult
         return returnMe
       }
-      internal func mergeFrom(other:Hotel.Hotel) throws -> Hotel.Hotel.Builder {
+      public func mergeFrom(other:Hotel.Hotel) throws -> Hotel.Hotel.Builder {
         if other == Hotel.Hotel() {
          return self
         }
@@ -495,10 +495,10 @@ internal extension Hotel {
         try mergeUnknownFields(other.unknownFields)
         return self
       }
-      internal override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Hotel.Hotel.Builder {
+      public override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Hotel.Hotel.Builder {
            return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
       }
-      internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Hotel.Hotel.Builder {
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Hotel.Hotel.Builder {
         let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
         while (true) {
           let protobufTag = try input.readTag()

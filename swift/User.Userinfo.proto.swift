@@ -5,9 +5,9 @@ import Foundation
 import ProtocolBuffers
 
 
-internal struct User { }
+public struct User { }
 
-internal func == (lhs: User.UserInfo, rhs: User.UserInfo) -> Bool {
+public func == (lhs: User.UserInfo, rhs: User.UserInfo) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -21,7 +21,7 @@ internal func == (lhs: User.UserInfo, rhs: User.UserInfo) -> Bool {
   return fieldCheck
 }
 
-internal func == (lhs: User.UserPref, rhs: User.UserPref) -> Bool {
+public func == (lhs: User.UserPref, rhs: User.UserPref) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -49,46 +49,46 @@ internal func == (lhs: User.UserPref, rhs: User.UserPref) -> Bool {
   return fieldCheck
 }
 
-internal extension User {
-  internal struct UserinfoRoot {
-    internal static var sharedInstance : UserinfoRoot {
+public extension User {
+  public struct UserinfoRoot {
+    public static var sharedInstance : UserinfoRoot {
      struct Static {
          static let instance : UserinfoRoot = UserinfoRoot()
      }
      return Static.instance
     }
-    internal var extensionRegistry:ExtensionRegistry
+    public var extensionRegistry:ExtensionRegistry
 
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
     }
-    internal func registerAllExtensions(registry:ExtensionRegistry) {
+    public func registerAllExtensions(registry:ExtensionRegistry) {
     }
   }
 
-  final internal class UserInfo : GeneratedMessage, GeneratedMessageProtocol {
-    private(set) var hasUserId:Bool = false
-    private(set) var userId:String = ""
+  final public class UserInfo : GeneratedMessage, GeneratedMessageProtocol {
+    public private(set) var userId:String = ""
 
-    private(set) var hasOrigin:Bool = false
-    private(set) var origin:String = ""
+    public private(set) var hasUserId:Bool = false
+    public private(set) var origin:String = ""
 
-    private(set) var hasMinBudget:Bool = false
-    private(set) var minBudget:Float = Float(0)
+    public private(set) var hasOrigin:Bool = false
+    public private(set) var minBudget:Float = Float(0)
 
-    private(set) var hasMaxBudget:Bool = false
-    private(set) var maxBudget:Float = Float(0)
+    public private(set) var hasMinBudget:Bool = false
+    public private(set) var maxBudget:Float = Float(0)
 
-    private(set) var hasPrefMatrix:Bool = false
-    private(set) var prefMatrix:User.UserPref!
-    required internal init() {
+    public private(set) var hasMaxBudget:Bool = false
+    public private(set) var prefMatrix:User.UserPref!
+    public private(set) var hasPrefMatrix:Bool = false
+    required public init() {
          super.init()
     }
-    override internal func isInitialized() -> Bool {
+    override public func isInitialized() -> Bool {
      return true
     }
-    override internal func writeToCodedOutputStream(output:CodedOutputStream) throws {
+    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
       if hasUserId {
         try output.writeString(1, value:userId)
       }
@@ -106,7 +106,7 @@ internal extension User {
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
-    override internal func serializedSize() -> Int32 {
+    override public func serializedSize() -> Int32 {
       var serialize_size:Int32 = memoizedSerializedSize
       if serialize_size != -1 {
        return serialize_size
@@ -134,53 +134,53 @@ internal extension User {
       memoizedSerializedSize = serialize_size
       return serialize_size
     }
-    internal class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<User.UserInfo> {
+    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<User.UserInfo> {
       var mergedArray = Array<User.UserInfo>()
       while let value = try parseFromDelimitedFromInputStream(input) {
         mergedArray += [value]
       }
       return mergedArray
     }
-    internal class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> User.UserInfo? {
+    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> User.UserInfo? {
       return try User.UserInfo.Builder().mergeDelimitedFromInputStream(input)?.build()
     }
-    internal class func parseFromData(data:NSData) throws -> User.UserInfo {
+    public class func parseFromData(data:NSData) throws -> User.UserInfo {
       return try User.UserInfo.Builder().mergeFromData(data, extensionRegistry:User.UserinfoRoot.sharedInstance.extensionRegistry).build()
     }
-    internal class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> User.UserInfo {
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> User.UserInfo {
       return try User.UserInfo.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
     }
-    internal class func parseFromInputStream(input:NSInputStream) throws -> User.UserInfo {
+    public class func parseFromInputStream(input:NSInputStream) throws -> User.UserInfo {
       return try User.UserInfo.Builder().mergeFromInputStream(input).build()
     }
-    internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> User.UserInfo {
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> User.UserInfo {
       return try User.UserInfo.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    internal class func parseFromCodedInputStream(input:CodedInputStream) throws -> User.UserInfo {
+    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> User.UserInfo {
       return try User.UserInfo.Builder().mergeFromCodedInputStream(input).build()
     }
-    internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> User.UserInfo {
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> User.UserInfo {
       return try User.UserInfo.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    internal class func getBuilder() -> User.UserInfo.Builder {
+    public class func getBuilder() -> User.UserInfo.Builder {
       return User.UserInfo.classBuilder() as! User.UserInfo.Builder
     }
-    internal func getBuilder() -> User.UserInfo.Builder {
+    public func getBuilder() -> User.UserInfo.Builder {
       return classBuilder() as! User.UserInfo.Builder
     }
-    internal override class func classBuilder() -> MessageBuilder {
+    public override class func classBuilder() -> MessageBuilder {
       return User.UserInfo.Builder()
     }
-    internal override func classBuilder() -> MessageBuilder {
+    public override func classBuilder() -> MessageBuilder {
       return User.UserInfo.Builder()
     }
-    internal func toBuilder() throws -> User.UserInfo.Builder {
+    public func toBuilder() throws -> User.UserInfo.Builder {
       return try User.UserInfo.builderWithPrototype(self)
     }
-    internal class func builderWithPrototype(prototype:User.UserInfo) throws -> User.UserInfo.Builder {
+    public class func builderWithPrototype(prototype:User.UserInfo) throws -> User.UserInfo.Builder {
       return try User.UserInfo.Builder().mergeFrom(prototype)
     }
-    override internal func getDescription(indent:String) throws -> String {
+    override public func getDescription(indent:String) throws -> String {
       var output:String = ""
       if hasUserId {
         output += "\(indent) userId: \(userId) \n"
@@ -204,7 +204,7 @@ internal extension User {
       output += unknownFields.getDescription(indent)
       return output
     }
-    override internal var hashValue:Int {
+    override public var hashValue:Int {
         get {
             var hashCode:Int = 7
             if hasUserId {
@@ -232,32 +232,32 @@ internal extension User {
 
     //Meta information declaration start
 
-    override internal class func className() -> String {
+    override public class func className() -> String {
         return "User.UserInfo"
     }
-    override internal func className() -> String {
+    override public func className() -> String {
         return "User.UserInfo"
     }
-    override internal func classMetaType() -> GeneratedMessage.Type {
+    override public func classMetaType() -> GeneratedMessage.Type {
         return User.UserInfo.self
     }
     //Meta information declaration end
 
-    final internal class Builder : GeneratedMessageBuilder {
+    final public class Builder : GeneratedMessageBuilder {
       private var builderResult:User.UserInfo = User.UserInfo()
-      internal func getMessage() -> User.UserInfo {
+      public func getMessage() -> User.UserInfo {
           return builderResult
       }
 
-      required override internal init () {
+      required override public init () {
          super.init()
       }
-      var hasUserId:Bool {
+      public var hasUserId:Bool {
            get {
                 return builderResult.hasUserId
            }
       }
-      var userId:String {
+      public var userId:String {
            get {
                 return builderResult.userId
            }
@@ -266,21 +266,21 @@ internal extension User {
                builderResult.userId = value
            }
       }
-      func setUserId(value:String) -> User.UserInfo.Builder {
+      public func setUserId(value:String) -> User.UserInfo.Builder {
         self.userId = value
         return self
       }
-      internal func clearUserId() -> User.UserInfo.Builder{
+      public func clearUserId() -> User.UserInfo.Builder{
            builderResult.hasUserId = false
            builderResult.userId = ""
            return self
       }
-      var hasOrigin:Bool {
+      public var hasOrigin:Bool {
            get {
                 return builderResult.hasOrigin
            }
       }
-      var origin:String {
+      public var origin:String {
            get {
                 return builderResult.origin
            }
@@ -289,21 +289,21 @@ internal extension User {
                builderResult.origin = value
            }
       }
-      func setOrigin(value:String) -> User.UserInfo.Builder {
+      public func setOrigin(value:String) -> User.UserInfo.Builder {
         self.origin = value
         return self
       }
-      internal func clearOrigin() -> User.UserInfo.Builder{
+      public func clearOrigin() -> User.UserInfo.Builder{
            builderResult.hasOrigin = false
            builderResult.origin = ""
            return self
       }
-      var hasMinBudget:Bool {
+      public var hasMinBudget:Bool {
            get {
                 return builderResult.hasMinBudget
            }
       }
-      var minBudget:Float {
+      public var minBudget:Float {
            get {
                 return builderResult.minBudget
            }
@@ -312,21 +312,21 @@ internal extension User {
                builderResult.minBudget = value
            }
       }
-      func setMinBudget(value:Float) -> User.UserInfo.Builder {
+      public func setMinBudget(value:Float) -> User.UserInfo.Builder {
         self.minBudget = value
         return self
       }
-      internal func clearMinBudget() -> User.UserInfo.Builder{
+      public func clearMinBudget() -> User.UserInfo.Builder{
            builderResult.hasMinBudget = false
            builderResult.minBudget = Float(0)
            return self
       }
-      var hasMaxBudget:Bool {
+      public var hasMaxBudget:Bool {
            get {
                 return builderResult.hasMaxBudget
            }
       }
-      var maxBudget:Float {
+      public var maxBudget:Float {
            get {
                 return builderResult.maxBudget
            }
@@ -335,21 +335,21 @@ internal extension User {
                builderResult.maxBudget = value
            }
       }
-      func setMaxBudget(value:Float) -> User.UserInfo.Builder {
+      public func setMaxBudget(value:Float) -> User.UserInfo.Builder {
         self.maxBudget = value
         return self
       }
-      internal func clearMaxBudget() -> User.UserInfo.Builder{
+      public func clearMaxBudget() -> User.UserInfo.Builder{
            builderResult.hasMaxBudget = false
            builderResult.maxBudget = Float(0)
            return self
       }
-      var hasPrefMatrix:Bool {
+      public var hasPrefMatrix:Bool {
            get {
                return builderResult.hasPrefMatrix
            }
       }
-      var prefMatrix:User.UserPref! {
+      public var prefMatrix:User.UserPref! {
            get {
                if prefMatrixBuilder_ != nil {
                   builderResult.prefMatrix = prefMatrixBuilder_.getMessage()
@@ -366,7 +366,7 @@ internal extension User {
               builderResult.hasPrefMatrix = true
            }
       }
-      internal func getPrefMatrixBuilder() -> User.UserPref.Builder {
+      public func getPrefMatrixBuilder() -> User.UserPref.Builder {
         if prefMatrixBuilder_ == nil {
            prefMatrixBuilder_ = User.UserPref.Builder()
            builderResult.prefMatrix = prefMatrixBuilder_.getMessage()
@@ -376,11 +376,11 @@ internal extension User {
         }
         return prefMatrixBuilder_
       }
-      func setPrefMatrix(value:User.UserPref!) -> User.UserInfo.Builder {
+      public func setPrefMatrix(value:User.UserPref!) -> User.UserInfo.Builder {
         self.prefMatrix = value
         return self
       }
-      internal func mergePrefMatrix(value:User.UserPref) throws -> User.UserInfo.Builder {
+      public func mergePrefMatrix(value:User.UserPref) throws -> User.UserInfo.Builder {
         if builderResult.hasPrefMatrix {
           builderResult.prefMatrix = try User.UserPref.builderWithPrototype(builderResult.prefMatrix).mergeFrom(value).buildPartial()
         } else {
@@ -389,33 +389,33 @@ internal extension User {
         builderResult.hasPrefMatrix = true
         return self
       }
-      internal func clearPrefMatrix() -> User.UserInfo.Builder {
+      public func clearPrefMatrix() -> User.UserInfo.Builder {
         prefMatrixBuilder_ = nil
         builderResult.hasPrefMatrix = false
         builderResult.prefMatrix = nil
         return self
       }
-      override internal var internalGetResult:GeneratedMessage {
+      override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
            }
       }
-      internal override func clear() -> User.UserInfo.Builder {
+      public override func clear() -> User.UserInfo.Builder {
         builderResult = User.UserInfo()
         return self
       }
-      internal override func clone() throws -> User.UserInfo.Builder {
+      public override func clone() throws -> User.UserInfo.Builder {
         return try User.UserInfo.builderWithPrototype(builderResult)
       }
-      internal override func build() throws -> User.UserInfo {
+      public override func build() throws -> User.UserInfo {
            try checkInitialized()
            return buildPartial()
       }
-      internal func buildPartial() -> User.UserInfo {
+      public func buildPartial() -> User.UserInfo {
         let returnMe:User.UserInfo = builderResult
         return returnMe
       }
-      internal func mergeFrom(other:User.UserInfo) throws -> User.UserInfo.Builder {
+      public func mergeFrom(other:User.UserInfo) throws -> User.UserInfo.Builder {
         if other == User.UserInfo() {
          return self
         }
@@ -437,10 +437,10 @@ internal extension User {
         try mergeUnknownFields(other.unknownFields)
         return self
       }
-      internal override func mergeFromCodedInputStream(input:CodedInputStream) throws -> User.UserInfo.Builder {
+      public override func mergeFromCodedInputStream(input:CodedInputStream) throws -> User.UserInfo.Builder {
            return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
       }
-      internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> User.UserInfo.Builder {
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> User.UserInfo.Builder {
         let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
         while (true) {
           let protobufTag = try input.readTag()
@@ -481,71 +481,71 @@ internal extension User {
 
   }
 
-  final internal class UserPref : GeneratedMessage, GeneratedMessageProtocol {
-    private(set) var hasArtsy:Bool = false
-    private(set) var artsy:Bool = false
+  final public class UserPref : GeneratedMessage, GeneratedMessageProtocol {
+    public private(set) var artsy:Bool = false
 
-    private(set) var hasAdrenaline:Bool = false
-    private(set) var adrenaline:Bool = false
+    public private(set) var hasArtsy:Bool = false
+    public private(set) var adrenaline:Bool = false
 
-    private(set) var hasBackpacker:Bool = false
-    private(set) var backpacker:Bool = false
+    public private(set) var hasAdrenaline:Bool = false
+    public private(set) var backpacker:Bool = false
 
-    private(set) var hasBeach:Bool = false
-    private(set) var beach:Bool = false
+    public private(set) var hasBackpacker:Bool = false
+    public private(set) var beach:Bool = false
 
-    private(set) var hasBudget:Bool = false
-    private(set) var budget:Bool = false
+    public private(set) var hasBeach:Bool = false
+    public private(set) var budget:Bool = false
 
-    private(set) var hasFamily:Bool = false
-    private(set) var family:Bool = false
+    public private(set) var hasBudget:Bool = false
+    public private(set) var family:Bool = false
 
-    private(set) var hasFoodie:Bool = false
-    private(set) var foodie:Bool = false
+    public private(set) var hasFamily:Bool = false
+    public private(set) var foodie:Bool = false
 
-    private(set) var hasGreen:Bool = false
-    private(set) var green:Bool = false
+    public private(set) var hasFoodie:Bool = false
+    public private(set) var green:Bool = false
 
-    private(set) var hasHistory:Bool = false
-    private(set) var history:Bool = false
+    public private(set) var hasGreen:Bool = false
+    public private(set) var history:Bool = false
 
-    private(set) var hasLocal:Bool = false
-    private(set) var local:Bool = false
+    public private(set) var hasHistory:Bool = false
+    public private(set) var local:Bool = false
 
-    private(set) var hasLuxury:Bool = false
-    private(set) var luxury:Bool = false
+    public private(set) var hasLocal:Bool = false
+    public private(set) var luxury:Bool = false
 
-    private(set) var hasNature:Bool = false
-    private(set) var nature:Bool = false
+    public private(set) var hasLuxury:Bool = false
+    public private(set) var nature:Bool = false
 
-    private(set) var hasNightlife:Bool = false
-    private(set) var nightlife:Bool = false
+    public private(set) var hasNature:Bool = false
+    public private(set) var nightlife:Bool = false
 
-    private(set) var hasSerene:Bool = false
-    private(set) var serene:Bool = false
+    public private(set) var hasNightlife:Bool = false
+    public private(set) var serene:Bool = false
 
-    private(set) var hasShopping:Bool = false
-    private(set) var shopping:Bool = false
+    public private(set) var hasSerene:Bool = false
+    public private(set) var shopping:Bool = false
 
-    private(set) var hasStudent:Bool = false
-    private(set) var student:Bool = false
+    public private(set) var hasShopping:Bool = false
+    public private(set) var student:Bool = false
 
-    private(set) var hasTrendsetter:Bool = false
-    private(set) var trendsetter:Bool = false
+    public private(set) var hasStudent:Bool = false
+    public private(set) var trendsetter:Bool = false
 
-    private(set) var hasUrban:Bool = false
-    private(set) var urban:Bool = false
+    public private(set) var hasTrendsetter:Bool = false
+    public private(set) var urban:Bool = false
 
-    private(set) var hasVegetarian:Bool = false
-    private(set) var vegetarian:Bool = false
+    public private(set) var hasUrban:Bool = false
+    public private(set) var vegetarian:Bool = false
 
-    required internal init() {
+    public private(set) var hasVegetarian:Bool = false
+    required public init() {
          super.init()
     }
-    override internal func isInitialized() -> Bool {
+    override public func isInitialized() -> Bool {
      return true
     }
-    override internal func writeToCodedOutputStream(output:CodedOutputStream) throws {
+    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
       if hasArtsy {
         try output.writeBool(1, value:artsy)
       }
@@ -605,7 +605,7 @@ internal extension User {
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
-    override internal func serializedSize() -> Int32 {
+    override public func serializedSize() -> Int32 {
       var serialize_size:Int32 = memoizedSerializedSize
       if serialize_size != -1 {
        return serialize_size
@@ -673,53 +673,53 @@ internal extension User {
       memoizedSerializedSize = serialize_size
       return serialize_size
     }
-    internal class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<User.UserPref> {
+    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<User.UserPref> {
       var mergedArray = Array<User.UserPref>()
       while let value = try parseFromDelimitedFromInputStream(input) {
         mergedArray += [value]
       }
       return mergedArray
     }
-    internal class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> User.UserPref? {
+    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> User.UserPref? {
       return try User.UserPref.Builder().mergeDelimitedFromInputStream(input)?.build()
     }
-    internal class func parseFromData(data:NSData) throws -> User.UserPref {
+    public class func parseFromData(data:NSData) throws -> User.UserPref {
       return try User.UserPref.Builder().mergeFromData(data, extensionRegistry:User.UserinfoRoot.sharedInstance.extensionRegistry).build()
     }
-    internal class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> User.UserPref {
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> User.UserPref {
       return try User.UserPref.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
     }
-    internal class func parseFromInputStream(input:NSInputStream) throws -> User.UserPref {
+    public class func parseFromInputStream(input:NSInputStream) throws -> User.UserPref {
       return try User.UserPref.Builder().mergeFromInputStream(input).build()
     }
-    internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> User.UserPref {
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> User.UserPref {
       return try User.UserPref.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    internal class func parseFromCodedInputStream(input:CodedInputStream) throws -> User.UserPref {
+    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> User.UserPref {
       return try User.UserPref.Builder().mergeFromCodedInputStream(input).build()
     }
-    internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> User.UserPref {
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> User.UserPref {
       return try User.UserPref.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    internal class func getBuilder() -> User.UserPref.Builder {
+    public class func getBuilder() -> User.UserPref.Builder {
       return User.UserPref.classBuilder() as! User.UserPref.Builder
     }
-    internal func getBuilder() -> User.UserPref.Builder {
+    public func getBuilder() -> User.UserPref.Builder {
       return classBuilder() as! User.UserPref.Builder
     }
-    internal override class func classBuilder() -> MessageBuilder {
+    public override class func classBuilder() -> MessageBuilder {
       return User.UserPref.Builder()
     }
-    internal override func classBuilder() -> MessageBuilder {
+    public override func classBuilder() -> MessageBuilder {
       return User.UserPref.Builder()
     }
-    internal func toBuilder() throws -> User.UserPref.Builder {
+    public func toBuilder() throws -> User.UserPref.Builder {
       return try User.UserPref.builderWithPrototype(self)
     }
-    internal class func builderWithPrototype(prototype:User.UserPref) throws -> User.UserPref.Builder {
+    public class func builderWithPrototype(prototype:User.UserPref) throws -> User.UserPref.Builder {
       return try User.UserPref.Builder().mergeFrom(prototype)
     }
-    override internal func getDescription(indent:String) throws -> String {
+    override public func getDescription(indent:String) throws -> String {
       var output:String = ""
       if hasArtsy {
         output += "\(indent) artsy: \(artsy) \n"
@@ -781,7 +781,7 @@ internal extension User {
       output += unknownFields.getDescription(indent)
       return output
     }
-    override internal var hashValue:Int {
+    override public var hashValue:Int {
         get {
             var hashCode:Int = 7
             if hasArtsy {
@@ -849,32 +849,32 @@ internal extension User {
 
     //Meta information declaration start
 
-    override internal class func className() -> String {
+    override public class func className() -> String {
         return "User.UserPref"
     }
-    override internal func className() -> String {
+    override public func className() -> String {
         return "User.UserPref"
     }
-    override internal func classMetaType() -> GeneratedMessage.Type {
+    override public func classMetaType() -> GeneratedMessage.Type {
         return User.UserPref.self
     }
     //Meta information declaration end
 
-    final internal class Builder : GeneratedMessageBuilder {
+    final public class Builder : GeneratedMessageBuilder {
       private var builderResult:User.UserPref = User.UserPref()
-      internal func getMessage() -> User.UserPref {
+      public func getMessage() -> User.UserPref {
           return builderResult
       }
 
-      required override internal init () {
+      required override public init () {
          super.init()
       }
-      var hasArtsy:Bool {
+      public var hasArtsy:Bool {
            get {
                 return builderResult.hasArtsy
            }
       }
-      var artsy:Bool {
+      public var artsy:Bool {
            get {
                 return builderResult.artsy
            }
@@ -883,21 +883,21 @@ internal extension User {
                builderResult.artsy = value
            }
       }
-      func setArtsy(value:Bool) -> User.UserPref.Builder {
+      public func setArtsy(value:Bool) -> User.UserPref.Builder {
         self.artsy = value
         return self
       }
-      internal func clearArtsy() -> User.UserPref.Builder{
+      public func clearArtsy() -> User.UserPref.Builder{
            builderResult.hasArtsy = false
            builderResult.artsy = false
            return self
       }
-      var hasAdrenaline:Bool {
+      public var hasAdrenaline:Bool {
            get {
                 return builderResult.hasAdrenaline
            }
       }
-      var adrenaline:Bool {
+      public var adrenaline:Bool {
            get {
                 return builderResult.adrenaline
            }
@@ -906,21 +906,21 @@ internal extension User {
                builderResult.adrenaline = value
            }
       }
-      func setAdrenaline(value:Bool) -> User.UserPref.Builder {
+      public func setAdrenaline(value:Bool) -> User.UserPref.Builder {
         self.adrenaline = value
         return self
       }
-      internal func clearAdrenaline() -> User.UserPref.Builder{
+      public func clearAdrenaline() -> User.UserPref.Builder{
            builderResult.hasAdrenaline = false
            builderResult.adrenaline = false
            return self
       }
-      var hasBackpacker:Bool {
+      public var hasBackpacker:Bool {
            get {
                 return builderResult.hasBackpacker
            }
       }
-      var backpacker:Bool {
+      public var backpacker:Bool {
            get {
                 return builderResult.backpacker
            }
@@ -929,21 +929,21 @@ internal extension User {
                builderResult.backpacker = value
            }
       }
-      func setBackpacker(value:Bool) -> User.UserPref.Builder {
+      public func setBackpacker(value:Bool) -> User.UserPref.Builder {
         self.backpacker = value
         return self
       }
-      internal func clearBackpacker() -> User.UserPref.Builder{
+      public func clearBackpacker() -> User.UserPref.Builder{
            builderResult.hasBackpacker = false
            builderResult.backpacker = false
            return self
       }
-      var hasBeach:Bool {
+      public var hasBeach:Bool {
            get {
                 return builderResult.hasBeach
            }
       }
-      var beach:Bool {
+      public var beach:Bool {
            get {
                 return builderResult.beach
            }
@@ -952,21 +952,21 @@ internal extension User {
                builderResult.beach = value
            }
       }
-      func setBeach(value:Bool) -> User.UserPref.Builder {
+      public func setBeach(value:Bool) -> User.UserPref.Builder {
         self.beach = value
         return self
       }
-      internal func clearBeach() -> User.UserPref.Builder{
+      public func clearBeach() -> User.UserPref.Builder{
            builderResult.hasBeach = false
            builderResult.beach = false
            return self
       }
-      var hasBudget:Bool {
+      public var hasBudget:Bool {
            get {
                 return builderResult.hasBudget
            }
       }
-      var budget:Bool {
+      public var budget:Bool {
            get {
                 return builderResult.budget
            }
@@ -975,21 +975,21 @@ internal extension User {
                builderResult.budget = value
            }
       }
-      func setBudget(value:Bool) -> User.UserPref.Builder {
+      public func setBudget(value:Bool) -> User.UserPref.Builder {
         self.budget = value
         return self
       }
-      internal func clearBudget() -> User.UserPref.Builder{
+      public func clearBudget() -> User.UserPref.Builder{
            builderResult.hasBudget = false
            builderResult.budget = false
            return self
       }
-      var hasFamily:Bool {
+      public var hasFamily:Bool {
            get {
                 return builderResult.hasFamily
            }
       }
-      var family:Bool {
+      public var family:Bool {
            get {
                 return builderResult.family
            }
@@ -998,21 +998,21 @@ internal extension User {
                builderResult.family = value
            }
       }
-      func setFamily(value:Bool) -> User.UserPref.Builder {
+      public func setFamily(value:Bool) -> User.UserPref.Builder {
         self.family = value
         return self
       }
-      internal func clearFamily() -> User.UserPref.Builder{
+      public func clearFamily() -> User.UserPref.Builder{
            builderResult.hasFamily = false
            builderResult.family = false
            return self
       }
-      var hasFoodie:Bool {
+      public var hasFoodie:Bool {
            get {
                 return builderResult.hasFoodie
            }
       }
-      var foodie:Bool {
+      public var foodie:Bool {
            get {
                 return builderResult.foodie
            }
@@ -1021,21 +1021,21 @@ internal extension User {
                builderResult.foodie = value
            }
       }
-      func setFoodie(value:Bool) -> User.UserPref.Builder {
+      public func setFoodie(value:Bool) -> User.UserPref.Builder {
         self.foodie = value
         return self
       }
-      internal func clearFoodie() -> User.UserPref.Builder{
+      public func clearFoodie() -> User.UserPref.Builder{
            builderResult.hasFoodie = false
            builderResult.foodie = false
            return self
       }
-      var hasGreen:Bool {
+      public var hasGreen:Bool {
            get {
                 return builderResult.hasGreen
            }
       }
-      var green:Bool {
+      public var green:Bool {
            get {
                 return builderResult.green
            }
@@ -1044,21 +1044,21 @@ internal extension User {
                builderResult.green = value
            }
       }
-      func setGreen(value:Bool) -> User.UserPref.Builder {
+      public func setGreen(value:Bool) -> User.UserPref.Builder {
         self.green = value
         return self
       }
-      internal func clearGreen() -> User.UserPref.Builder{
+      public func clearGreen() -> User.UserPref.Builder{
            builderResult.hasGreen = false
            builderResult.green = false
            return self
       }
-      var hasHistory:Bool {
+      public var hasHistory:Bool {
            get {
                 return builderResult.hasHistory
            }
       }
-      var history:Bool {
+      public var history:Bool {
            get {
                 return builderResult.history
            }
@@ -1067,21 +1067,21 @@ internal extension User {
                builderResult.history = value
            }
       }
-      func setHistory(value:Bool) -> User.UserPref.Builder {
+      public func setHistory(value:Bool) -> User.UserPref.Builder {
         self.history = value
         return self
       }
-      internal func clearHistory() -> User.UserPref.Builder{
+      public func clearHistory() -> User.UserPref.Builder{
            builderResult.hasHistory = false
            builderResult.history = false
            return self
       }
-      var hasLocal:Bool {
+      public var hasLocal:Bool {
            get {
                 return builderResult.hasLocal
            }
       }
-      var local:Bool {
+      public var local:Bool {
            get {
                 return builderResult.local
            }
@@ -1090,21 +1090,21 @@ internal extension User {
                builderResult.local = value
            }
       }
-      func setLocal(value:Bool) -> User.UserPref.Builder {
+      public func setLocal(value:Bool) -> User.UserPref.Builder {
         self.local = value
         return self
       }
-      internal func clearLocal() -> User.UserPref.Builder{
+      public func clearLocal() -> User.UserPref.Builder{
            builderResult.hasLocal = false
            builderResult.local = false
            return self
       }
-      var hasLuxury:Bool {
+      public var hasLuxury:Bool {
            get {
                 return builderResult.hasLuxury
            }
       }
-      var luxury:Bool {
+      public var luxury:Bool {
            get {
                 return builderResult.luxury
            }
@@ -1113,21 +1113,21 @@ internal extension User {
                builderResult.luxury = value
            }
       }
-      func setLuxury(value:Bool) -> User.UserPref.Builder {
+      public func setLuxury(value:Bool) -> User.UserPref.Builder {
         self.luxury = value
         return self
       }
-      internal func clearLuxury() -> User.UserPref.Builder{
+      public func clearLuxury() -> User.UserPref.Builder{
            builderResult.hasLuxury = false
            builderResult.luxury = false
            return self
       }
-      var hasNature:Bool {
+      public var hasNature:Bool {
            get {
                 return builderResult.hasNature
            }
       }
-      var nature:Bool {
+      public var nature:Bool {
            get {
                 return builderResult.nature
            }
@@ -1136,21 +1136,21 @@ internal extension User {
                builderResult.nature = value
            }
       }
-      func setNature(value:Bool) -> User.UserPref.Builder {
+      public func setNature(value:Bool) -> User.UserPref.Builder {
         self.nature = value
         return self
       }
-      internal func clearNature() -> User.UserPref.Builder{
+      public func clearNature() -> User.UserPref.Builder{
            builderResult.hasNature = false
            builderResult.nature = false
            return self
       }
-      var hasNightlife:Bool {
+      public var hasNightlife:Bool {
            get {
                 return builderResult.hasNightlife
            }
       }
-      var nightlife:Bool {
+      public var nightlife:Bool {
            get {
                 return builderResult.nightlife
            }
@@ -1159,21 +1159,21 @@ internal extension User {
                builderResult.nightlife = value
            }
       }
-      func setNightlife(value:Bool) -> User.UserPref.Builder {
+      public func setNightlife(value:Bool) -> User.UserPref.Builder {
         self.nightlife = value
         return self
       }
-      internal func clearNightlife() -> User.UserPref.Builder{
+      public func clearNightlife() -> User.UserPref.Builder{
            builderResult.hasNightlife = false
            builderResult.nightlife = false
            return self
       }
-      var hasSerene:Bool {
+      public var hasSerene:Bool {
            get {
                 return builderResult.hasSerene
            }
       }
-      var serene:Bool {
+      public var serene:Bool {
            get {
                 return builderResult.serene
            }
@@ -1182,21 +1182,21 @@ internal extension User {
                builderResult.serene = value
            }
       }
-      func setSerene(value:Bool) -> User.UserPref.Builder {
+      public func setSerene(value:Bool) -> User.UserPref.Builder {
         self.serene = value
         return self
       }
-      internal func clearSerene() -> User.UserPref.Builder{
+      public func clearSerene() -> User.UserPref.Builder{
            builderResult.hasSerene = false
            builderResult.serene = false
            return self
       }
-      var hasShopping:Bool {
+      public var hasShopping:Bool {
            get {
                 return builderResult.hasShopping
            }
       }
-      var shopping:Bool {
+      public var shopping:Bool {
            get {
                 return builderResult.shopping
            }
@@ -1205,21 +1205,21 @@ internal extension User {
                builderResult.shopping = value
            }
       }
-      func setShopping(value:Bool) -> User.UserPref.Builder {
+      public func setShopping(value:Bool) -> User.UserPref.Builder {
         self.shopping = value
         return self
       }
-      internal func clearShopping() -> User.UserPref.Builder{
+      public func clearShopping() -> User.UserPref.Builder{
            builderResult.hasShopping = false
            builderResult.shopping = false
            return self
       }
-      var hasStudent:Bool {
+      public var hasStudent:Bool {
            get {
                 return builderResult.hasStudent
            }
       }
-      var student:Bool {
+      public var student:Bool {
            get {
                 return builderResult.student
            }
@@ -1228,21 +1228,21 @@ internal extension User {
                builderResult.student = value
            }
       }
-      func setStudent(value:Bool) -> User.UserPref.Builder {
+      public func setStudent(value:Bool) -> User.UserPref.Builder {
         self.student = value
         return self
       }
-      internal func clearStudent() -> User.UserPref.Builder{
+      public func clearStudent() -> User.UserPref.Builder{
            builderResult.hasStudent = false
            builderResult.student = false
            return self
       }
-      var hasTrendsetter:Bool {
+      public var hasTrendsetter:Bool {
            get {
                 return builderResult.hasTrendsetter
            }
       }
-      var trendsetter:Bool {
+      public var trendsetter:Bool {
            get {
                 return builderResult.trendsetter
            }
@@ -1251,21 +1251,21 @@ internal extension User {
                builderResult.trendsetter = value
            }
       }
-      func setTrendsetter(value:Bool) -> User.UserPref.Builder {
+      public func setTrendsetter(value:Bool) -> User.UserPref.Builder {
         self.trendsetter = value
         return self
       }
-      internal func clearTrendsetter() -> User.UserPref.Builder{
+      public func clearTrendsetter() -> User.UserPref.Builder{
            builderResult.hasTrendsetter = false
            builderResult.trendsetter = false
            return self
       }
-      var hasUrban:Bool {
+      public var hasUrban:Bool {
            get {
                 return builderResult.hasUrban
            }
       }
-      var urban:Bool {
+      public var urban:Bool {
            get {
                 return builderResult.urban
            }
@@ -1274,21 +1274,21 @@ internal extension User {
                builderResult.urban = value
            }
       }
-      func setUrban(value:Bool) -> User.UserPref.Builder {
+      public func setUrban(value:Bool) -> User.UserPref.Builder {
         self.urban = value
         return self
       }
-      internal func clearUrban() -> User.UserPref.Builder{
+      public func clearUrban() -> User.UserPref.Builder{
            builderResult.hasUrban = false
            builderResult.urban = false
            return self
       }
-      var hasVegetarian:Bool {
+      public var hasVegetarian:Bool {
            get {
                 return builderResult.hasVegetarian
            }
       }
-      var vegetarian:Bool {
+      public var vegetarian:Bool {
            get {
                 return builderResult.vegetarian
            }
@@ -1297,36 +1297,36 @@ internal extension User {
                builderResult.vegetarian = value
            }
       }
-      func setVegetarian(value:Bool) -> User.UserPref.Builder {
+      public func setVegetarian(value:Bool) -> User.UserPref.Builder {
         self.vegetarian = value
         return self
       }
-      internal func clearVegetarian() -> User.UserPref.Builder{
+      public func clearVegetarian() -> User.UserPref.Builder{
            builderResult.hasVegetarian = false
            builderResult.vegetarian = false
            return self
       }
-      override internal var internalGetResult:GeneratedMessage {
+      override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
            }
       }
-      internal override func clear() -> User.UserPref.Builder {
+      public override func clear() -> User.UserPref.Builder {
         builderResult = User.UserPref()
         return self
       }
-      internal override func clone() throws -> User.UserPref.Builder {
+      public override func clone() throws -> User.UserPref.Builder {
         return try User.UserPref.builderWithPrototype(builderResult)
       }
-      internal override func build() throws -> User.UserPref {
+      public override func build() throws -> User.UserPref {
            try checkInitialized()
            return buildPartial()
       }
-      internal func buildPartial() -> User.UserPref {
+      public func buildPartial() -> User.UserPref {
         let returnMe:User.UserPref = builderResult
         return returnMe
       }
-      internal func mergeFrom(other:User.UserPref) throws -> User.UserPref.Builder {
+      public func mergeFrom(other:User.UserPref) throws -> User.UserPref.Builder {
         if other == User.UserPref() {
          return self
         }
@@ -1390,10 +1390,10 @@ internal extension User {
         try mergeUnknownFields(other.unknownFields)
         return self
       }
-      internal override func mergeFromCodedInputStream(input:CodedInputStream) throws -> User.UserPref.Builder {
+      public override func mergeFromCodedInputStream(input:CodedInputStream) throws -> User.UserPref.Builder {
            return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
       }
-      internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> User.UserPref.Builder {
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> User.UserPref.Builder {
         let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
         while (true) {
           let protobufTag = try input.readTag()

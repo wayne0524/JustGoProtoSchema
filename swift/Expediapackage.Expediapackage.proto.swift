@@ -5,9 +5,19 @@ import Foundation
 import ProtocolBuffers
 
 
-internal struct Expediapackage { }
+public struct Expediapackage { }
 
-internal func == (lhs: Expediapackage.Package, rhs: Expediapackage.Package) -> Bool {
+public func == (lhs: Expediapackage.PackageList, rhs: Expediapackage.PackageList) -> Bool {
+  if (lhs === rhs) {
+    return true
+  }
+  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+  fieldCheck = fieldCheck && (lhs.fhpackages == rhs.fhpackages)
+  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+  return fieldCheck
+}
+
+public func == (lhs: Expediapackage.Package, rhs: Expediapackage.Package) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -23,17 +33,18 @@ internal func == (lhs: Expediapackage.Package, rhs: Expediapackage.Package) -> B
   fieldCheck = fieldCheck && (lhs.hasLatitude == rhs.hasLatitude) && (!lhs.hasLatitude || lhs.latitude == rhs.latitude)
   fieldCheck = fieldCheck && (lhs.hasLongitude == rhs.hasLongitude) && (!lhs.hasLongitude || lhs.longitude == rhs.longitude)
   fieldCheck = fieldCheck && (lhs.hasRating == rhs.hasRating) && (!lhs.hasRating || lhs.rating == rhs.rating)
-  fieldCheck = fieldCheck && (lhs.hasReviewCount == rhs.hasReviewCount) && (!lhs.hasReviewCount || lhs.reviewCount == rhs.reviewCount)
+  fieldCheck = fieldCheck && (lhs.hasPopularity == rhs.hasPopularity) && (!lhs.hasPopularity || lhs.popularity == rhs.popularity)
   fieldCheck = fieldCheck && (lhs.hasFlightdetails == rhs.hasFlightdetails) && (!lhs.hasFlightdetails || lhs.flightdetails == rhs.flightdetails)
   fieldCheck = fieldCheck && (lhs.hasPackageImageUrl == rhs.hasPackageImageUrl) && (!lhs.hasPackageImageUrl || lhs.packageImageUrl == rhs.packageImageUrl)
   fieldCheck = fieldCheck && (lhs.cityImageUrls == rhs.cityImageUrls)
   fieldCheck = fieldCheck && (lhs.hotelImageUrls == rhs.hotelImageUrls)
   fieldCheck = fieldCheck && (lhs.hasBookingUrl == rhs.hasBookingUrl) && (!lhs.hasBookingUrl || lhs.bookingUrl == rhs.bookingUrl)
+  fieldCheck = fieldCheck && (lhs.hasQueryTime == rhs.hasQueryTime) && (!lhs.hasQueryTime || lhs.queryTime == rhs.queryTime)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
 
-internal func == (lhs: Expediapackage.Flight, rhs: Expediapackage.Flight) -> Bool {
+public func == (lhs: Expediapackage.Flight, rhs: Expediapackage.Flight) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -44,7 +55,7 @@ internal func == (lhs: Expediapackage.Flight, rhs: Expediapackage.Flight) -> Boo
   return fieldCheck
 }
 
-internal func == (lhs: Expediapackage.FlightLeg, rhs: Expediapackage.FlightLeg) -> Bool {
+public func == (lhs: Expediapackage.FlightLeg, rhs: Expediapackage.FlightLeg) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -65,7 +76,7 @@ internal func == (lhs: Expediapackage.FlightLeg, rhs: Expediapackage.FlightLeg) 
   return fieldCheck
 }
 
-internal func == (lhs: Expediapackage.TransitFlight, rhs: Expediapackage.TransitFlight) -> Bool {
+public func == (lhs: Expediapackage.TransitFlight, rhs: Expediapackage.TransitFlight) -> Bool {
   if (lhs === rhs) {
     return true
   }
@@ -81,86 +92,285 @@ internal func == (lhs: Expediapackage.TransitFlight, rhs: Expediapackage.Transit
   return fieldCheck
 }
 
-internal extension Expediapackage {
-  internal struct ExpediapackageRoot {
-    internal static var sharedInstance : ExpediapackageRoot {
+public extension Expediapackage {
+  public struct ExpediapackageRoot {
+    public static var sharedInstance : ExpediapackageRoot {
      struct Static {
          static let instance : ExpediapackageRoot = ExpediapackageRoot()
      }
      return Static.instance
     }
-    internal var extensionRegistry:ExtensionRegistry
+    public var extensionRegistry:ExtensionRegistry
 
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(extensionRegistry)
     }
-    internal func registerAllExtensions(registry:ExtensionRegistry) {
+    public func registerAllExtensions(registry:ExtensionRegistry) {
     }
   }
 
-  final internal class Package : GeneratedMessage, GeneratedMessageProtocol {
-    // where
-    private(set) var hasCityName:Bool = false
-    private(set) var cityName:String = ""
-
-    private(set) var hasCountryName:Bool = false
-    private(set) var countryName:String = ""
-
-    // when
-    private(set) var hasFromDate:Bool = false
-    private(set) var fromDate:String = ""
-
-    // same format
-    private(set) var hasToDate:Bool = false
-    private(set) var toDate:String = ""
-
-    // how much
-    private(set) var hasPricePerPerson:Bool = false
-    private(set) var pricePerPerson:Double = Double(0)
-
-    // hotel details
-    private(set) var hasHotelId:Bool = false
-    private(set) var hotelId:String = ""
-
-    private(set) var hasHotelName:Bool = false
-    private(set) var hotelName:String = ""
-
-    private(set) var hasHotelAddress:Bool = false
-    private(set) var hotelAddress:String = ""
-
-    private(set) var hasLatitude:Bool = false
-    private(set) var latitude:Double = Double(0)
-
-    private(set) var hasLongitude:Bool = false
-    private(set) var longitude:Double = Double(0)
-
-    private(set) var hasRating:Bool = false
-    private(set) var rating:String = ""
-
-    private(set) var hasReviewCount:Bool = false
-    private(set) var reviewCount:UInt32 = UInt32(0)
-
-    private(set) var hasFlightdetails:Bool = false
-    private(set) var flightdetails:Expediapackage.Flight!
-    // images
-    // packageImageURL: "http://media.expedia.com/mobiata/mobile/apps/ExpediaBooking/FlightDestinations/images/[AirportCode].jpg?output-quality=60&output-format=jpeg&downsize=2208px%3A%2A"
-    private(set) var hasPackageImageUrl:Bool = false
-    private(set) var packageImageUrl:String = ""
-
-    // not set now, might be hand picked in the future
-    private(set) var cityImageUrls:Array<String> = Array<String>()
-    private(set) var hotelImageUrls:Array<String> = Array<String>()
-    private(set) var hasBookingUrl:Bool = false
-    private(set) var bookingUrl:String = ""
-
-    required internal init() {
+  final public class PackageList : GeneratedMessage, GeneratedMessageProtocol {
+    public private(set) var fhpackages:Array<Expediapackage.Package>  = Array<Expediapackage.Package>()
+    required public init() {
          super.init()
     }
-    override internal func isInitialized() -> Bool {
+    override public func isInitialized() -> Bool {
      return true
     }
-    override internal func writeToCodedOutputStream(output:CodedOutputStream) throws {
+    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
+      for oneElementfhpackages in fhpackages {
+          try output.writeMessage(1, value:oneElementfhpackages)
+      }
+      try unknownFields.writeToCodedOutputStream(output)
+    }
+    override public func serializedSize() -> Int32 {
+      var serialize_size:Int32 = memoizedSerializedSize
+      if serialize_size != -1 {
+       return serialize_size
+      }
+
+      serialize_size = 0
+      for oneElementfhpackages in fhpackages {
+          serialize_size += oneElementfhpackages.computeMessageSize(1)
+      }
+      serialize_size += unknownFields.serializedSize()
+      memoizedSerializedSize = serialize_size
+      return serialize_size
+    }
+    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Expediapackage.PackageList> {
+      var mergedArray = Array<Expediapackage.PackageList>()
+      while let value = try parseFromDelimitedFromInputStream(input) {
+        mergedArray += [value]
+      }
+      return mergedArray
+    }
+    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Expediapackage.PackageList? {
+      return try Expediapackage.PackageList.Builder().mergeDelimitedFromInputStream(input)?.build()
+    }
+    public class func parseFromData(data:NSData) throws -> Expediapackage.PackageList {
+      return try Expediapackage.PackageList.Builder().mergeFromData(data, extensionRegistry:Expediapackage.ExpediapackageRoot.sharedInstance.extensionRegistry).build()
+    }
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.PackageList {
+      return try Expediapackage.PackageList.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream) throws -> Expediapackage.PackageList {
+      return try Expediapackage.PackageList.Builder().mergeFromInputStream(input).build()
+    }
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.PackageList {
+      return try Expediapackage.PackageList.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Expediapackage.PackageList {
+      return try Expediapackage.PackageList.Builder().mergeFromCodedInputStream(input).build()
+    }
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.PackageList {
+      return try Expediapackage.PackageList.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    }
+    public class func getBuilder() -> Expediapackage.PackageList.Builder {
+      return Expediapackage.PackageList.classBuilder() as! Expediapackage.PackageList.Builder
+    }
+    public func getBuilder() -> Expediapackage.PackageList.Builder {
+      return classBuilder() as! Expediapackage.PackageList.Builder
+    }
+    public override class func classBuilder() -> MessageBuilder {
+      return Expediapackage.PackageList.Builder()
+    }
+    public override func classBuilder() -> MessageBuilder {
+      return Expediapackage.PackageList.Builder()
+    }
+    public func toBuilder() throws -> Expediapackage.PackageList.Builder {
+      return try Expediapackage.PackageList.builderWithPrototype(self)
+    }
+    public class func builderWithPrototype(prototype:Expediapackage.PackageList) throws -> Expediapackage.PackageList.Builder {
+      return try Expediapackage.PackageList.Builder().mergeFrom(prototype)
+    }
+    override public func getDescription(indent:String) throws -> String {
+      var output:String = ""
+      var fhpackagesElementIndex:Int = 0
+      for oneElementfhpackages in fhpackages {
+          output += "\(indent) fhpackages[\(fhpackagesElementIndex)] {\n"
+          output += try oneElementfhpackages.getDescription("\(indent)  ")
+          output += "\(indent)}\n"
+          fhpackagesElementIndex += 1
+      }
+      output += unknownFields.getDescription(indent)
+      return output
+    }
+    override public var hashValue:Int {
+        get {
+            var hashCode:Int = 7
+            for oneElementfhpackages in fhpackages {
+                hashCode = (hashCode &* 31) &+ oneElementfhpackages.hashValue
+            }
+            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+            return hashCode
+        }
+    }
+
+
+    //Meta information declaration start
+
+    override public class func className() -> String {
+        return "Expediapackage.PackageList"
+    }
+    override public func className() -> String {
+        return "Expediapackage.PackageList"
+    }
+    override public func classMetaType() -> GeneratedMessage.Type {
+        return Expediapackage.PackageList.self
+    }
+    //Meta information declaration end
+
+    final public class Builder : GeneratedMessageBuilder {
+      private var builderResult:Expediapackage.PackageList = Expediapackage.PackageList()
+      public func getMessage() -> Expediapackage.PackageList {
+          return builderResult
+      }
+
+      required override public init () {
+         super.init()
+      }
+      public var fhpackages:Array<Expediapackage.Package> {
+           get {
+               return builderResult.fhpackages
+           }
+           set (value) {
+               builderResult.fhpackages = value
+           }
+      }
+      public func setFhpackages(value:Array<Expediapackage.Package>) -> Expediapackage.PackageList.Builder {
+        self.fhpackages = value
+        return self
+      }
+      public func clearFhpackages() -> Expediapackage.PackageList.Builder {
+        builderResult.fhpackages.removeAll(keepCapacity: false)
+        return self
+      }
+      override public var internalGetResult:GeneratedMessage {
+           get {
+              return builderResult
+           }
+      }
+      public override func clear() -> Expediapackage.PackageList.Builder {
+        builderResult = Expediapackage.PackageList()
+        return self
+      }
+      public override func clone() throws -> Expediapackage.PackageList.Builder {
+        return try Expediapackage.PackageList.builderWithPrototype(builderResult)
+      }
+      public override func build() throws -> Expediapackage.PackageList {
+           try checkInitialized()
+           return buildPartial()
+      }
+      public func buildPartial() -> Expediapackage.PackageList {
+        let returnMe:Expediapackage.PackageList = builderResult
+        return returnMe
+      }
+      public func mergeFrom(other:Expediapackage.PackageList) throws -> Expediapackage.PackageList.Builder {
+        if other == Expediapackage.PackageList() {
+         return self
+        }
+        if !other.fhpackages.isEmpty  {
+           builderResult.fhpackages += other.fhpackages
+        }
+        try mergeUnknownFields(other.unknownFields)
+        return self
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Expediapackage.PackageList.Builder {
+           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      }
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.PackageList.Builder {
+        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+        while (true) {
+          let protobufTag = try input.readTag()
+          switch protobufTag {
+          case 0: 
+            self.unknownFields = try unknownFieldsBuilder.build()
+            return self
+
+          case 10 :
+            let subBuilder = Expediapackage.Package.Builder()
+            try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
+            fhpackages += [subBuilder.buildPartial()]
+
+          default:
+            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
+               unknownFields = try unknownFieldsBuilder.build()
+               return self
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  final public class Package : GeneratedMessage, GeneratedMessageProtocol {
+    // where
+    public private(set) var cityName:String = ""
+
+    public private(set) var hasCityName:Bool = false
+    public private(set) var countryName:String = ""
+
+    public private(set) var hasCountryName:Bool = false
+    // when
+    public private(set) var fromDate:String = ""
+
+    public private(set) var hasFromDate:Bool = false
+    // same format
+    public private(set) var toDate:String = ""
+
+    public private(set) var hasToDate:Bool = false
+    // how much
+    public private(set) var pricePerPerson:Double = Double(0)
+
+    public private(set) var hasPricePerPerson:Bool = false
+    // hotel details
+    public private(set) var hotelId:String = ""
+
+    public private(set) var hasHotelId:Bool = false
+    public private(set) var hotelName:String = ""
+
+    public private(set) var hasHotelName:Bool = false
+    public private(set) var hotelAddress:String = ""
+
+    public private(set) var hasHotelAddress:Bool = false
+    public private(set) var latitude:Double = Double(0)
+
+    public private(set) var hasLatitude:Bool = false
+    public private(set) var longitude:Double = Double(0)
+
+    public private(set) var hasLongitude:Bool = false
+    public private(set) var rating:Double = Double(0)
+
+    public private(set) var hasRating:Bool = false
+    public private(set) var popularity:UInt32 = UInt32(0)
+
+    public private(set) var hasPopularity:Bool = false
+    public private(set) var flightdetails:Expediapackage.Flight!
+    public private(set) var hasFlightdetails:Bool = false
+    // images
+    // packageImageURL: "http://media.expedia.com/mobiata/mobile/apps/ExpediaBooking/FlightDestinations/images/[AirportCode].jpg?output-quality=60&output-format=jpeg&downsize=2208px%3A%2A"
+    public private(set) var packageImageUrl:String = ""
+
+    public private(set) var hasPackageImageUrl:Bool = false
+    // not set now, might be hand picked in the future
+    public private(set) var cityImageUrls:Array<String> = Array<String>()
+    public private(set) var hotelImageUrls:Array<String> = Array<String>()
+    public private(set) var bookingUrl:String = ""
+
+    public private(set) var hasBookingUrl:Bool = false
+    // time that this package is got from expedia server
+    public private(set) var queryTime:String = ""
+
+    public private(set) var hasQueryTime:Bool = false
+    required public init() {
+         super.init()
+    }
+    override public func isInitialized() -> Bool {
+     return true
+    }
+    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
       if hasCityName {
         try output.writeString(1, value:cityName)
       }
@@ -192,10 +402,10 @@ internal extension Expediapackage {
         try output.writeDouble(10, value:longitude)
       }
       if hasRating {
-        try output.writeString(11, value:rating)
+        try output.writeDouble(11, value:rating)
       }
-      if hasReviewCount {
-        try output.writeUInt32(12, value:reviewCount)
+      if hasPopularity {
+        try output.writeUInt32(12, value:popularity)
       }
       if hasFlightdetails {
         try output.writeMessage(13, value:flightdetails)
@@ -216,9 +426,12 @@ internal extension Expediapackage {
       if hasBookingUrl {
         try output.writeString(17, value:bookingUrl)
       }
+      if hasQueryTime {
+        try output.writeString(18, value:queryTime)
+      }
       try unknownFields.writeToCodedOutputStream(output)
     }
-    override internal func serializedSize() -> Int32 {
+    override public func serializedSize() -> Int32 {
       var serialize_size:Int32 = memoizedSerializedSize
       if serialize_size != -1 {
        return serialize_size
@@ -256,10 +469,10 @@ internal extension Expediapackage {
         serialize_size += longitude.computeDoubleSize(10)
       }
       if hasRating {
-        serialize_size += rating.computeStringSize(11)
+        serialize_size += rating.computeDoubleSize(11)
       }
-      if hasReviewCount {
-        serialize_size += reviewCount.computeUInt32Size(12)
+      if hasPopularity {
+        serialize_size += popularity.computeUInt32Size(12)
       }
       if hasFlightdetails {
           if let varSizeflightdetails = flightdetails?.computeMessageSize(13) {
@@ -284,57 +497,60 @@ internal extension Expediapackage {
       if hasBookingUrl {
         serialize_size += bookingUrl.computeStringSize(17)
       }
+      if hasQueryTime {
+        serialize_size += queryTime.computeStringSize(18)
+      }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
     }
-    internal class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Expediapackage.Package> {
+    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Expediapackage.Package> {
       var mergedArray = Array<Expediapackage.Package>()
       while let value = try parseFromDelimitedFromInputStream(input) {
         mergedArray += [value]
       }
       return mergedArray
     }
-    internal class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Expediapackage.Package? {
+    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Expediapackage.Package? {
       return try Expediapackage.Package.Builder().mergeDelimitedFromInputStream(input)?.build()
     }
-    internal class func parseFromData(data:NSData) throws -> Expediapackage.Package {
+    public class func parseFromData(data:NSData) throws -> Expediapackage.Package {
       return try Expediapackage.Package.Builder().mergeFromData(data, extensionRegistry:Expediapackage.ExpediapackageRoot.sharedInstance.extensionRegistry).build()
     }
-    internal class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.Package {
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.Package {
       return try Expediapackage.Package.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
     }
-    internal class func parseFromInputStream(input:NSInputStream) throws -> Expediapackage.Package {
+    public class func parseFromInputStream(input:NSInputStream) throws -> Expediapackage.Package {
       return try Expediapackage.Package.Builder().mergeFromInputStream(input).build()
     }
-    internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.Package {
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.Package {
       return try Expediapackage.Package.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    internal class func parseFromCodedInputStream(input:CodedInputStream) throws -> Expediapackage.Package {
+    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Expediapackage.Package {
       return try Expediapackage.Package.Builder().mergeFromCodedInputStream(input).build()
     }
-    internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.Package {
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.Package {
       return try Expediapackage.Package.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    internal class func getBuilder() -> Expediapackage.Package.Builder {
+    public class func getBuilder() -> Expediapackage.Package.Builder {
       return Expediapackage.Package.classBuilder() as! Expediapackage.Package.Builder
     }
-    internal func getBuilder() -> Expediapackage.Package.Builder {
+    public func getBuilder() -> Expediapackage.Package.Builder {
       return classBuilder() as! Expediapackage.Package.Builder
     }
-    internal override class func classBuilder() -> MessageBuilder {
+    public override class func classBuilder() -> MessageBuilder {
       return Expediapackage.Package.Builder()
     }
-    internal override func classBuilder() -> MessageBuilder {
+    public override func classBuilder() -> MessageBuilder {
       return Expediapackage.Package.Builder()
     }
-    internal func toBuilder() throws -> Expediapackage.Package.Builder {
+    public func toBuilder() throws -> Expediapackage.Package.Builder {
       return try Expediapackage.Package.builderWithPrototype(self)
     }
-    internal class func builderWithPrototype(prototype:Expediapackage.Package) throws -> Expediapackage.Package.Builder {
+    public class func builderWithPrototype(prototype:Expediapackage.Package) throws -> Expediapackage.Package.Builder {
       return try Expediapackage.Package.Builder().mergeFrom(prototype)
     }
-    override internal func getDescription(indent:String) throws -> String {
+    override public func getDescription(indent:String) throws -> String {
       var output:String = ""
       if hasCityName {
         output += "\(indent) cityName: \(cityName) \n"
@@ -369,8 +585,8 @@ internal extension Expediapackage {
       if hasRating {
         output += "\(indent) rating: \(rating) \n"
       }
-      if hasReviewCount {
-        output += "\(indent) reviewCount: \(reviewCount) \n"
+      if hasPopularity {
+        output += "\(indent) popularity: \(popularity) \n"
       }
       if hasFlightdetails {
         output += "\(indent) flightdetails {\n"
@@ -385,20 +601,23 @@ internal extension Expediapackage {
       var cityImageUrlsElementIndex:Int = 0
       for oneValuecityImageUrls in cityImageUrls  {
           output += "\(indent) cityImageUrls[\(cityImageUrlsElementIndex)]: \(oneValuecityImageUrls)\n"
-          cityImageUrlsElementIndex++
+          cityImageUrlsElementIndex += 1
       }
       var hotelImageUrlsElementIndex:Int = 0
       for oneValuehotelImageUrls in hotelImageUrls  {
           output += "\(indent) hotelImageUrls[\(hotelImageUrlsElementIndex)]: \(oneValuehotelImageUrls)\n"
-          hotelImageUrlsElementIndex++
+          hotelImageUrlsElementIndex += 1
       }
       if hasBookingUrl {
         output += "\(indent) bookingUrl: \(bookingUrl) \n"
       }
+      if hasQueryTime {
+        output += "\(indent) queryTime: \(queryTime) \n"
+      }
       output += unknownFields.getDescription(indent)
       return output
     }
-    override internal var hashValue:Int {
+    override public var hashValue:Int {
         get {
             var hashCode:Int = 7
             if hasCityName {
@@ -434,8 +653,8 @@ internal extension Expediapackage {
             if hasRating {
                hashCode = (hashCode &* 31) &+ rating.hashValue
             }
-            if hasReviewCount {
-               hashCode = (hashCode &* 31) &+ reviewCount.hashValue
+            if hasPopularity {
+               hashCode = (hashCode &* 31) &+ popularity.hashValue
             }
             if hasFlightdetails {
                 if let hashValueflightdetails = flightdetails?.hashValue {
@@ -454,6 +673,9 @@ internal extension Expediapackage {
             if hasBookingUrl {
                hashCode = (hashCode &* 31) &+ bookingUrl.hashValue
             }
+            if hasQueryTime {
+               hashCode = (hashCode &* 31) &+ queryTime.hashValue
+            }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
         }
@@ -462,32 +684,32 @@ internal extension Expediapackage {
 
     //Meta information declaration start
 
-    override internal class func className() -> String {
+    override public class func className() -> String {
         return "Expediapackage.Package"
     }
-    override internal func className() -> String {
+    override public func className() -> String {
         return "Expediapackage.Package"
     }
-    override internal func classMetaType() -> GeneratedMessage.Type {
+    override public func classMetaType() -> GeneratedMessage.Type {
         return Expediapackage.Package.self
     }
     //Meta information declaration end
 
-    final internal class Builder : GeneratedMessageBuilder {
+    final public class Builder : GeneratedMessageBuilder {
       private var builderResult:Expediapackage.Package = Expediapackage.Package()
-      internal func getMessage() -> Expediapackage.Package {
+      public func getMessage() -> Expediapackage.Package {
           return builderResult
       }
 
-      required override internal init () {
+      required override public init () {
          super.init()
       }
-      var hasCityName:Bool {
+      public var hasCityName:Bool {
            get {
                 return builderResult.hasCityName
            }
       }
-      var cityName:String {
+      public var cityName:String {
            get {
                 return builderResult.cityName
            }
@@ -496,21 +718,21 @@ internal extension Expediapackage {
                builderResult.cityName = value
            }
       }
-      func setCityName(value:String) -> Expediapackage.Package.Builder {
+      public func setCityName(value:String) -> Expediapackage.Package.Builder {
         self.cityName = value
         return self
       }
-      internal func clearCityName() -> Expediapackage.Package.Builder{
+      public func clearCityName() -> Expediapackage.Package.Builder{
            builderResult.hasCityName = false
            builderResult.cityName = ""
            return self
       }
-      var hasCountryName:Bool {
+      public var hasCountryName:Bool {
            get {
                 return builderResult.hasCountryName
            }
       }
-      var countryName:String {
+      public var countryName:String {
            get {
                 return builderResult.countryName
            }
@@ -519,21 +741,21 @@ internal extension Expediapackage {
                builderResult.countryName = value
            }
       }
-      func setCountryName(value:String) -> Expediapackage.Package.Builder {
+      public func setCountryName(value:String) -> Expediapackage.Package.Builder {
         self.countryName = value
         return self
       }
-      internal func clearCountryName() -> Expediapackage.Package.Builder{
+      public func clearCountryName() -> Expediapackage.Package.Builder{
            builderResult.hasCountryName = false
            builderResult.countryName = ""
            return self
       }
-      var hasFromDate:Bool {
+      public var hasFromDate:Bool {
            get {
                 return builderResult.hasFromDate
            }
       }
-      var fromDate:String {
+      public var fromDate:String {
            get {
                 return builderResult.fromDate
            }
@@ -542,21 +764,21 @@ internal extension Expediapackage {
                builderResult.fromDate = value
            }
       }
-      func setFromDate(value:String) -> Expediapackage.Package.Builder {
+      public func setFromDate(value:String) -> Expediapackage.Package.Builder {
         self.fromDate = value
         return self
       }
-      internal func clearFromDate() -> Expediapackage.Package.Builder{
+      public func clearFromDate() -> Expediapackage.Package.Builder{
            builderResult.hasFromDate = false
            builderResult.fromDate = ""
            return self
       }
-      var hasToDate:Bool {
+      public var hasToDate:Bool {
            get {
                 return builderResult.hasToDate
            }
       }
-      var toDate:String {
+      public var toDate:String {
            get {
                 return builderResult.toDate
            }
@@ -565,21 +787,21 @@ internal extension Expediapackage {
                builderResult.toDate = value
            }
       }
-      func setToDate(value:String) -> Expediapackage.Package.Builder {
+      public func setToDate(value:String) -> Expediapackage.Package.Builder {
         self.toDate = value
         return self
       }
-      internal func clearToDate() -> Expediapackage.Package.Builder{
+      public func clearToDate() -> Expediapackage.Package.Builder{
            builderResult.hasToDate = false
            builderResult.toDate = ""
            return self
       }
-      var hasPricePerPerson:Bool {
+      public var hasPricePerPerson:Bool {
            get {
                 return builderResult.hasPricePerPerson
            }
       }
-      var pricePerPerson:Double {
+      public var pricePerPerson:Double {
            get {
                 return builderResult.pricePerPerson
            }
@@ -588,21 +810,21 @@ internal extension Expediapackage {
                builderResult.pricePerPerson = value
            }
       }
-      func setPricePerPerson(value:Double) -> Expediapackage.Package.Builder {
+      public func setPricePerPerson(value:Double) -> Expediapackage.Package.Builder {
         self.pricePerPerson = value
         return self
       }
-      internal func clearPricePerPerson() -> Expediapackage.Package.Builder{
+      public func clearPricePerPerson() -> Expediapackage.Package.Builder{
            builderResult.hasPricePerPerson = false
            builderResult.pricePerPerson = Double(0)
            return self
       }
-      var hasHotelId:Bool {
+      public var hasHotelId:Bool {
            get {
                 return builderResult.hasHotelId
            }
       }
-      var hotelId:String {
+      public var hotelId:String {
            get {
                 return builderResult.hotelId
            }
@@ -611,21 +833,21 @@ internal extension Expediapackage {
                builderResult.hotelId = value
            }
       }
-      func setHotelId(value:String) -> Expediapackage.Package.Builder {
+      public func setHotelId(value:String) -> Expediapackage.Package.Builder {
         self.hotelId = value
         return self
       }
-      internal func clearHotelId() -> Expediapackage.Package.Builder{
+      public func clearHotelId() -> Expediapackage.Package.Builder{
            builderResult.hasHotelId = false
            builderResult.hotelId = ""
            return self
       }
-      var hasHotelName:Bool {
+      public var hasHotelName:Bool {
            get {
                 return builderResult.hasHotelName
            }
       }
-      var hotelName:String {
+      public var hotelName:String {
            get {
                 return builderResult.hotelName
            }
@@ -634,21 +856,21 @@ internal extension Expediapackage {
                builderResult.hotelName = value
            }
       }
-      func setHotelName(value:String) -> Expediapackage.Package.Builder {
+      public func setHotelName(value:String) -> Expediapackage.Package.Builder {
         self.hotelName = value
         return self
       }
-      internal func clearHotelName() -> Expediapackage.Package.Builder{
+      public func clearHotelName() -> Expediapackage.Package.Builder{
            builderResult.hasHotelName = false
            builderResult.hotelName = ""
            return self
       }
-      var hasHotelAddress:Bool {
+      public var hasHotelAddress:Bool {
            get {
                 return builderResult.hasHotelAddress
            }
       }
-      var hotelAddress:String {
+      public var hotelAddress:String {
            get {
                 return builderResult.hotelAddress
            }
@@ -657,21 +879,21 @@ internal extension Expediapackage {
                builderResult.hotelAddress = value
            }
       }
-      func setHotelAddress(value:String) -> Expediapackage.Package.Builder {
+      public func setHotelAddress(value:String) -> Expediapackage.Package.Builder {
         self.hotelAddress = value
         return self
       }
-      internal func clearHotelAddress() -> Expediapackage.Package.Builder{
+      public func clearHotelAddress() -> Expediapackage.Package.Builder{
            builderResult.hasHotelAddress = false
            builderResult.hotelAddress = ""
            return self
       }
-      var hasLatitude:Bool {
+      public var hasLatitude:Bool {
            get {
                 return builderResult.hasLatitude
            }
       }
-      var latitude:Double {
+      public var latitude:Double {
            get {
                 return builderResult.latitude
            }
@@ -680,21 +902,21 @@ internal extension Expediapackage {
                builderResult.latitude = value
            }
       }
-      func setLatitude(value:Double) -> Expediapackage.Package.Builder {
+      public func setLatitude(value:Double) -> Expediapackage.Package.Builder {
         self.latitude = value
         return self
       }
-      internal func clearLatitude() -> Expediapackage.Package.Builder{
+      public func clearLatitude() -> Expediapackage.Package.Builder{
            builderResult.hasLatitude = false
            builderResult.latitude = Double(0)
            return self
       }
-      var hasLongitude:Bool {
+      public var hasLongitude:Bool {
            get {
                 return builderResult.hasLongitude
            }
       }
-      var longitude:Double {
+      public var longitude:Double {
            get {
                 return builderResult.longitude
            }
@@ -703,21 +925,21 @@ internal extension Expediapackage {
                builderResult.longitude = value
            }
       }
-      func setLongitude(value:Double) -> Expediapackage.Package.Builder {
+      public func setLongitude(value:Double) -> Expediapackage.Package.Builder {
         self.longitude = value
         return self
       }
-      internal func clearLongitude() -> Expediapackage.Package.Builder{
+      public func clearLongitude() -> Expediapackage.Package.Builder{
            builderResult.hasLongitude = false
            builderResult.longitude = Double(0)
            return self
       }
-      var hasRating:Bool {
+      public var hasRating:Bool {
            get {
                 return builderResult.hasRating
            }
       }
-      var rating:String {
+      public var rating:Double {
            get {
                 return builderResult.rating
            }
@@ -726,44 +948,44 @@ internal extension Expediapackage {
                builderResult.rating = value
            }
       }
-      func setRating(value:String) -> Expediapackage.Package.Builder {
+      public func setRating(value:Double) -> Expediapackage.Package.Builder {
         self.rating = value
         return self
       }
-      internal func clearRating() -> Expediapackage.Package.Builder{
+      public func clearRating() -> Expediapackage.Package.Builder{
            builderResult.hasRating = false
-           builderResult.rating = ""
+           builderResult.rating = Double(0)
            return self
       }
-      var hasReviewCount:Bool {
+      public var hasPopularity:Bool {
            get {
-                return builderResult.hasReviewCount
+                return builderResult.hasPopularity
            }
       }
-      var reviewCount:UInt32 {
+      public var popularity:UInt32 {
            get {
-                return builderResult.reviewCount
+                return builderResult.popularity
            }
            set (value) {
-               builderResult.hasReviewCount = true
-               builderResult.reviewCount = value
+               builderResult.hasPopularity = true
+               builderResult.popularity = value
            }
       }
-      func setReviewCount(value:UInt32) -> Expediapackage.Package.Builder {
-        self.reviewCount = value
+      public func setPopularity(value:UInt32) -> Expediapackage.Package.Builder {
+        self.popularity = value
         return self
       }
-      internal func clearReviewCount() -> Expediapackage.Package.Builder{
-           builderResult.hasReviewCount = false
-           builderResult.reviewCount = UInt32(0)
+      public func clearPopularity() -> Expediapackage.Package.Builder{
+           builderResult.hasPopularity = false
+           builderResult.popularity = UInt32(0)
            return self
       }
-      var hasFlightdetails:Bool {
+      public var hasFlightdetails:Bool {
            get {
                return builderResult.hasFlightdetails
            }
       }
-      var flightdetails:Expediapackage.Flight! {
+      public var flightdetails:Expediapackage.Flight! {
            get {
                if flightdetailsBuilder_ != nil {
                   builderResult.flightdetails = flightdetailsBuilder_.getMessage()
@@ -780,7 +1002,7 @@ internal extension Expediapackage {
               builderResult.hasFlightdetails = true
            }
       }
-      internal func getFlightdetailsBuilder() -> Expediapackage.Flight.Builder {
+      public func getFlightdetailsBuilder() -> Expediapackage.Flight.Builder {
         if flightdetailsBuilder_ == nil {
            flightdetailsBuilder_ = Expediapackage.Flight.Builder()
            builderResult.flightdetails = flightdetailsBuilder_.getMessage()
@@ -790,11 +1012,11 @@ internal extension Expediapackage {
         }
         return flightdetailsBuilder_
       }
-      func setFlightdetails(value:Expediapackage.Flight!) -> Expediapackage.Package.Builder {
+      public func setFlightdetails(value:Expediapackage.Flight!) -> Expediapackage.Package.Builder {
         self.flightdetails = value
         return self
       }
-      internal func mergeFlightdetails(value:Expediapackage.Flight) throws -> Expediapackage.Package.Builder {
+      public func mergeFlightdetails(value:Expediapackage.Flight) throws -> Expediapackage.Package.Builder {
         if builderResult.hasFlightdetails {
           builderResult.flightdetails = try Expediapackage.Flight.builderWithPrototype(builderResult.flightdetails).mergeFrom(value).buildPartial()
         } else {
@@ -803,18 +1025,18 @@ internal extension Expediapackage {
         builderResult.hasFlightdetails = true
         return self
       }
-      internal func clearFlightdetails() -> Expediapackage.Package.Builder {
+      public func clearFlightdetails() -> Expediapackage.Package.Builder {
         flightdetailsBuilder_ = nil
         builderResult.hasFlightdetails = false
         builderResult.flightdetails = nil
         return self
       }
-      var hasPackageImageUrl:Bool {
+      public var hasPackageImageUrl:Bool {
            get {
                 return builderResult.hasPackageImageUrl
            }
       }
-      var packageImageUrl:String {
+      public var packageImageUrl:String {
            get {
                 return builderResult.packageImageUrl
            }
@@ -823,16 +1045,16 @@ internal extension Expediapackage {
                builderResult.packageImageUrl = value
            }
       }
-      func setPackageImageUrl(value:String) -> Expediapackage.Package.Builder {
+      public func setPackageImageUrl(value:String) -> Expediapackage.Package.Builder {
         self.packageImageUrl = value
         return self
       }
-      internal func clearPackageImageUrl() -> Expediapackage.Package.Builder{
+      public func clearPackageImageUrl() -> Expediapackage.Package.Builder{
            builderResult.hasPackageImageUrl = false
            builderResult.packageImageUrl = ""
            return self
       }
-      var cityImageUrls:Array<String> {
+      public var cityImageUrls:Array<String> {
            get {
                return builderResult.cityImageUrls
            }
@@ -840,15 +1062,15 @@ internal extension Expediapackage {
                builderResult.cityImageUrls = array
            }
       }
-      func setCityImageUrls(value:Array<String>) -> Expediapackage.Package.Builder {
+      public func setCityImageUrls(value:Array<String>) -> Expediapackage.Package.Builder {
         self.cityImageUrls = value
         return self
       }
-      internal func clearCityImageUrls() -> Expediapackage.Package.Builder {
+      public func clearCityImageUrls() -> Expediapackage.Package.Builder {
          builderResult.cityImageUrls.removeAll(keepCapacity: false)
          return self
       }
-      var hotelImageUrls:Array<String> {
+      public var hotelImageUrls:Array<String> {
            get {
                return builderResult.hotelImageUrls
            }
@@ -856,20 +1078,20 @@ internal extension Expediapackage {
                builderResult.hotelImageUrls = array
            }
       }
-      func setHotelImageUrls(value:Array<String>) -> Expediapackage.Package.Builder {
+      public func setHotelImageUrls(value:Array<String>) -> Expediapackage.Package.Builder {
         self.hotelImageUrls = value
         return self
       }
-      internal func clearHotelImageUrls() -> Expediapackage.Package.Builder {
+      public func clearHotelImageUrls() -> Expediapackage.Package.Builder {
          builderResult.hotelImageUrls.removeAll(keepCapacity: false)
          return self
       }
-      var hasBookingUrl:Bool {
+      public var hasBookingUrl:Bool {
            get {
                 return builderResult.hasBookingUrl
            }
       }
-      var bookingUrl:String {
+      public var bookingUrl:String {
            get {
                 return builderResult.bookingUrl
            }
@@ -878,36 +1100,59 @@ internal extension Expediapackage {
                builderResult.bookingUrl = value
            }
       }
-      func setBookingUrl(value:String) -> Expediapackage.Package.Builder {
+      public func setBookingUrl(value:String) -> Expediapackage.Package.Builder {
         self.bookingUrl = value
         return self
       }
-      internal func clearBookingUrl() -> Expediapackage.Package.Builder{
+      public func clearBookingUrl() -> Expediapackage.Package.Builder{
            builderResult.hasBookingUrl = false
            builderResult.bookingUrl = ""
            return self
       }
-      override internal var internalGetResult:GeneratedMessage {
+      public var hasQueryTime:Bool {
+           get {
+                return builderResult.hasQueryTime
+           }
+      }
+      public var queryTime:String {
+           get {
+                return builderResult.queryTime
+           }
+           set (value) {
+               builderResult.hasQueryTime = true
+               builderResult.queryTime = value
+           }
+      }
+      public func setQueryTime(value:String) -> Expediapackage.Package.Builder {
+        self.queryTime = value
+        return self
+      }
+      public func clearQueryTime() -> Expediapackage.Package.Builder{
+           builderResult.hasQueryTime = false
+           builderResult.queryTime = ""
+           return self
+      }
+      override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
            }
       }
-      internal override func clear() -> Expediapackage.Package.Builder {
+      public override func clear() -> Expediapackage.Package.Builder {
         builderResult = Expediapackage.Package()
         return self
       }
-      internal override func clone() throws -> Expediapackage.Package.Builder {
+      public override func clone() throws -> Expediapackage.Package.Builder {
         return try Expediapackage.Package.builderWithPrototype(builderResult)
       }
-      internal override func build() throws -> Expediapackage.Package {
+      public override func build() throws -> Expediapackage.Package {
            try checkInitialized()
            return buildPartial()
       }
-      internal func buildPartial() -> Expediapackage.Package {
+      public func buildPartial() -> Expediapackage.Package {
         let returnMe:Expediapackage.Package = builderResult
         return returnMe
       }
-      internal func mergeFrom(other:Expediapackage.Package) throws -> Expediapackage.Package.Builder {
+      public func mergeFrom(other:Expediapackage.Package) throws -> Expediapackage.Package.Builder {
         if other == Expediapackage.Package() {
          return self
         }
@@ -944,8 +1189,8 @@ internal extension Expediapackage {
         if other.hasRating {
              rating = other.rating
         }
-        if other.hasReviewCount {
-             reviewCount = other.reviewCount
+        if other.hasPopularity {
+             popularity = other.popularity
         }
         if (other.hasFlightdetails) {
             try mergeFlightdetails(other.flightdetails)
@@ -962,13 +1207,16 @@ internal extension Expediapackage {
         if other.hasBookingUrl {
              bookingUrl = other.bookingUrl
         }
+        if other.hasQueryTime {
+             queryTime = other.queryTime
+        }
         try mergeUnknownFields(other.unknownFields)
         return self
       }
-      internal override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Expediapackage.Package.Builder {
+      public override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Expediapackage.Package.Builder {
            return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
       }
-      internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.Package.Builder {
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.Package.Builder {
         let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
         while (true) {
           let protobufTag = try input.readTag()
@@ -1007,11 +1255,11 @@ internal extension Expediapackage {
           case 81 :
             longitude = try input.readDouble()
 
-          case 90 :
-            rating = try input.readString()
+          case 89 :
+            rating = try input.readDouble()
 
           case 96 :
-            reviewCount = try input.readUInt32()
+            popularity = try input.readUInt32()
 
           case 106 :
             let subBuilder:Expediapackage.Flight.Builder = Expediapackage.Flight.Builder()
@@ -1033,6 +1281,9 @@ internal extension Expediapackage {
           case 138 :
             bookingUrl = try input.readString()
 
+          case 146 :
+            queryTime = try input.readString()
+
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
                unknownFields = try unknownFieldsBuilder.build()
@@ -1045,18 +1296,18 @@ internal extension Expediapackage {
 
   }
 
-  final internal class Flight : GeneratedMessage, GeneratedMessageProtocol {
-    private(set) var hasOriginFlightLeg:Bool = false
-    private(set) var originFlightLeg:Expediapackage.FlightLeg!
-    private(set) var hasReturnFlightLeg:Bool = false
-    private(set) var returnFlightLeg:Expediapackage.FlightLeg!
-    required internal init() {
+  final public class Flight : GeneratedMessage, GeneratedMessageProtocol {
+    public private(set) var originFlightLeg:Expediapackage.FlightLeg!
+    public private(set) var hasOriginFlightLeg:Bool = false
+    public private(set) var returnFlightLeg:Expediapackage.FlightLeg!
+    public private(set) var hasReturnFlightLeg:Bool = false
+    required public init() {
          super.init()
     }
-    override internal func isInitialized() -> Bool {
+    override public func isInitialized() -> Bool {
      return true
     }
-    override internal func writeToCodedOutputStream(output:CodedOutputStream) throws {
+    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
       if hasOriginFlightLeg {
         try output.writeMessage(1, value:originFlightLeg)
       }
@@ -1065,7 +1316,7 @@ internal extension Expediapackage {
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
-    override internal func serializedSize() -> Int32 {
+    override public func serializedSize() -> Int32 {
       var serialize_size:Int32 = memoizedSerializedSize
       if serialize_size != -1 {
        return serialize_size
@@ -1086,53 +1337,53 @@ internal extension Expediapackage {
       memoizedSerializedSize = serialize_size
       return serialize_size
     }
-    internal class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Expediapackage.Flight> {
+    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Expediapackage.Flight> {
       var mergedArray = Array<Expediapackage.Flight>()
       while let value = try parseFromDelimitedFromInputStream(input) {
         mergedArray += [value]
       }
       return mergedArray
     }
-    internal class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Expediapackage.Flight? {
+    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Expediapackage.Flight? {
       return try Expediapackage.Flight.Builder().mergeDelimitedFromInputStream(input)?.build()
     }
-    internal class func parseFromData(data:NSData) throws -> Expediapackage.Flight {
+    public class func parseFromData(data:NSData) throws -> Expediapackage.Flight {
       return try Expediapackage.Flight.Builder().mergeFromData(data, extensionRegistry:Expediapackage.ExpediapackageRoot.sharedInstance.extensionRegistry).build()
     }
-    internal class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.Flight {
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.Flight {
       return try Expediapackage.Flight.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
     }
-    internal class func parseFromInputStream(input:NSInputStream) throws -> Expediapackage.Flight {
+    public class func parseFromInputStream(input:NSInputStream) throws -> Expediapackage.Flight {
       return try Expediapackage.Flight.Builder().mergeFromInputStream(input).build()
     }
-    internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.Flight {
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.Flight {
       return try Expediapackage.Flight.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    internal class func parseFromCodedInputStream(input:CodedInputStream) throws -> Expediapackage.Flight {
+    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Expediapackage.Flight {
       return try Expediapackage.Flight.Builder().mergeFromCodedInputStream(input).build()
     }
-    internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.Flight {
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.Flight {
       return try Expediapackage.Flight.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    internal class func getBuilder() -> Expediapackage.Flight.Builder {
+    public class func getBuilder() -> Expediapackage.Flight.Builder {
       return Expediapackage.Flight.classBuilder() as! Expediapackage.Flight.Builder
     }
-    internal func getBuilder() -> Expediapackage.Flight.Builder {
+    public func getBuilder() -> Expediapackage.Flight.Builder {
       return classBuilder() as! Expediapackage.Flight.Builder
     }
-    internal override class func classBuilder() -> MessageBuilder {
+    public override class func classBuilder() -> MessageBuilder {
       return Expediapackage.Flight.Builder()
     }
-    internal override func classBuilder() -> MessageBuilder {
+    public override func classBuilder() -> MessageBuilder {
       return Expediapackage.Flight.Builder()
     }
-    internal func toBuilder() throws -> Expediapackage.Flight.Builder {
+    public func toBuilder() throws -> Expediapackage.Flight.Builder {
       return try Expediapackage.Flight.builderWithPrototype(self)
     }
-    internal class func builderWithPrototype(prototype:Expediapackage.Flight) throws -> Expediapackage.Flight.Builder {
+    public class func builderWithPrototype(prototype:Expediapackage.Flight) throws -> Expediapackage.Flight.Builder {
       return try Expediapackage.Flight.Builder().mergeFrom(prototype)
     }
-    override internal func getDescription(indent:String) throws -> String {
+    override public func getDescription(indent:String) throws -> String {
       var output:String = ""
       if hasOriginFlightLeg {
         output += "\(indent) originFlightLeg {\n"
@@ -1151,7 +1402,7 @@ internal extension Expediapackage {
       output += unknownFields.getDescription(indent)
       return output
     }
-    override internal var hashValue:Int {
+    override public var hashValue:Int {
         get {
             var hashCode:Int = 7
             if hasOriginFlightLeg {
@@ -1172,32 +1423,32 @@ internal extension Expediapackage {
 
     //Meta information declaration start
 
-    override internal class func className() -> String {
+    override public class func className() -> String {
         return "Expediapackage.Flight"
     }
-    override internal func className() -> String {
+    override public func className() -> String {
         return "Expediapackage.Flight"
     }
-    override internal func classMetaType() -> GeneratedMessage.Type {
+    override public func classMetaType() -> GeneratedMessage.Type {
         return Expediapackage.Flight.self
     }
     //Meta information declaration end
 
-    final internal class Builder : GeneratedMessageBuilder {
+    final public class Builder : GeneratedMessageBuilder {
       private var builderResult:Expediapackage.Flight = Expediapackage.Flight()
-      internal func getMessage() -> Expediapackage.Flight {
+      public func getMessage() -> Expediapackage.Flight {
           return builderResult
       }
 
-      required override internal init () {
+      required override public init () {
          super.init()
       }
-      var hasOriginFlightLeg:Bool {
+      public var hasOriginFlightLeg:Bool {
            get {
                return builderResult.hasOriginFlightLeg
            }
       }
-      var originFlightLeg:Expediapackage.FlightLeg! {
+      public var originFlightLeg:Expediapackage.FlightLeg! {
            get {
                if originFlightLegBuilder_ != nil {
                   builderResult.originFlightLeg = originFlightLegBuilder_.getMessage()
@@ -1214,7 +1465,7 @@ internal extension Expediapackage {
               builderResult.hasOriginFlightLeg = true
            }
       }
-      internal func getOriginFlightLegBuilder() -> Expediapackage.FlightLeg.Builder {
+      public func getOriginFlightLegBuilder() -> Expediapackage.FlightLeg.Builder {
         if originFlightLegBuilder_ == nil {
            originFlightLegBuilder_ = Expediapackage.FlightLeg.Builder()
            builderResult.originFlightLeg = originFlightLegBuilder_.getMessage()
@@ -1224,11 +1475,11 @@ internal extension Expediapackage {
         }
         return originFlightLegBuilder_
       }
-      func setOriginFlightLeg(value:Expediapackage.FlightLeg!) -> Expediapackage.Flight.Builder {
+      public func setOriginFlightLeg(value:Expediapackage.FlightLeg!) -> Expediapackage.Flight.Builder {
         self.originFlightLeg = value
         return self
       }
-      internal func mergeOriginFlightLeg(value:Expediapackage.FlightLeg) throws -> Expediapackage.Flight.Builder {
+      public func mergeOriginFlightLeg(value:Expediapackage.FlightLeg) throws -> Expediapackage.Flight.Builder {
         if builderResult.hasOriginFlightLeg {
           builderResult.originFlightLeg = try Expediapackage.FlightLeg.builderWithPrototype(builderResult.originFlightLeg).mergeFrom(value).buildPartial()
         } else {
@@ -1237,18 +1488,18 @@ internal extension Expediapackage {
         builderResult.hasOriginFlightLeg = true
         return self
       }
-      internal func clearOriginFlightLeg() -> Expediapackage.Flight.Builder {
+      public func clearOriginFlightLeg() -> Expediapackage.Flight.Builder {
         originFlightLegBuilder_ = nil
         builderResult.hasOriginFlightLeg = false
         builderResult.originFlightLeg = nil
         return self
       }
-      var hasReturnFlightLeg:Bool {
+      public var hasReturnFlightLeg:Bool {
            get {
                return builderResult.hasReturnFlightLeg
            }
       }
-      var returnFlightLeg:Expediapackage.FlightLeg! {
+      public var returnFlightLeg:Expediapackage.FlightLeg! {
            get {
                if returnFlightLegBuilder_ != nil {
                   builderResult.returnFlightLeg = returnFlightLegBuilder_.getMessage()
@@ -1265,7 +1516,7 @@ internal extension Expediapackage {
               builderResult.hasReturnFlightLeg = true
            }
       }
-      internal func getReturnFlightLegBuilder() -> Expediapackage.FlightLeg.Builder {
+      public func getReturnFlightLegBuilder() -> Expediapackage.FlightLeg.Builder {
         if returnFlightLegBuilder_ == nil {
            returnFlightLegBuilder_ = Expediapackage.FlightLeg.Builder()
            builderResult.returnFlightLeg = returnFlightLegBuilder_.getMessage()
@@ -1275,11 +1526,11 @@ internal extension Expediapackage {
         }
         return returnFlightLegBuilder_
       }
-      func setReturnFlightLeg(value:Expediapackage.FlightLeg!) -> Expediapackage.Flight.Builder {
+      public func setReturnFlightLeg(value:Expediapackage.FlightLeg!) -> Expediapackage.Flight.Builder {
         self.returnFlightLeg = value
         return self
       }
-      internal func mergeReturnFlightLeg(value:Expediapackage.FlightLeg) throws -> Expediapackage.Flight.Builder {
+      public func mergeReturnFlightLeg(value:Expediapackage.FlightLeg) throws -> Expediapackage.Flight.Builder {
         if builderResult.hasReturnFlightLeg {
           builderResult.returnFlightLeg = try Expediapackage.FlightLeg.builderWithPrototype(builderResult.returnFlightLeg).mergeFrom(value).buildPartial()
         } else {
@@ -1288,33 +1539,33 @@ internal extension Expediapackage {
         builderResult.hasReturnFlightLeg = true
         return self
       }
-      internal func clearReturnFlightLeg() -> Expediapackage.Flight.Builder {
+      public func clearReturnFlightLeg() -> Expediapackage.Flight.Builder {
         returnFlightLegBuilder_ = nil
         builderResult.hasReturnFlightLeg = false
         builderResult.returnFlightLeg = nil
         return self
       }
-      override internal var internalGetResult:GeneratedMessage {
+      override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
            }
       }
-      internal override func clear() -> Expediapackage.Flight.Builder {
+      public override func clear() -> Expediapackage.Flight.Builder {
         builderResult = Expediapackage.Flight()
         return self
       }
-      internal override func clone() throws -> Expediapackage.Flight.Builder {
+      public override func clone() throws -> Expediapackage.Flight.Builder {
         return try Expediapackage.Flight.builderWithPrototype(builderResult)
       }
-      internal override func build() throws -> Expediapackage.Flight {
+      public override func build() throws -> Expediapackage.Flight {
            try checkInitialized()
            return buildPartial()
       }
-      internal func buildPartial() -> Expediapackage.Flight {
+      public func buildPartial() -> Expediapackage.Flight {
         let returnMe:Expediapackage.Flight = builderResult
         return returnMe
       }
-      internal func mergeFrom(other:Expediapackage.Flight) throws -> Expediapackage.Flight.Builder {
+      public func mergeFrom(other:Expediapackage.Flight) throws -> Expediapackage.Flight.Builder {
         if other == Expediapackage.Flight() {
          return self
         }
@@ -1327,10 +1578,10 @@ internal extension Expediapackage {
         try mergeUnknownFields(other.unknownFields)
         return self
       }
-      internal override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Expediapackage.Flight.Builder {
+      public override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Expediapackage.Flight.Builder {
            return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
       }
-      internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.Flight.Builder {
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.Flight.Builder {
         let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
         while (true) {
           let protobufTag = try input.readTag()
@@ -1367,53 +1618,53 @@ internal extension Expediapackage {
 
   }
 
-  final internal class FlightLeg : GeneratedMessage, GeneratedMessageProtocol {
-    private(set) var hasDepartureAirport:Bool = false
-    private(set) var departureAirport:String = ""
+  final public class FlightLeg : GeneratedMessage, GeneratedMessageProtocol {
+    public private(set) var departureAirport:String = ""
 
-    private(set) var hasDepartureAirportCode:Bool = false
-    private(set) var departureAirportCode:String = ""
+    public private(set) var hasDepartureAirport:Bool = false
+    public private(set) var departureAirportCode:String = ""
 
-    private(set) var hasDepartureAirportCity:Bool = false
-    private(set) var departureAirportCity:String = ""
+    public private(set) var hasDepartureAirportCode:Bool = false
+    public private(set) var departureAirportCity:String = ""
 
-    private(set) var hasArrivalAirport:Bool = false
-    private(set) var arrivalAirport:String = ""
+    public private(set) var hasDepartureAirportCity:Bool = false
+    public private(set) var arrivalAirport:String = ""
 
-    private(set) var hasArrivalAirportCode:Bool = false
-    private(set) var arrivalAirportCode:String = ""
+    public private(set) var hasArrivalAirport:Bool = false
+    public private(set) var arrivalAirportCode:String = ""
 
-    private(set) var hasArrivalAirportCity:Bool = false
-    private(set) var arrivalAirportCity:String = ""
+    public private(set) var hasArrivalAirportCode:Bool = false
+    public private(set) var arrivalAirportCity:String = ""
 
+    public private(set) var hasArrivalAirportCity:Bool = false
     // ISO standard: YYYY-MM-DDTHH:mm:SS.sss$Time Zone) e.g. 2016-12-15T09:30:00.000-06:00
-    private(set) var hasDepartureTime:Bool = false
-    private(set) var departureTime:String = ""
+    public private(set) var departureTime:String = ""
 
+    public private(set) var hasDepartureTime:Bool = false
     // Same format
-    private(set) var hasArrivalTime:Bool = false
-    private(set) var arrivalTime:String = ""
+    public private(set) var arrivalTime:String = ""
 
+    public private(set) var hasArrivalTime:Bool = false
     // e.g. American Airline
-    private(set) var hasFlightCarrier:Bool = false
-    private(set) var flightCarrier:String = ""
+    public private(set) var flightCarrier:String = ""
 
+    public private(set) var hasFlightCarrier:Bool = false
     // e.g. AA
-    private(set) var hasFlightCarrierCode:Bool = false
-    private(set) var flightCarrierCode:String = ""
+    public private(set) var flightCarrierCode:String = ""
 
+    public private(set) var hasFlightCarrierCode:Bool = false
     // HH-mm e.g. self.arrivalTime - self.departureTime
-    private(set) var hasFlightLegDuration:Bool = false
-    private(set) var flightLegDuration:String = ""
+    public private(set) var flightLegDuration:String = ""
 
-    private(set) var transitFlights:Array<Expediapackage.TransitFlight>  = Array<Expediapackage.TransitFlight>()
-    required internal init() {
+    public private(set) var hasFlightLegDuration:Bool = false
+    public private(set) var transitFlights:Array<Expediapackage.TransitFlight>  = Array<Expediapackage.TransitFlight>()
+    required public init() {
          super.init()
     }
-    override internal func isInitialized() -> Bool {
+    override public func isInitialized() -> Bool {
      return true
     }
-    override internal func writeToCodedOutputStream(output:CodedOutputStream) throws {
+    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
       if hasDepartureAirport {
         try output.writeString(1, value:departureAirport)
       }
@@ -1452,7 +1703,7 @@ internal extension Expediapackage {
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
-    override internal func serializedSize() -> Int32 {
+    override public func serializedSize() -> Int32 {
       var serialize_size:Int32 = memoizedSerializedSize
       if serialize_size != -1 {
        return serialize_size
@@ -1499,53 +1750,53 @@ internal extension Expediapackage {
       memoizedSerializedSize = serialize_size
       return serialize_size
     }
-    internal class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Expediapackage.FlightLeg> {
+    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Expediapackage.FlightLeg> {
       var mergedArray = Array<Expediapackage.FlightLeg>()
       while let value = try parseFromDelimitedFromInputStream(input) {
         mergedArray += [value]
       }
       return mergedArray
     }
-    internal class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Expediapackage.FlightLeg? {
+    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Expediapackage.FlightLeg? {
       return try Expediapackage.FlightLeg.Builder().mergeDelimitedFromInputStream(input)?.build()
     }
-    internal class func parseFromData(data:NSData) throws -> Expediapackage.FlightLeg {
+    public class func parseFromData(data:NSData) throws -> Expediapackage.FlightLeg {
       return try Expediapackage.FlightLeg.Builder().mergeFromData(data, extensionRegistry:Expediapackage.ExpediapackageRoot.sharedInstance.extensionRegistry).build()
     }
-    internal class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.FlightLeg {
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.FlightLeg {
       return try Expediapackage.FlightLeg.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
     }
-    internal class func parseFromInputStream(input:NSInputStream) throws -> Expediapackage.FlightLeg {
+    public class func parseFromInputStream(input:NSInputStream) throws -> Expediapackage.FlightLeg {
       return try Expediapackage.FlightLeg.Builder().mergeFromInputStream(input).build()
     }
-    internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.FlightLeg {
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.FlightLeg {
       return try Expediapackage.FlightLeg.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    internal class func parseFromCodedInputStream(input:CodedInputStream) throws -> Expediapackage.FlightLeg {
+    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Expediapackage.FlightLeg {
       return try Expediapackage.FlightLeg.Builder().mergeFromCodedInputStream(input).build()
     }
-    internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.FlightLeg {
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.FlightLeg {
       return try Expediapackage.FlightLeg.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    internal class func getBuilder() -> Expediapackage.FlightLeg.Builder {
+    public class func getBuilder() -> Expediapackage.FlightLeg.Builder {
       return Expediapackage.FlightLeg.classBuilder() as! Expediapackage.FlightLeg.Builder
     }
-    internal func getBuilder() -> Expediapackage.FlightLeg.Builder {
+    public func getBuilder() -> Expediapackage.FlightLeg.Builder {
       return classBuilder() as! Expediapackage.FlightLeg.Builder
     }
-    internal override class func classBuilder() -> MessageBuilder {
+    public override class func classBuilder() -> MessageBuilder {
       return Expediapackage.FlightLeg.Builder()
     }
-    internal override func classBuilder() -> MessageBuilder {
+    public override func classBuilder() -> MessageBuilder {
       return Expediapackage.FlightLeg.Builder()
     }
-    internal func toBuilder() throws -> Expediapackage.FlightLeg.Builder {
+    public func toBuilder() throws -> Expediapackage.FlightLeg.Builder {
       return try Expediapackage.FlightLeg.builderWithPrototype(self)
     }
-    internal class func builderWithPrototype(prototype:Expediapackage.FlightLeg) throws -> Expediapackage.FlightLeg.Builder {
+    public class func builderWithPrototype(prototype:Expediapackage.FlightLeg) throws -> Expediapackage.FlightLeg.Builder {
       return try Expediapackage.FlightLeg.Builder().mergeFrom(prototype)
     }
-    override internal func getDescription(indent:String) throws -> String {
+    override public func getDescription(indent:String) throws -> String {
       var output:String = ""
       if hasDepartureAirport {
         output += "\(indent) departureAirport: \(departureAirport) \n"
@@ -1585,12 +1836,12 @@ internal extension Expediapackage {
           output += "\(indent) transitFlights[\(transitFlightsElementIndex)] {\n"
           output += try oneElementtransitFlights.getDescription("\(indent)  ")
           output += "\(indent)}\n"
-          transitFlightsElementIndex++
+          transitFlightsElementIndex += 1
       }
       output += unknownFields.getDescription(indent)
       return output
     }
-    override internal var hashValue:Int {
+    override public var hashValue:Int {
         get {
             var hashCode:Int = 7
             if hasDepartureAirport {
@@ -1637,32 +1888,32 @@ internal extension Expediapackage {
 
     //Meta information declaration start
 
-    override internal class func className() -> String {
+    override public class func className() -> String {
         return "Expediapackage.FlightLeg"
     }
-    override internal func className() -> String {
+    override public func className() -> String {
         return "Expediapackage.FlightLeg"
     }
-    override internal func classMetaType() -> GeneratedMessage.Type {
+    override public func classMetaType() -> GeneratedMessage.Type {
         return Expediapackage.FlightLeg.self
     }
     //Meta information declaration end
 
-    final internal class Builder : GeneratedMessageBuilder {
+    final public class Builder : GeneratedMessageBuilder {
       private var builderResult:Expediapackage.FlightLeg = Expediapackage.FlightLeg()
-      internal func getMessage() -> Expediapackage.FlightLeg {
+      public func getMessage() -> Expediapackage.FlightLeg {
           return builderResult
       }
 
-      required override internal init () {
+      required override public init () {
          super.init()
       }
-      var hasDepartureAirport:Bool {
+      public var hasDepartureAirport:Bool {
            get {
                 return builderResult.hasDepartureAirport
            }
       }
-      var departureAirport:String {
+      public var departureAirport:String {
            get {
                 return builderResult.departureAirport
            }
@@ -1671,21 +1922,21 @@ internal extension Expediapackage {
                builderResult.departureAirport = value
            }
       }
-      func setDepartureAirport(value:String) -> Expediapackage.FlightLeg.Builder {
+      public func setDepartureAirport(value:String) -> Expediapackage.FlightLeg.Builder {
         self.departureAirport = value
         return self
       }
-      internal func clearDepartureAirport() -> Expediapackage.FlightLeg.Builder{
+      public func clearDepartureAirport() -> Expediapackage.FlightLeg.Builder{
            builderResult.hasDepartureAirport = false
            builderResult.departureAirport = ""
            return self
       }
-      var hasDepartureAirportCode:Bool {
+      public var hasDepartureAirportCode:Bool {
            get {
                 return builderResult.hasDepartureAirportCode
            }
       }
-      var departureAirportCode:String {
+      public var departureAirportCode:String {
            get {
                 return builderResult.departureAirportCode
            }
@@ -1694,21 +1945,21 @@ internal extension Expediapackage {
                builderResult.departureAirportCode = value
            }
       }
-      func setDepartureAirportCode(value:String) -> Expediapackage.FlightLeg.Builder {
+      public func setDepartureAirportCode(value:String) -> Expediapackage.FlightLeg.Builder {
         self.departureAirportCode = value
         return self
       }
-      internal func clearDepartureAirportCode() -> Expediapackage.FlightLeg.Builder{
+      public func clearDepartureAirportCode() -> Expediapackage.FlightLeg.Builder{
            builderResult.hasDepartureAirportCode = false
            builderResult.departureAirportCode = ""
            return self
       }
-      var hasDepartureAirportCity:Bool {
+      public var hasDepartureAirportCity:Bool {
            get {
                 return builderResult.hasDepartureAirportCity
            }
       }
-      var departureAirportCity:String {
+      public var departureAirportCity:String {
            get {
                 return builderResult.departureAirportCity
            }
@@ -1717,21 +1968,21 @@ internal extension Expediapackage {
                builderResult.departureAirportCity = value
            }
       }
-      func setDepartureAirportCity(value:String) -> Expediapackage.FlightLeg.Builder {
+      public func setDepartureAirportCity(value:String) -> Expediapackage.FlightLeg.Builder {
         self.departureAirportCity = value
         return self
       }
-      internal func clearDepartureAirportCity() -> Expediapackage.FlightLeg.Builder{
+      public func clearDepartureAirportCity() -> Expediapackage.FlightLeg.Builder{
            builderResult.hasDepartureAirportCity = false
            builderResult.departureAirportCity = ""
            return self
       }
-      var hasArrivalAirport:Bool {
+      public var hasArrivalAirport:Bool {
            get {
                 return builderResult.hasArrivalAirport
            }
       }
-      var arrivalAirport:String {
+      public var arrivalAirport:String {
            get {
                 return builderResult.arrivalAirport
            }
@@ -1740,21 +1991,21 @@ internal extension Expediapackage {
                builderResult.arrivalAirport = value
            }
       }
-      func setArrivalAirport(value:String) -> Expediapackage.FlightLeg.Builder {
+      public func setArrivalAirport(value:String) -> Expediapackage.FlightLeg.Builder {
         self.arrivalAirport = value
         return self
       }
-      internal func clearArrivalAirport() -> Expediapackage.FlightLeg.Builder{
+      public func clearArrivalAirport() -> Expediapackage.FlightLeg.Builder{
            builderResult.hasArrivalAirport = false
            builderResult.arrivalAirport = ""
            return self
       }
-      var hasArrivalAirportCode:Bool {
+      public var hasArrivalAirportCode:Bool {
            get {
                 return builderResult.hasArrivalAirportCode
            }
       }
-      var arrivalAirportCode:String {
+      public var arrivalAirportCode:String {
            get {
                 return builderResult.arrivalAirportCode
            }
@@ -1763,21 +2014,21 @@ internal extension Expediapackage {
                builderResult.arrivalAirportCode = value
            }
       }
-      func setArrivalAirportCode(value:String) -> Expediapackage.FlightLeg.Builder {
+      public func setArrivalAirportCode(value:String) -> Expediapackage.FlightLeg.Builder {
         self.arrivalAirportCode = value
         return self
       }
-      internal func clearArrivalAirportCode() -> Expediapackage.FlightLeg.Builder{
+      public func clearArrivalAirportCode() -> Expediapackage.FlightLeg.Builder{
            builderResult.hasArrivalAirportCode = false
            builderResult.arrivalAirportCode = ""
            return self
       }
-      var hasArrivalAirportCity:Bool {
+      public var hasArrivalAirportCity:Bool {
            get {
                 return builderResult.hasArrivalAirportCity
            }
       }
-      var arrivalAirportCity:String {
+      public var arrivalAirportCity:String {
            get {
                 return builderResult.arrivalAirportCity
            }
@@ -1786,21 +2037,21 @@ internal extension Expediapackage {
                builderResult.arrivalAirportCity = value
            }
       }
-      func setArrivalAirportCity(value:String) -> Expediapackage.FlightLeg.Builder {
+      public func setArrivalAirportCity(value:String) -> Expediapackage.FlightLeg.Builder {
         self.arrivalAirportCity = value
         return self
       }
-      internal func clearArrivalAirportCity() -> Expediapackage.FlightLeg.Builder{
+      public func clearArrivalAirportCity() -> Expediapackage.FlightLeg.Builder{
            builderResult.hasArrivalAirportCity = false
            builderResult.arrivalAirportCity = ""
            return self
       }
-      var hasDepartureTime:Bool {
+      public var hasDepartureTime:Bool {
            get {
                 return builderResult.hasDepartureTime
            }
       }
-      var departureTime:String {
+      public var departureTime:String {
            get {
                 return builderResult.departureTime
            }
@@ -1809,21 +2060,21 @@ internal extension Expediapackage {
                builderResult.departureTime = value
            }
       }
-      func setDepartureTime(value:String) -> Expediapackage.FlightLeg.Builder {
+      public func setDepartureTime(value:String) -> Expediapackage.FlightLeg.Builder {
         self.departureTime = value
         return self
       }
-      internal func clearDepartureTime() -> Expediapackage.FlightLeg.Builder{
+      public func clearDepartureTime() -> Expediapackage.FlightLeg.Builder{
            builderResult.hasDepartureTime = false
            builderResult.departureTime = ""
            return self
       }
-      var hasArrivalTime:Bool {
+      public var hasArrivalTime:Bool {
            get {
                 return builderResult.hasArrivalTime
            }
       }
-      var arrivalTime:String {
+      public var arrivalTime:String {
            get {
                 return builderResult.arrivalTime
            }
@@ -1832,21 +2083,21 @@ internal extension Expediapackage {
                builderResult.arrivalTime = value
            }
       }
-      func setArrivalTime(value:String) -> Expediapackage.FlightLeg.Builder {
+      public func setArrivalTime(value:String) -> Expediapackage.FlightLeg.Builder {
         self.arrivalTime = value
         return self
       }
-      internal func clearArrivalTime() -> Expediapackage.FlightLeg.Builder{
+      public func clearArrivalTime() -> Expediapackage.FlightLeg.Builder{
            builderResult.hasArrivalTime = false
            builderResult.arrivalTime = ""
            return self
       }
-      var hasFlightCarrier:Bool {
+      public var hasFlightCarrier:Bool {
            get {
                 return builderResult.hasFlightCarrier
            }
       }
-      var flightCarrier:String {
+      public var flightCarrier:String {
            get {
                 return builderResult.flightCarrier
            }
@@ -1855,21 +2106,21 @@ internal extension Expediapackage {
                builderResult.flightCarrier = value
            }
       }
-      func setFlightCarrier(value:String) -> Expediapackage.FlightLeg.Builder {
+      public func setFlightCarrier(value:String) -> Expediapackage.FlightLeg.Builder {
         self.flightCarrier = value
         return self
       }
-      internal func clearFlightCarrier() -> Expediapackage.FlightLeg.Builder{
+      public func clearFlightCarrier() -> Expediapackage.FlightLeg.Builder{
            builderResult.hasFlightCarrier = false
            builderResult.flightCarrier = ""
            return self
       }
-      var hasFlightCarrierCode:Bool {
+      public var hasFlightCarrierCode:Bool {
            get {
                 return builderResult.hasFlightCarrierCode
            }
       }
-      var flightCarrierCode:String {
+      public var flightCarrierCode:String {
            get {
                 return builderResult.flightCarrierCode
            }
@@ -1878,21 +2129,21 @@ internal extension Expediapackage {
                builderResult.flightCarrierCode = value
            }
       }
-      func setFlightCarrierCode(value:String) -> Expediapackage.FlightLeg.Builder {
+      public func setFlightCarrierCode(value:String) -> Expediapackage.FlightLeg.Builder {
         self.flightCarrierCode = value
         return self
       }
-      internal func clearFlightCarrierCode() -> Expediapackage.FlightLeg.Builder{
+      public func clearFlightCarrierCode() -> Expediapackage.FlightLeg.Builder{
            builderResult.hasFlightCarrierCode = false
            builderResult.flightCarrierCode = ""
            return self
       }
-      var hasFlightLegDuration:Bool {
+      public var hasFlightLegDuration:Bool {
            get {
                 return builderResult.hasFlightLegDuration
            }
       }
-      var flightLegDuration:String {
+      public var flightLegDuration:String {
            get {
                 return builderResult.flightLegDuration
            }
@@ -1901,16 +2152,16 @@ internal extension Expediapackage {
                builderResult.flightLegDuration = value
            }
       }
-      func setFlightLegDuration(value:String) -> Expediapackage.FlightLeg.Builder {
+      public func setFlightLegDuration(value:String) -> Expediapackage.FlightLeg.Builder {
         self.flightLegDuration = value
         return self
       }
-      internal func clearFlightLegDuration() -> Expediapackage.FlightLeg.Builder{
+      public func clearFlightLegDuration() -> Expediapackage.FlightLeg.Builder{
            builderResult.hasFlightLegDuration = false
            builderResult.flightLegDuration = ""
            return self
       }
-      var transitFlights:Array<Expediapackage.TransitFlight> {
+      public var transitFlights:Array<Expediapackage.TransitFlight> {
            get {
                return builderResult.transitFlights
            }
@@ -1918,35 +2169,35 @@ internal extension Expediapackage {
                builderResult.transitFlights = value
            }
       }
-      func setTransitFlights(value:Array<Expediapackage.TransitFlight>) -> Expediapackage.FlightLeg.Builder {
+      public func setTransitFlights(value:Array<Expediapackage.TransitFlight>) -> Expediapackage.FlightLeg.Builder {
         self.transitFlights = value
         return self
       }
-      internal func clearTransitFlights() -> Expediapackage.FlightLeg.Builder {
+      public func clearTransitFlights() -> Expediapackage.FlightLeg.Builder {
         builderResult.transitFlights.removeAll(keepCapacity: false)
         return self
       }
-      override internal var internalGetResult:GeneratedMessage {
+      override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
            }
       }
-      internal override func clear() -> Expediapackage.FlightLeg.Builder {
+      public override func clear() -> Expediapackage.FlightLeg.Builder {
         builderResult = Expediapackage.FlightLeg()
         return self
       }
-      internal override func clone() throws -> Expediapackage.FlightLeg.Builder {
+      public override func clone() throws -> Expediapackage.FlightLeg.Builder {
         return try Expediapackage.FlightLeg.builderWithPrototype(builderResult)
       }
-      internal override func build() throws -> Expediapackage.FlightLeg {
+      public override func build() throws -> Expediapackage.FlightLeg {
            try checkInitialized()
            return buildPartial()
       }
-      internal func buildPartial() -> Expediapackage.FlightLeg {
+      public func buildPartial() -> Expediapackage.FlightLeg {
         let returnMe:Expediapackage.FlightLeg = builderResult
         return returnMe
       }
-      internal func mergeFrom(other:Expediapackage.FlightLeg) throws -> Expediapackage.FlightLeg.Builder {
+      public func mergeFrom(other:Expediapackage.FlightLeg) throws -> Expediapackage.FlightLeg.Builder {
         if other == Expediapackage.FlightLeg() {
          return self
         }
@@ -1989,10 +2240,10 @@ internal extension Expediapackage {
         try mergeUnknownFields(other.unknownFields)
         return self
       }
-      internal override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Expediapackage.FlightLeg.Builder {
+      public override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Expediapackage.FlightLeg.Builder {
            return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
       }
-      internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.FlightLeg.Builder {
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.FlightLeg.Builder {
         let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
         while (true) {
           let protobufTag = try input.readTag()
@@ -2051,37 +2302,37 @@ internal extension Expediapackage {
 
   }
 
-  final internal class TransitFlight : GeneratedMessage, GeneratedMessageProtocol {
-    private(set) var hasTransitAirport:Bool = false
-    private(set) var transitAirport:String = ""
+  final public class TransitFlight : GeneratedMessage, GeneratedMessageProtocol {
+    public private(set) var transitAirport:String = ""
 
-    private(set) var hasTransitAirportCode:Bool = false
-    private(set) var transitAirportCode:String = ""
+    public private(set) var hasTransitAirport:Bool = false
+    public private(set) var transitAirportCode:String = ""
 
-    private(set) var hasTransitAirportCity:Bool = false
-    private(set) var transitAirportCity:String = ""
+    public private(set) var hasTransitAirportCode:Bool = false
+    public private(set) var transitAirportCity:String = ""
 
-    private(set) var hasDepartureTime:Bool = false
-    private(set) var departureTime:String = ""
+    public private(set) var hasTransitAirportCity:Bool = false
+    public private(set) var departureTime:String = ""
 
-    private(set) var hasArrivalTime:Bool = false
-    private(set) var arrivalTime:String = ""
+    public private(set) var hasDepartureTime:Bool = false
+    public private(set) var arrivalTime:String = ""
 
+    public private(set) var hasArrivalTime:Bool = false
     // HH-mm e.g. self.arrivalTime - self.departureTime
-    private(set) var hasTransitFlightDuration:Bool = false
-    private(set) var transitFlightDuration:String = ""
+    public private(set) var transitFlightDuration:String = ""
 
+    public private(set) var hasTransitFlightDuration:Bool = false
     // HH-mm e.g. originFlightLeg.transitFlights[0].departureTime - previousFlightLeg.arrivalTime
-    private(set) var hasTransitAirportDuration:Bool = false
-    private(set) var transitAirportDuration:String = ""
+    public private(set) var transitAirportDuration:String = ""
 
-    required internal init() {
+    public private(set) var hasTransitAirportDuration:Bool = false
+    required public init() {
          super.init()
     }
-    override internal func isInitialized() -> Bool {
+    override public func isInitialized() -> Bool {
      return true
     }
-    override internal func writeToCodedOutputStream(output:CodedOutputStream) throws {
+    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
       if hasTransitAirport {
         try output.writeString(1, value:transitAirport)
       }
@@ -2105,7 +2356,7 @@ internal extension Expediapackage {
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
-    override internal func serializedSize() -> Int32 {
+    override public func serializedSize() -> Int32 {
       var serialize_size:Int32 = memoizedSerializedSize
       if serialize_size != -1 {
        return serialize_size
@@ -2137,53 +2388,53 @@ internal extension Expediapackage {
       memoizedSerializedSize = serialize_size
       return serialize_size
     }
-    internal class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Expediapackage.TransitFlight> {
+    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Expediapackage.TransitFlight> {
       var mergedArray = Array<Expediapackage.TransitFlight>()
       while let value = try parseFromDelimitedFromInputStream(input) {
         mergedArray += [value]
       }
       return mergedArray
     }
-    internal class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Expediapackage.TransitFlight? {
+    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Expediapackage.TransitFlight? {
       return try Expediapackage.TransitFlight.Builder().mergeDelimitedFromInputStream(input)?.build()
     }
-    internal class func parseFromData(data:NSData) throws -> Expediapackage.TransitFlight {
+    public class func parseFromData(data:NSData) throws -> Expediapackage.TransitFlight {
       return try Expediapackage.TransitFlight.Builder().mergeFromData(data, extensionRegistry:Expediapackage.ExpediapackageRoot.sharedInstance.extensionRegistry).build()
     }
-    internal class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.TransitFlight {
+    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.TransitFlight {
       return try Expediapackage.TransitFlight.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
     }
-    internal class func parseFromInputStream(input:NSInputStream) throws -> Expediapackage.TransitFlight {
+    public class func parseFromInputStream(input:NSInputStream) throws -> Expediapackage.TransitFlight {
       return try Expediapackage.TransitFlight.Builder().mergeFromInputStream(input).build()
     }
-    internal class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.TransitFlight {
+    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.TransitFlight {
       return try Expediapackage.TransitFlight.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    internal class func parseFromCodedInputStream(input:CodedInputStream) throws -> Expediapackage.TransitFlight {
+    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Expediapackage.TransitFlight {
       return try Expediapackage.TransitFlight.Builder().mergeFromCodedInputStream(input).build()
     }
-    internal class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.TransitFlight {
+    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.TransitFlight {
       return try Expediapackage.TransitFlight.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
     }
-    internal class func getBuilder() -> Expediapackage.TransitFlight.Builder {
+    public class func getBuilder() -> Expediapackage.TransitFlight.Builder {
       return Expediapackage.TransitFlight.classBuilder() as! Expediapackage.TransitFlight.Builder
     }
-    internal func getBuilder() -> Expediapackage.TransitFlight.Builder {
+    public func getBuilder() -> Expediapackage.TransitFlight.Builder {
       return classBuilder() as! Expediapackage.TransitFlight.Builder
     }
-    internal override class func classBuilder() -> MessageBuilder {
+    public override class func classBuilder() -> MessageBuilder {
       return Expediapackage.TransitFlight.Builder()
     }
-    internal override func classBuilder() -> MessageBuilder {
+    public override func classBuilder() -> MessageBuilder {
       return Expediapackage.TransitFlight.Builder()
     }
-    internal func toBuilder() throws -> Expediapackage.TransitFlight.Builder {
+    public func toBuilder() throws -> Expediapackage.TransitFlight.Builder {
       return try Expediapackage.TransitFlight.builderWithPrototype(self)
     }
-    internal class func builderWithPrototype(prototype:Expediapackage.TransitFlight) throws -> Expediapackage.TransitFlight.Builder {
+    public class func builderWithPrototype(prototype:Expediapackage.TransitFlight) throws -> Expediapackage.TransitFlight.Builder {
       return try Expediapackage.TransitFlight.Builder().mergeFrom(prototype)
     }
-    override internal func getDescription(indent:String) throws -> String {
+    override public func getDescription(indent:String) throws -> String {
       var output:String = ""
       if hasTransitAirport {
         output += "\(indent) transitAirport: \(transitAirport) \n"
@@ -2209,7 +2460,7 @@ internal extension Expediapackage {
       output += unknownFields.getDescription(indent)
       return output
     }
-    override internal var hashValue:Int {
+    override public var hashValue:Int {
         get {
             var hashCode:Int = 7
             if hasTransitAirport {
@@ -2241,32 +2492,32 @@ internal extension Expediapackage {
 
     //Meta information declaration start
 
-    override internal class func className() -> String {
+    override public class func className() -> String {
         return "Expediapackage.TransitFlight"
     }
-    override internal func className() -> String {
+    override public func className() -> String {
         return "Expediapackage.TransitFlight"
     }
-    override internal func classMetaType() -> GeneratedMessage.Type {
+    override public func classMetaType() -> GeneratedMessage.Type {
         return Expediapackage.TransitFlight.self
     }
     //Meta information declaration end
 
-    final internal class Builder : GeneratedMessageBuilder {
+    final public class Builder : GeneratedMessageBuilder {
       private var builderResult:Expediapackage.TransitFlight = Expediapackage.TransitFlight()
-      internal func getMessage() -> Expediapackage.TransitFlight {
+      public func getMessage() -> Expediapackage.TransitFlight {
           return builderResult
       }
 
-      required override internal init () {
+      required override public init () {
          super.init()
       }
-      var hasTransitAirport:Bool {
+      public var hasTransitAirport:Bool {
            get {
                 return builderResult.hasTransitAirport
            }
       }
-      var transitAirport:String {
+      public var transitAirport:String {
            get {
                 return builderResult.transitAirport
            }
@@ -2275,21 +2526,21 @@ internal extension Expediapackage {
                builderResult.transitAirport = value
            }
       }
-      func setTransitAirport(value:String) -> Expediapackage.TransitFlight.Builder {
+      public func setTransitAirport(value:String) -> Expediapackage.TransitFlight.Builder {
         self.transitAirport = value
         return self
       }
-      internal func clearTransitAirport() -> Expediapackage.TransitFlight.Builder{
+      public func clearTransitAirport() -> Expediapackage.TransitFlight.Builder{
            builderResult.hasTransitAirport = false
            builderResult.transitAirport = ""
            return self
       }
-      var hasTransitAirportCode:Bool {
+      public var hasTransitAirportCode:Bool {
            get {
                 return builderResult.hasTransitAirportCode
            }
       }
-      var transitAirportCode:String {
+      public var transitAirportCode:String {
            get {
                 return builderResult.transitAirportCode
            }
@@ -2298,21 +2549,21 @@ internal extension Expediapackage {
                builderResult.transitAirportCode = value
            }
       }
-      func setTransitAirportCode(value:String) -> Expediapackage.TransitFlight.Builder {
+      public func setTransitAirportCode(value:String) -> Expediapackage.TransitFlight.Builder {
         self.transitAirportCode = value
         return self
       }
-      internal func clearTransitAirportCode() -> Expediapackage.TransitFlight.Builder{
+      public func clearTransitAirportCode() -> Expediapackage.TransitFlight.Builder{
            builderResult.hasTransitAirportCode = false
            builderResult.transitAirportCode = ""
            return self
       }
-      var hasTransitAirportCity:Bool {
+      public var hasTransitAirportCity:Bool {
            get {
                 return builderResult.hasTransitAirportCity
            }
       }
-      var transitAirportCity:String {
+      public var transitAirportCity:String {
            get {
                 return builderResult.transitAirportCity
            }
@@ -2321,21 +2572,21 @@ internal extension Expediapackage {
                builderResult.transitAirportCity = value
            }
       }
-      func setTransitAirportCity(value:String) -> Expediapackage.TransitFlight.Builder {
+      public func setTransitAirportCity(value:String) -> Expediapackage.TransitFlight.Builder {
         self.transitAirportCity = value
         return self
       }
-      internal func clearTransitAirportCity() -> Expediapackage.TransitFlight.Builder{
+      public func clearTransitAirportCity() -> Expediapackage.TransitFlight.Builder{
            builderResult.hasTransitAirportCity = false
            builderResult.transitAirportCity = ""
            return self
       }
-      var hasDepartureTime:Bool {
+      public var hasDepartureTime:Bool {
            get {
                 return builderResult.hasDepartureTime
            }
       }
-      var departureTime:String {
+      public var departureTime:String {
            get {
                 return builderResult.departureTime
            }
@@ -2344,21 +2595,21 @@ internal extension Expediapackage {
                builderResult.departureTime = value
            }
       }
-      func setDepartureTime(value:String) -> Expediapackage.TransitFlight.Builder {
+      public func setDepartureTime(value:String) -> Expediapackage.TransitFlight.Builder {
         self.departureTime = value
         return self
       }
-      internal func clearDepartureTime() -> Expediapackage.TransitFlight.Builder{
+      public func clearDepartureTime() -> Expediapackage.TransitFlight.Builder{
            builderResult.hasDepartureTime = false
            builderResult.departureTime = ""
            return self
       }
-      var hasArrivalTime:Bool {
+      public var hasArrivalTime:Bool {
            get {
                 return builderResult.hasArrivalTime
            }
       }
-      var arrivalTime:String {
+      public var arrivalTime:String {
            get {
                 return builderResult.arrivalTime
            }
@@ -2367,21 +2618,21 @@ internal extension Expediapackage {
                builderResult.arrivalTime = value
            }
       }
-      func setArrivalTime(value:String) -> Expediapackage.TransitFlight.Builder {
+      public func setArrivalTime(value:String) -> Expediapackage.TransitFlight.Builder {
         self.arrivalTime = value
         return self
       }
-      internal func clearArrivalTime() -> Expediapackage.TransitFlight.Builder{
+      public func clearArrivalTime() -> Expediapackage.TransitFlight.Builder{
            builderResult.hasArrivalTime = false
            builderResult.arrivalTime = ""
            return self
       }
-      var hasTransitFlightDuration:Bool {
+      public var hasTransitFlightDuration:Bool {
            get {
                 return builderResult.hasTransitFlightDuration
            }
       }
-      var transitFlightDuration:String {
+      public var transitFlightDuration:String {
            get {
                 return builderResult.transitFlightDuration
            }
@@ -2390,21 +2641,21 @@ internal extension Expediapackage {
                builderResult.transitFlightDuration = value
            }
       }
-      func setTransitFlightDuration(value:String) -> Expediapackage.TransitFlight.Builder {
+      public func setTransitFlightDuration(value:String) -> Expediapackage.TransitFlight.Builder {
         self.transitFlightDuration = value
         return self
       }
-      internal func clearTransitFlightDuration() -> Expediapackage.TransitFlight.Builder{
+      public func clearTransitFlightDuration() -> Expediapackage.TransitFlight.Builder{
            builderResult.hasTransitFlightDuration = false
            builderResult.transitFlightDuration = ""
            return self
       }
-      var hasTransitAirportDuration:Bool {
+      public var hasTransitAirportDuration:Bool {
            get {
                 return builderResult.hasTransitAirportDuration
            }
       }
-      var transitAirportDuration:String {
+      public var transitAirportDuration:String {
            get {
                 return builderResult.transitAirportDuration
            }
@@ -2413,36 +2664,36 @@ internal extension Expediapackage {
                builderResult.transitAirportDuration = value
            }
       }
-      func setTransitAirportDuration(value:String) -> Expediapackage.TransitFlight.Builder {
+      public func setTransitAirportDuration(value:String) -> Expediapackage.TransitFlight.Builder {
         self.transitAirportDuration = value
         return self
       }
-      internal func clearTransitAirportDuration() -> Expediapackage.TransitFlight.Builder{
+      public func clearTransitAirportDuration() -> Expediapackage.TransitFlight.Builder{
            builderResult.hasTransitAirportDuration = false
            builderResult.transitAirportDuration = ""
            return self
       }
-      override internal var internalGetResult:GeneratedMessage {
+      override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
            }
       }
-      internal override func clear() -> Expediapackage.TransitFlight.Builder {
+      public override func clear() -> Expediapackage.TransitFlight.Builder {
         builderResult = Expediapackage.TransitFlight()
         return self
       }
-      internal override func clone() throws -> Expediapackage.TransitFlight.Builder {
+      public override func clone() throws -> Expediapackage.TransitFlight.Builder {
         return try Expediapackage.TransitFlight.builderWithPrototype(builderResult)
       }
-      internal override func build() throws -> Expediapackage.TransitFlight {
+      public override func build() throws -> Expediapackage.TransitFlight {
            try checkInitialized()
            return buildPartial()
       }
-      internal func buildPartial() -> Expediapackage.TransitFlight {
+      public func buildPartial() -> Expediapackage.TransitFlight {
         let returnMe:Expediapackage.TransitFlight = builderResult
         return returnMe
       }
-      internal func mergeFrom(other:Expediapackage.TransitFlight) throws -> Expediapackage.TransitFlight.Builder {
+      public func mergeFrom(other:Expediapackage.TransitFlight) throws -> Expediapackage.TransitFlight.Builder {
         if other == Expediapackage.TransitFlight() {
          return self
         }
@@ -2470,10 +2721,10 @@ internal extension Expediapackage {
         try mergeUnknownFields(other.unknownFields)
         return self
       }
-      internal override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Expediapackage.TransitFlight.Builder {
+      public override func mergeFromCodedInputStream(input:CodedInputStream) throws -> Expediapackage.TransitFlight.Builder {
            return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
       }
-      internal override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.TransitFlight.Builder {
+      public override func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Expediapackage.TransitFlight.Builder {
         let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
         while (true) {
           let protobufTag = try input.readTag()

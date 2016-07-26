@@ -8,6 +8,681 @@ public final class ExpPackageProtos {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
+  public interface PackageListOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:expediapackage.PackageList)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .expediapackage.Package FHPackages = 1;</code>
+     */
+    java.util.List<com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.Package> 
+        getFHPackagesList();
+    /**
+     * <code>repeated .expediapackage.Package FHPackages = 1;</code>
+     */
+    com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.Package getFHPackages(int index);
+    /**
+     * <code>repeated .expediapackage.Package FHPackages = 1;</code>
+     */
+    int getFHPackagesCount();
+    /**
+     * <code>repeated .expediapackage.Package FHPackages = 1;</code>
+     */
+    java.util.List<? extends com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageOrBuilder> 
+        getFHPackagesOrBuilderList();
+    /**
+     * <code>repeated .expediapackage.Package FHPackages = 1;</code>
+     */
+    com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageOrBuilder getFHPackagesOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code expediapackage.PackageList}
+   */
+  public  static final class PackageList extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:expediapackage.PackageList)
+      PackageListOrBuilder {
+    // Use PackageList.newBuilder() to construct.
+    private PackageList(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private PackageList() {
+      fHPackages_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private PackageList(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                fHPackages_ = new java.util.ArrayList<com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.Package>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              fHPackages_.add(input.readMessage(com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.Package.parser(), extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          fHPackages_ = java.util.Collections.unmodifiableList(fHPackages_);
+        }
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.internal_static_expediapackage_PackageList_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.internal_static_expediapackage_PackageList_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList.class, com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList.Builder.class);
+    }
+
+    public static final int FHPACKAGES_FIELD_NUMBER = 1;
+    private java.util.List<com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.Package> fHPackages_;
+    /**
+     * <code>repeated .expediapackage.Package FHPackages = 1;</code>
+     */
+    public java.util.List<com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.Package> getFHPackagesList() {
+      return fHPackages_;
+    }
+    /**
+     * <code>repeated .expediapackage.Package FHPackages = 1;</code>
+     */
+    public java.util.List<? extends com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageOrBuilder> 
+        getFHPackagesOrBuilderList() {
+      return fHPackages_;
+    }
+    /**
+     * <code>repeated .expediapackage.Package FHPackages = 1;</code>
+     */
+    public int getFHPackagesCount() {
+      return fHPackages_.size();
+    }
+    /**
+     * <code>repeated .expediapackage.Package FHPackages = 1;</code>
+     */
+    public com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.Package getFHPackages(int index) {
+      return fHPackages_.get(index);
+    }
+    /**
+     * <code>repeated .expediapackage.Package FHPackages = 1;</code>
+     */
+    public com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageOrBuilder getFHPackagesOrBuilder(
+        int index) {
+      return fHPackages_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < fHPackages_.size(); i++) {
+        output.writeMessage(1, fHPackages_.get(i));
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < fHPackages_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, fHPackages_.get(i));
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    public static com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code expediapackage.PackageList}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:expediapackage.PackageList)
+        com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageListOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.internal_static_expediapackage_PackageList_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.internal_static_expediapackage_PackageList_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList.class, com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList.Builder.class);
+      }
+
+      // Construct using com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getFHPackagesFieldBuilder();
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        if (fHPackagesBuilder_ == null) {
+          fHPackages_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          fHPackagesBuilder_.clear();
+        }
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.internal_static_expediapackage_PackageList_descriptor;
+      }
+
+      public com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList getDefaultInstanceForType() {
+        return com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList.getDefaultInstance();
+      }
+
+      public com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList build() {
+        com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList buildPartial() {
+        com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList result = new com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList(this);
+        int from_bitField0_ = bitField0_;
+        if (fHPackagesBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            fHPackages_ = java.util.Collections.unmodifiableList(fHPackages_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.fHPackages_ = fHPackages_;
+        } else {
+          result.fHPackages_ = fHPackagesBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList) {
+          return mergeFrom((com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList other) {
+        if (other == com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList.getDefaultInstance()) return this;
+        if (fHPackagesBuilder_ == null) {
+          if (!other.fHPackages_.isEmpty()) {
+            if (fHPackages_.isEmpty()) {
+              fHPackages_ = other.fHPackages_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureFHPackagesIsMutable();
+              fHPackages_.addAll(other.fHPackages_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.fHPackages_.isEmpty()) {
+            if (fHPackagesBuilder_.isEmpty()) {
+              fHPackagesBuilder_.dispose();
+              fHPackagesBuilder_ = null;
+              fHPackages_ = other.fHPackages_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              fHPackagesBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getFHPackagesFieldBuilder() : null;
+            } else {
+              fHPackagesBuilder_.addAllMessages(other.fHPackages_);
+            }
+          }
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.Package> fHPackages_ =
+        java.util.Collections.emptyList();
+      private void ensureFHPackagesIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          fHPackages_ = new java.util.ArrayList<com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.Package>(fHPackages_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.Package, com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.Package.Builder, com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageOrBuilder> fHPackagesBuilder_;
+
+      /**
+       * <code>repeated .expediapackage.Package FHPackages = 1;</code>
+       */
+      public java.util.List<com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.Package> getFHPackagesList() {
+        if (fHPackagesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(fHPackages_);
+        } else {
+          return fHPackagesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .expediapackage.Package FHPackages = 1;</code>
+       */
+      public int getFHPackagesCount() {
+        if (fHPackagesBuilder_ == null) {
+          return fHPackages_.size();
+        } else {
+          return fHPackagesBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .expediapackage.Package FHPackages = 1;</code>
+       */
+      public com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.Package getFHPackages(int index) {
+        if (fHPackagesBuilder_ == null) {
+          return fHPackages_.get(index);
+        } else {
+          return fHPackagesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .expediapackage.Package FHPackages = 1;</code>
+       */
+      public Builder setFHPackages(
+          int index, com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.Package value) {
+        if (fHPackagesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFHPackagesIsMutable();
+          fHPackages_.set(index, value);
+          onChanged();
+        } else {
+          fHPackagesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .expediapackage.Package FHPackages = 1;</code>
+       */
+      public Builder setFHPackages(
+          int index, com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.Package.Builder builderForValue) {
+        if (fHPackagesBuilder_ == null) {
+          ensureFHPackagesIsMutable();
+          fHPackages_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          fHPackagesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .expediapackage.Package FHPackages = 1;</code>
+       */
+      public Builder addFHPackages(com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.Package value) {
+        if (fHPackagesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFHPackagesIsMutable();
+          fHPackages_.add(value);
+          onChanged();
+        } else {
+          fHPackagesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .expediapackage.Package FHPackages = 1;</code>
+       */
+      public Builder addFHPackages(
+          int index, com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.Package value) {
+        if (fHPackagesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFHPackagesIsMutable();
+          fHPackages_.add(index, value);
+          onChanged();
+        } else {
+          fHPackagesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .expediapackage.Package FHPackages = 1;</code>
+       */
+      public Builder addFHPackages(
+          com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.Package.Builder builderForValue) {
+        if (fHPackagesBuilder_ == null) {
+          ensureFHPackagesIsMutable();
+          fHPackages_.add(builderForValue.build());
+          onChanged();
+        } else {
+          fHPackagesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .expediapackage.Package FHPackages = 1;</code>
+       */
+      public Builder addFHPackages(
+          int index, com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.Package.Builder builderForValue) {
+        if (fHPackagesBuilder_ == null) {
+          ensureFHPackagesIsMutable();
+          fHPackages_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          fHPackagesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .expediapackage.Package FHPackages = 1;</code>
+       */
+      public Builder addAllFHPackages(
+          java.lang.Iterable<? extends com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.Package> values) {
+        if (fHPackagesBuilder_ == null) {
+          ensureFHPackagesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, fHPackages_);
+          onChanged();
+        } else {
+          fHPackagesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .expediapackage.Package FHPackages = 1;</code>
+       */
+      public Builder clearFHPackages() {
+        if (fHPackagesBuilder_ == null) {
+          fHPackages_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          fHPackagesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .expediapackage.Package FHPackages = 1;</code>
+       */
+      public Builder removeFHPackages(int index) {
+        if (fHPackagesBuilder_ == null) {
+          ensureFHPackagesIsMutable();
+          fHPackages_.remove(index);
+          onChanged();
+        } else {
+          fHPackagesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .expediapackage.Package FHPackages = 1;</code>
+       */
+      public com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.Package.Builder getFHPackagesBuilder(
+          int index) {
+        return getFHPackagesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .expediapackage.Package FHPackages = 1;</code>
+       */
+      public com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageOrBuilder getFHPackagesOrBuilder(
+          int index) {
+        if (fHPackagesBuilder_ == null) {
+          return fHPackages_.get(index);  } else {
+          return fHPackagesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .expediapackage.Package FHPackages = 1;</code>
+       */
+      public java.util.List<? extends com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageOrBuilder> 
+           getFHPackagesOrBuilderList() {
+        if (fHPackagesBuilder_ != null) {
+          return fHPackagesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(fHPackages_);
+        }
+      }
+      /**
+       * <code>repeated .expediapackage.Package FHPackages = 1;</code>
+       */
+      public com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.Package.Builder addFHPackagesBuilder() {
+        return getFHPackagesFieldBuilder().addBuilder(
+            com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.Package.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .expediapackage.Package FHPackages = 1;</code>
+       */
+      public com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.Package.Builder addFHPackagesBuilder(
+          int index) {
+        return getFHPackagesFieldBuilder().addBuilder(
+            index, com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.Package.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .expediapackage.Package FHPackages = 1;</code>
+       */
+      public java.util.List<com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.Package.Builder> 
+           getFHPackagesBuilderList() {
+        return getFHPackagesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.Package, com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.Package.Builder, com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageOrBuilder> 
+          getFHPackagesFieldBuilder() {
+        if (fHPackagesBuilder_ == null) {
+          fHPackagesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.Package, com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.Package.Builder, com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageOrBuilder>(
+                  fHPackages_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          fHPackages_ = null;
+        }
+        return fHPackagesBuilder_;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:expediapackage.PackageList)
+    }
+
+    // @@protoc_insertion_point(class_scope:expediapackage.PackageList)
+    private static final com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList();
+    }
+
+    public static com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<PackageList>
+        PARSER = new com.google.protobuf.AbstractParser<PackageList>() {
+      public PackageList parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new PackageList(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<PackageList> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PackageList> getParserForType() {
+      return PARSER;
+    }
+
+    public com.expedia.www.packagefinder.database.exppackage.ExpPackageProtos.PackageList getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface PackageOrBuilder extends
       // @@protoc_insertion_point(interface_extends:expediapackage.Package)
       com.google.protobuf.MessageOrBuilder {
@@ -134,19 +809,14 @@ public final class ExpPackageProtos {
     double getLongitude();
 
     /**
-     * <code>optional string rating = 11;</code>
+     * <code>optional double rating = 11;</code>
      */
-    java.lang.String getRating();
-    /**
-     * <code>optional string rating = 11;</code>
-     */
-    com.google.protobuf.ByteString
-        getRatingBytes();
+    double getRating();
 
     /**
-     * <code>optional uint32 reviewCount = 12;</code>
+     * <code>optional uint32 popularity = 12;</code>
      */
-    int getReviewCount();
+    int getPopularity();
 
     /**
      * <pre>
@@ -279,8 +949,8 @@ public final class ExpPackageProtos {
       hotelAddress_ = "";
       latitude_ = 0D;
       longitude_ = 0D;
-      rating_ = "";
-      reviewCount_ = 0;
+      rating_ = 0D;
+      popularity_ = 0;
       packageImageURL_ = "";
       cityImageURLs_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       hotelImageURLs_ = com.google.protobuf.LazyStringArrayList.EMPTY;
@@ -369,15 +1039,14 @@ public final class ExpPackageProtos {
               longitude_ = input.readDouble();
               break;
             }
-            case 90: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 89: {
 
-              rating_ = s;
+              rating_ = input.readDouble();
               break;
             }
             case 96: {
 
-              reviewCount_ = input.readUInt32();
+              popularity_ = input.readUInt32();
               break;
             }
             case 106: {
@@ -755,46 +1424,21 @@ public final class ExpPackageProtos {
     }
 
     public static final int RATING_FIELD_NUMBER = 11;
-    private volatile java.lang.Object rating_;
+    private double rating_;
     /**
-     * <code>optional string rating = 11;</code>
+     * <code>optional double rating = 11;</code>
      */
-    public java.lang.String getRating() {
-      java.lang.Object ref = rating_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        rating_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string rating = 11;</code>
-     */
-    public com.google.protobuf.ByteString
-        getRatingBytes() {
-      java.lang.Object ref = rating_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        rating_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public double getRating() {
+      return rating_;
     }
 
-    public static final int REVIEWCOUNT_FIELD_NUMBER = 12;
-    private int reviewCount_;
+    public static final int POPULARITY_FIELD_NUMBER = 12;
+    private int popularity_;
     /**
-     * <code>optional uint32 reviewCount = 12;</code>
+     * <code>optional uint32 popularity = 12;</code>
      */
-    public int getReviewCount() {
-      return reviewCount_;
+    public int getPopularity() {
+      return popularity_;
     }
 
     public static final int FLIGHTDETAILS_FIELD_NUMBER = 13;
@@ -1024,11 +1668,11 @@ public final class ExpPackageProtos {
       if (longitude_ != 0D) {
         output.writeDouble(10, longitude_);
       }
-      if (!getRatingBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 11, rating_);
+      if (rating_ != 0D) {
+        output.writeDouble(11, rating_);
       }
-      if (reviewCount_ != 0) {
-        output.writeUInt32(12, reviewCount_);
+      if (popularity_ != 0) {
+        output.writeUInt32(12, popularity_);
       }
       if (flightdetails_ != null) {
         output.writeMessage(13, getFlightdetails());
@@ -1085,12 +1729,13 @@ public final class ExpPackageProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeDoubleSize(10, longitude_);
       }
-      if (!getRatingBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(11, rating_);
-      }
-      if (reviewCount_ != 0) {
+      if (rating_ != 0D) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(12, reviewCount_);
+          .computeDoubleSize(11, rating_);
+      }
+      if (popularity_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(12, popularity_);
       }
       if (flightdetails_ != null) {
         size += com.google.protobuf.CodedOutputStream
@@ -1255,9 +1900,9 @@ public final class ExpPackageProtos {
 
         longitude_ = 0D;
 
-        rating_ = "";
+        rating_ = 0D;
 
-        reviewCount_ = 0;
+        popularity_ = 0;
 
         if (flightdetailsBuilder_ == null) {
           flightdetails_ = null;
@@ -1308,7 +1953,7 @@ public final class ExpPackageProtos {
         result.latitude_ = latitude_;
         result.longitude_ = longitude_;
         result.rating_ = rating_;
-        result.reviewCount_ = reviewCount_;
+        result.popularity_ = popularity_;
         if (flightdetailsBuilder_ == null) {
           result.flightdetails_ = flightdetails_;
         } else {
@@ -1379,12 +2024,11 @@ public final class ExpPackageProtos {
         if (other.getLongitude() != 0D) {
           setLongitude(other.getLongitude());
         }
-        if (!other.getRating().isEmpty()) {
-          rating_ = other.rating_;
-          onChanged();
+        if (other.getRating() != 0D) {
+          setRating(other.getRating());
         }
-        if (other.getReviewCount() != 0) {
-          setReviewCount(other.getReviewCount());
+        if (other.getPopularity() != 0) {
+          setPopularity(other.getPopularity());
         }
         if (other.hasFlightdetails()) {
           mergeFlightdetails(other.getFlightdetails());
@@ -2097,97 +2741,54 @@ public final class ExpPackageProtos {
         return this;
       }
 
-      private java.lang.Object rating_ = "";
+      private double rating_ ;
       /**
-       * <code>optional string rating = 11;</code>
+       * <code>optional double rating = 11;</code>
        */
-      public java.lang.String getRating() {
-        java.lang.Object ref = rating_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          rating_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public double getRating() {
+        return rating_;
       }
       /**
-       * <code>optional string rating = 11;</code>
+       * <code>optional double rating = 11;</code>
        */
-      public com.google.protobuf.ByteString
-          getRatingBytes() {
-        java.lang.Object ref = rating_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          rating_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string rating = 11;</code>
-       */
-      public Builder setRating(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+      public Builder setRating(double value) {
+        
         rating_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string rating = 11;</code>
+       * <code>optional double rating = 11;</code>
        */
       public Builder clearRating() {
         
-        rating_ = getDefaultInstance().getRating();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string rating = 11;</code>
-       */
-      public Builder setRatingBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        rating_ = value;
+        rating_ = 0D;
         onChanged();
         return this;
       }
 
-      private int reviewCount_ ;
+      private int popularity_ ;
       /**
-       * <code>optional uint32 reviewCount = 12;</code>
+       * <code>optional uint32 popularity = 12;</code>
        */
-      public int getReviewCount() {
-        return reviewCount_;
+      public int getPopularity() {
+        return popularity_;
       }
       /**
-       * <code>optional uint32 reviewCount = 12;</code>
+       * <code>optional uint32 popularity = 12;</code>
        */
-      public Builder setReviewCount(int value) {
+      public Builder setPopularity(int value) {
         
-        reviewCount_ = value;
+        popularity_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional uint32 reviewCount = 12;</code>
+       * <code>optional uint32 popularity = 12;</code>
        */
-      public Builder clearReviewCount() {
+      public Builder clearPopularity() {
         
-        reviewCount_ = 0;
+        popularity_ = 0;
         onChanged();
         return this;
       }
@@ -7101,6 +7702,11 @@ public final class ExpPackageProtos {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_expediapackage_PackageList_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_expediapackage_PackageList_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_expediapackage_Package_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -7129,36 +7735,37 @@ public final class ExpPackageProtos {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\024expediapackage.proto\022\016expediapackage\"\371" +
-      "\002\n\007Package\022\020\n\010cityName\030\001 \001(\t\022\023\n\013countryN" +
-      "ame\030\002 \001(\t\022\020\n\010fromDate\030\003 \001(\t\022\016\n\006toDate\030\004 " +
-      "\001(\t\022\026\n\016pricePerPerson\030\005 \001(\001\022\017\n\007hotelId\030\006" +
-      " \001(\t\022\021\n\thotelName\030\007 \001(\t\022\024\n\014hotelAddress\030" +
-      "\010 \001(\t\022\020\n\010latitude\030\t \001(\001\022\021\n\tlongitude\030\n \001" +
-      "(\001\022\016\n\006rating\030\013 \001(\t\022\023\n\013reviewCount\030\014 \001(\r\022" +
-      "-\n\rflightdetails\030\r \001(\0132\026.expediapackage." +
-      "flight\022\027\n\017packageImageURL\030\016 \001(\t\022\025\n\rcityI" +
-      "mageURLs\030\017 \003(\t\022\026\n\016hotelImageURLs\030\020 \003(\t\022\022",
-      "\n\nbookingURL\030\021 \001(\t\"p\n\006flight\0222\n\017originFl" +
-      "ightLeg\030\001 \001(\0132\031.expediapackage.flightLeg" +
-      "\0222\n\017returnFlightLeg\030\002 \001(\0132\031.expediapacka" +
-      "ge.flightLeg\"\341\002\n\tflightLeg\022\030\n\020departureA" +
-      "irport\030\001 \001(\t\022\034\n\024departureAirportCode\030\002 \001" +
-      "(\t\022\034\n\024departureAirportCity\030\003 \001(\t\022\026\n\016arri" +
-      "valAirport\030\004 \001(\t\022\032\n\022arrivalAirportCode\030\005" +
-      " \001(\t\022\032\n\022arrivalAirportCity\030\006 \001(\t\022\025\n\rdepa" +
-      "rtureTime\030\007 \001(\t\022\023\n\013arrivalTime\030\010 \001(\t\022\025\n\r" +
-      "flightCarrier\030\t \001(\t\022\031\n\021flightCarrierCode",
-      "\030\n \001(\t\022\031\n\021flightLegDuration\030\013 \001(\t\0225\n\016tra" +
-      "nsitFlights\030\014 \003(\0132\035.expediapackage.trans" +
-      "itFlight\"\312\001\n\rtransitFlight\022\026\n\016transitAir" +
-      "port\030\001 \001(\t\022\032\n\022transitAirportCode\030\002 \001(\t\022\032" +
-      "\n\022transitAirportCity\030\003 \001(\t\022\025\n\rdepartureT" +
-      "ime\030\004 \001(\t\022\023\n\013arrivalTime\030\005 \001(\t\022\035\n\025transi" +
-      "tFlightDuration\030\006 \001(\t\022\036\n\026transitAirportD" +
-      "uration\030\007 \001(\tBE\n1com.expedia.www.package" +
-      "finder.database.exppackageB\020ExpPackagePr" +
-      "otosb\006proto3"
+      "\n\024expediapackage.proto\022\016expediapackage\":" +
+      "\n\013PackageList\022+\n\nFHPackages\030\001 \003(\0132\027.expe" +
+      "diapackage.Package\"\370\002\n\007Package\022\020\n\010cityNa" +
+      "me\030\001 \001(\t\022\023\n\013countryName\030\002 \001(\t\022\020\n\010fromDat" +
+      "e\030\003 \001(\t\022\016\n\006toDate\030\004 \001(\t\022\026\n\016pricePerPerso" +
+      "n\030\005 \001(\001\022\017\n\007hotelId\030\006 \001(\t\022\021\n\thotelName\030\007 " +
+      "\001(\t\022\024\n\014hotelAddress\030\010 \001(\t\022\020\n\010latitude\030\t " +
+      "\001(\001\022\021\n\tlongitude\030\n \001(\001\022\016\n\006rating\030\013 \001(\001\022\022" +
+      "\n\npopularity\030\014 \001(\r\022-\n\rflightdetails\030\r \001(" +
+      "\0132\026.expediapackage.flight\022\027\n\017packageImag",
+      "eURL\030\016 \001(\t\022\025\n\rcityImageURLs\030\017 \003(\t\022\026\n\016hot" +
+      "elImageURLs\030\020 \003(\t\022\022\n\nbookingURL\030\021 \001(\t\"p\n" +
+      "\006flight\0222\n\017originFlightLeg\030\001 \001(\0132\031.exped" +
+      "iapackage.flightLeg\0222\n\017returnFlightLeg\030\002" +
+      " \001(\0132\031.expediapackage.flightLeg\"\341\002\n\tflig" +
+      "htLeg\022\030\n\020departureAirport\030\001 \001(\t\022\034\n\024depar" +
+      "tureAirportCode\030\002 \001(\t\022\034\n\024departureAirpor" +
+      "tCity\030\003 \001(\t\022\026\n\016arrivalAirport\030\004 \001(\t\022\032\n\022a" +
+      "rrivalAirportCode\030\005 \001(\t\022\032\n\022arrivalAirpor" +
+      "tCity\030\006 \001(\t\022\025\n\rdepartureTime\030\007 \001(\t\022\023\n\013ar",
+      "rivalTime\030\010 \001(\t\022\025\n\rflightCarrier\030\t \001(\t\022\031" +
+      "\n\021flightCarrierCode\030\n \001(\t\022\031\n\021flightLegDu" +
+      "ration\030\013 \001(\t\0225\n\016transitFlights\030\014 \003(\0132\035.e" +
+      "xpediapackage.transitFlight\"\312\001\n\rtransitF" +
+      "light\022\026\n\016transitAirport\030\001 \001(\t\022\032\n\022transit" +
+      "AirportCode\030\002 \001(\t\022\032\n\022transitAirportCity\030" +
+      "\003 \001(\t\022\025\n\rdepartureTime\030\004 \001(\t\022\023\n\013arrivalT" +
+      "ime\030\005 \001(\t\022\035\n\025transitFlightDuration\030\006 \001(\t" +
+      "\022\036\n\026transitAirportDuration\030\007 \001(\tBE\n1com." +
+      "expedia.www.packagefinder.database.exppa",
+      "ckageB\020ExpPackageProtosb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -7172,26 +7779,32 @@ public final class ExpPackageProtos {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_expediapackage_Package_descriptor =
+    internal_static_expediapackage_PackageList_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_expediapackage_PackageList_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_expediapackage_PackageList_descriptor,
+        new java.lang.String[] { "FHPackages", });
+    internal_static_expediapackage_Package_descriptor =
+      getDescriptor().getMessageTypes().get(1);
     internal_static_expediapackage_Package_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_expediapackage_Package_descriptor,
-        new java.lang.String[] { "CityName", "CountryName", "FromDate", "ToDate", "PricePerPerson", "HotelId", "HotelName", "HotelAddress", "Latitude", "Longitude", "Rating", "ReviewCount", "Flightdetails", "PackageImageURL", "CityImageURLs", "HotelImageURLs", "BookingURL", });
+        new java.lang.String[] { "CityName", "CountryName", "FromDate", "ToDate", "PricePerPerson", "HotelId", "HotelName", "HotelAddress", "Latitude", "Longitude", "Rating", "Popularity", "Flightdetails", "PackageImageURL", "CityImageURLs", "HotelImageURLs", "BookingURL", });
     internal_static_expediapackage_flight_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(2);
     internal_static_expediapackage_flight_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_expediapackage_flight_descriptor,
         new java.lang.String[] { "OriginFlightLeg", "ReturnFlightLeg", });
     internal_static_expediapackage_flightLeg_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_expediapackage_flightLeg_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_expediapackage_flightLeg_descriptor,
         new java.lang.String[] { "DepartureAirport", "DepartureAirportCode", "DepartureAirportCity", "ArrivalAirport", "ArrivalAirportCode", "ArrivalAirportCity", "DepartureTime", "ArrivalTime", "FlightCarrier", "FlightCarrierCode", "FlightLegDuration", "TransitFlights", });
     internal_static_expediapackage_transitFlight_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_expediapackage_transitFlight_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_expediapackage_transitFlight_descriptor,

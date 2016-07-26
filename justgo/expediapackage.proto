@@ -58,6 +58,11 @@ message hotel {
 	repeated string theme = 20;
 	//images
 	repeated string hotelImageURLs = 21;
+
+	String neighborhood = 22; // e.g. Swaggerui: packageAPI/packageResult/hotels/[0]/neighborhood
+	String featuredReview = 23; // e.g. HotelAPI: reviewSummary/featuredReview
+	String hotelDescription = 24; // e.g. HotelAPI: overview/shortDescription
+
 }
 
 message flight {
