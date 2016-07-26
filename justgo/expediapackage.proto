@@ -88,11 +88,14 @@ message flightLeg {
 }
 
 message transitFlight {
-	string transitAirport = 1;
-	string transitAirportCode = 2;
-	string transitAirportCity = 3;
-	string departureTime = 4;
-	string arrivalTime = 5;
-	string transitFlightDuration = 6; // HH-mm e.g. self.arrivalTime - self.departureTime
-	string transitAirportDuration = 7; // HH-mm e.g. originFlightLeg.transitFlights[0].departureTime - previousFlightLeg.arrivalTime
+	string departureAirport = 1;
+	string departureAirportCode = 2;
+	string departureAirportCity = 3;
+	string arrivalAirport = 4;
+	string arrivalAirportCode = 5;
+	string arrivalAirportCity = 6;
+	string departureTime = 7;
+	string arrivalTime = 8;
+	string transitFlightDuration = 9; // HH-mm e.g. self.arrivalTime - self.departureTime
+	string transitAirportWaitTime = 10; // HH-mm e.g. originFlightLeg.transitFlights[0].departureTime - previousFlightLeg.arrivalTime
 }
