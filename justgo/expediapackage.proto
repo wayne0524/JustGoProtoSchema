@@ -30,7 +30,7 @@ message Package {
 	repeated string cityImageURLs = 9; // not set now, might be hand picked in the future
 	string bookingURL = 10;
 	// time that this package is got from expedia server
-	string queryTime = 11; // in yyyy-MM-dd HH:mm:ss.SSS format
+	string queryTime = 11; // in system time millis
 }
 
 message hotel {
