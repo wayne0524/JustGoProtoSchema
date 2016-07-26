@@ -30,7 +30,7 @@ message Package {
 	repeated string cityImageURLs = 9; // not set now, might be hand picked in the future
 	string bookingURL = 10;
 	// time that this package is got from expedia server
-	string queryTime = 11; // in system time millis
+	uint64 queryTime = 11; // in system time millis
 }
 
 message hotel {
@@ -73,7 +73,7 @@ message hotel {
 message flight {
 	flightLeg originFlightLeg = 1;
 	flightLeg returnFlightLeg = 2;
-	uint64 searchTime = 3;		// The time of the search that caches this flight, in system millis
+	uint64 queryTime = 3;		// The time of the search that caches this flight, in system millis
 }
 
 message flightLeg {
