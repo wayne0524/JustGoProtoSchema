@@ -13,6 +13,7 @@ message UserInfo {
 	float minBudget = 3;
 	float maxBudget = 4;
 	UserPref prefMatrix = 5;
+	string lastRequestTime = 6;
 }
 
 message UserPref {
