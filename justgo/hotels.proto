@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+// for java build only, please comment out the following lines (5 ~ 8) if building in other language
+
+package hotel;
+
+option java_package = "com.expedia.www.packagefinder.hotel";
+option java_outer_classname = "HotelProtos";
+
+message Hotels {
+	repeated Hotel hotel = 1;
+}
+
+message Hotel {
+	string hotelId = 1;
+	float hotelScore = 2;
+	int32 hotelRank = 3;
+}

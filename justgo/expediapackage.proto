@@ -1,0 +1,109 @@
+syntax = "proto3";
+
+// for java build only, please comment out the following lines (5 ~ 8) if building in other language
+
+package expediapackage;
+
+option java_package = "com.expedia.www.packagefinder.exppackage";
+option java_outer_classname = "ExpPackageProtos";
+
+message PackageList {
+	repeated Package FHPackages = 1;
+}
+
+message Package {
+	// where
+	string cityName = 1;
+	string countryName = 2;
+	// when
+	string fromDate = 3;	// in the format of YYYY-MM-DD
+	string toDate = 4;	// same format
+	// how much
+	float pricePerPerson = 5;
+	// hotel details
+	hotel hotelDetails = 6;
+	// flight details
+	flight flightDetails = 7;
+	// images
+	// packageImageURL: "http://media.expedia.com/mobiata/mobile/apps/ExpediaBooking/FlightDestinations/images/[AirportCode].jpg?output-quality=60&output-format=jpeg&downsize=2208px%3A%2A"
+	string packageImageURL = 8;
+	repeated string cityImageURLs = 9; // not set now, might be hand picked in the future
+	string bookingURL = 10;
+	// time that this package is got from expedia server
+	uint64 queryTime = 11; // in system time millis
+	// per hotel price
+	float pricePerHotelRoom = 12
+	// per flight package price
+	float priceFlightPerPerson = 13
+}
+
+message hotel {
+	string hotelId = 1;
+	string hotelName = 2;
+	string hotelAddress = 3;
+	string hotelCity = 4;
+	string hotelState = 5;
+	string hotelCountry = 6;
+	string hotelZip = 7;
+	string hotelRegionId = 8;
+	float latitude = 9;
+	float longitude = 10;
+	float starRating = 11;
+	uint32 reviewCount = 12;
+	float aveReviewRating = 13;
+	//front page amenities info
+	bool hasFreeWifi = 14;
+	bool hasSurchargedWifi = 15;
+	bool hasHairDryer = 16;
+	bool hasFreeBreakfast = 17;
+	bool hasAirConditioning = 18;
+	bool hasRoomService = 19;
+	bool hasPool = 20;
+	//catergorized amenity
+	repeated string featured = 21;
+	repeated string policies = 22;
+	repeated string room = 23;
+	repeated string property = 24;
+	repeated string theme = 25;
+	repeated string accessiblility = 26;
+	//images
+	repeated string hotelImageURLs = 27;
+
+	string neighborhood = 28; // e.g. Swaggerui: packageAPI/packageResult/hotels/[0]/neighborhood
+	string featuredReview = 29; // e.g. HotelAPI: reviewSummary/featuredReview
+	string hotelDescription = 30; // e.g. HotelAPI: overview/shortDescription
+}
+
+message flight {
+	flightLeg originFlightLeg = 1;
+	flightLeg returnFlightLeg = 2;
+	uint64 queryTime = 3;		// The time of the search that caches this flight, in system millis
+}
+
+message flightLeg {
+	string departureAirport = 1;
+	string departureAirportCode = 2;
+	string departureAirportCity = 3;
+	string arrivalAirport = 4;
+	string arrivalAirportCode = 5;
+	string arrivalAirportCity = 6;
+	string departureTime = 7;		// ISO standard: YYYY-MM-DDTHH:mm:SS.sss$(Time Zone) e.g. 2016-12-15T09:30:00.000-06:00
+	string arrivalTime = 8;			// Same format
+	string flightCarrier = 9;		// e.g. American Airline
+	string flightCarrierCode = 10;	// e.g. AA
+	string flightLegDuration = 11;	// HH-mm e.g. self.arrivalTime - self.departureTime
+	repeated transitFlight transitFlights = 12;
+}
+
+message transitFlight {
+	string departureAirport = 1;
+	string departureAirportCode = 2;
+	string departureAirportCity = 3;
+	string arrivalAirport = 4;
+	string arrivalAirportCode = 5;
+	string arrivalAirportCity = 6;
+	string departureTime = 7;
+	string arrivalTime = 8;
+	string transitFlightDuration = 9; // HH-mm e.g. self.arrivalTime - self.departureTime
+	string transitAirportWaitTime = 10; // HH-mm e.g. originFlightLeg.transitFlights[0].departureTime - previousFlightLeg.arrivalTime
+}

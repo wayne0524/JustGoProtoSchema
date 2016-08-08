@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+// for java build only, please comment out the following lines (5 ~ 8) if building in other language
+
+package user;
+
+option java_package = "com.expedia.www.packagefinder.user";
+option java_outer_classname = "UserInfoProtos";
+
+message UserInfo {
+	string userId = 1;
+	string origin = 2;
+	float minBudget = 3;
+	float maxBudget = 4;
+	UserPref prefMatrix = 5;
+}
+
+message UserPref {
+	bool artsy = 1;
+	bool adrenaline = 2;
+	bool backpacker = 3;
+	bool beach = 4;
+	bool budget = 5;
+	bool family = 6;
+	bool foodie = 7;
+	bool green = 8;
+	bool history = 9;
+	bool local = 10;
+	bool luxury = 11;
+	bool nature = 12;
+	bool nightlife = 13;
+	bool serene = 14;
+	bool shopping = 15;
+	bool student = 16;
+	bool trendsetter = 17;
+	bool urban = 18;
+	bool vegetarian = 19;
+}
