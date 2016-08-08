@@ -34,6 +34,7 @@ message Package {
 	// per hotel price
 	float pricePerHotelRoom = 12
 	// per flight package price
+	// add comment
 	float priceFlightPerPerson = 13
 }
 
